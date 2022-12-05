@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"jsx": "react",
+		"target": "ESNext",
+		"module": "CommonJS",
+		"esModuleInterop": true,
+		"baseUrl": ".",
+		"paths": {
+			"@editor/*": ["editor-views/*"],
+			"@ui/*": ["ui-views/*"]
+		},
+	}
+}

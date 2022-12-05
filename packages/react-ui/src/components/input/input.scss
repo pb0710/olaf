@@ -1,0 +1,66 @@
+@use '../../styles/mixins.scss' as *;
+.g-input {
+	@include basic;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	width: max-content;
+	padding: 4px;
+	background: #fff;
+	transition: all $duration-n ease-out;
+	&-bordered {
+		border-radius: $radius-m;
+		border: 1px solid #ddd;
+		border-bottom-color: #ccc;
+	}
+	&-inner {
+		flex: 1;
+		padding: 0 4px;
+		outline: 0;
+		border: 0;
+		background: transparent;
+		width: 240px;
+		height: 100%;
+		resize: vertical;
+		line-height: 1.7;
+		color: $text-1;
+		&::placeholder {
+			color: $text-3;
+		}
+	}
+	&-clear-icon {
+		padding-right: 4px;
+	}
+	&-block {
+		display: flex;
+		width: 100%;
+	}
+	&-round {
+		border-radius: $round;
+	}
+	&-disabled {
+		cursor: not-allowed;
+		opacity: $opacity-disabled;
+		.g-input-inner {
+			cursor: not-allowed;
+		}
+	}
+	&:not(&-disabled) {
+		&.g-input-focus,
+		&:active {
+			&.g-input-bordered {
+				box-shadow: inset 0 0 0 2px $color-primary;
+				border-color: $color-primary;
+			}
+		}
+	}
+	&-small {
+		height: 26px;
+	}
+	&-medium {
+		height: 32px;
+	}
+	&-large {
+		height: 38px;
+	}
+}

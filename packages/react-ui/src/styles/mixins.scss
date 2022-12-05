@@ -1,0 +1,13 @@
+@use './vars.scss' as *;
+@forward './vars.scss';
+
+@mixin basic {
+	font-size: $text-font-size-m;
+	color: $text-1;
+}
+
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

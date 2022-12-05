@@ -1,0 +1,28 @@
+@use '../../styles/mixins.scss' as *;
+.g-dropdown-item {
+	@include basic;
+	display: flex;
+	align-items: center;
+	padding: 8px 16px;
+	min-height: 32px;
+	background: #fff;
+	user-select: none;
+	cursor: pointer;
+	&:hover {
+		filter: brightness(0.95);
+	}
+	&:active {
+		filter: brightness(0.9);
+	}
+	&-with-icon {
+		padding: 8px 16px 8px 12px;
+	}
+	&-active {
+		background: $color-secondary;
+	}
+	&-icon-wrap {
+		display: inline-flex;
+    align-items: center;
+		margin-right: 8px;
+	}
+}

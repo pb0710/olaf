@@ -1,0 +1,56 @@
+@use '../../styles/mixins.scss' as *;
+.g-select {
+	@include basic;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 32px;
+	border: 1px solid #ddd;
+	border-bottom-color: #ccc;
+	background: #fff;
+	border-radius: $radius-m;
+	&-block {
+		display: flex;
+		width: 100%;
+	}
+	&-disabled {
+		cursor: not-allowed;
+		opacity: $opacity-disabled;
+	}
+	&-selection {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		user-select: none;
+		margin-left: 8px;
+		min-height: 22px;
+		&-no-margin {
+			margin-left: 0;
+		}
+		&-filter {
+			&-placeholder-darker {
+				> input {
+					&::placeholder {
+						color: $text-1;
+					}
+				}
+			}
+		}
+	}
+	&-arrow {
+		padding: 0 8px;
+	}
+	&-placeholder {
+		color: $text-3;
+	}
+	&-item-icon {
+		@include flex-center;
+		width: 14px;
+		height: 14px;
+	}
+	&-empty {
+		@include flex-center;
+		height: 48px;
+		color: $text-3;
+	}
+}

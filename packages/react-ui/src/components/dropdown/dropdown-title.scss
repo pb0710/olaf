@@ -1,0 +1,7 @@
+@use '../../styles/mixins.scss' as *;
+.g-dropdown-title {
+	@include basic;
+	padding: 4px 16px;
+	color: $text-2;
+	font-size: 12px;
+}

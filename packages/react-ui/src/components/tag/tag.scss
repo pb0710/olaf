@@ -1,0 +1,41 @@
+@use '../../styles/mixins.scss' as *;
+.g-tag {
+	@include basic;
+	display: inline-flex;
+	align-items: center;
+	border-radius: $radius-m;
+	background: #eee;
+	&-close {
+		display: flex;
+		align-items: center;
+	}
+	&-round {
+		border-radius: $round;
+	}
+	&-bordered {
+		border: 1px solid #ddd;
+		border-bottom-color: #ccc;
+		background: #fff;
+	}
+	&-small {
+		padding: 2px 8px;
+		font-size: $text-font-size-s;
+		.g-tag-close {
+			margin-left: 6px;
+		}
+	}
+	&-medium {
+		padding: 4px 10px;
+		font-size: $text-font-size-m;
+		.g-tag-close {
+			margin-left: 8px;
+		}
+	}
+	&-large {
+		padding: 6px 12px;
+		font-size: $text-font-size-l;
+		.g-tag-close {
+			margin-left: 10px;
+		}
+	}
+}

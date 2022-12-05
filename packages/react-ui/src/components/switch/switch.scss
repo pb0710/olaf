@@ -1,0 +1,101 @@
+@use '../../styles/mixins.scss' as *;
+.g-switch {
+	@include basic;
+	display: inline-block;
+	position: relative;
+	border-radius: $round;
+	background: #ddd;
+	transition: all $duration-n;
+	&::after {
+		content: '';
+		position: absolute;
+		left: 2px;
+		top: 2px;
+		background: #fff;
+		border-radius: $round;
+		box-shadow: 0 1px 4px rgba($color: #000000, $alpha: 0.2);
+		transition: all $duration-n;
+	}
+	&-disabled {
+		cursor: not-allowed;
+		opacity: $opacity-disabled;
+	}
+	&-small {
+		width: 24px;
+		height: 16px;
+		&::after {
+			width: 12px;
+			height: 12px;
+		}
+		&.g-switch-checked {
+			background: $color-primary;
+			&::after {
+				left: 10px;
+			}
+		}
+		&:not(.g-switch-disabled) {
+			&:active {
+				&::after {
+					width: 14px;
+				}
+				&.g-switch-checked {
+					&::after {
+						left: 8px;
+					}
+				}
+			}
+		}
+	}
+	&-medium {
+		width: 34px;
+		height: 22px;
+		&::after {
+			width: 18px;
+			height: 18px;
+		}
+		&.g-switch-checked {
+			background: $color-primary;
+			&::after {
+				left: 14px;
+			}
+		}
+		&:not(.g-switch-disabled) {
+			&:active {
+				&::after {
+					width: 22px;
+				}
+				&.g-switch-checked {
+					&::after {
+						left: 10px;
+					}
+				}
+			}
+		}
+	}
+	&-large {
+		width: 44px;
+		height: 28px;
+		&::after {
+			width: 24px;
+			height: 24px;
+		}
+		&.g-switch-checked {
+			background: $color-primary;
+			&::after {
+				left: 18px;
+			}
+		}
+		&:not(.g-switch-disabled) {
+			&:active {
+				&::after {
+					width: 30px;
+				}
+				&.g-switch-checked {
+					&::after {
+						left: 12px;
+					}
+				}
+			}
+		}
+	}
+}

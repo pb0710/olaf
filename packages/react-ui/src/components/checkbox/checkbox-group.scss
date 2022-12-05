@@ -1,0 +1,7 @@
+@use '../../styles/mixins.scss' as *;
+.g-checkbox-group {
+	@include basic;
+	&-disabled {
+		cursor: not-allowed;
+	}
+}

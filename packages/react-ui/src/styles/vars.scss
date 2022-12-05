@@ -1,0 +1,24 @@
+$color-primary: var(--g-color-primary, #1890ff);
+$color-secondary: var(--g-color-secondary, #e6f7ff);
+$color-alert: var(--g-color-primary, #1890ff);
+
+$text-1: var(--g-text-1, #333);
+$text-2: var(--g-text-2, #666);
+$text-3: var(--g-text-3, #999);
+$text-font-size-s: var(--g-text-font-size-s, 12px);
+$text-font-size-m: var(--g-text-font-size-m, 14px);
+$text-font-size-l: var(--g-text-font-size-l, 16px);
+
+$shadow-s: var(--g-shadow-s, 0 1px 2px -2px rgba(0, 0, 0, 0.08), 0 3px 6px 0 rgba(0, 0, 0, 0.06), 0 5px 12px 4px rgba(0, 0, 0, 0.04));
+$shadow-m: var(--g-shadow-m, 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05));
+
+$radius-s: var(--g-radius-s, 2px);
+$radius-m: var(--g-radius-m, 4px);
+$radius-l: var(--g-radius-l, 8px);
+$round: 999vmax;
+
+$opacity-disabled: var(--g-opacity-disabled, 0.4);
+
+$duration-f: var(--g-duration-f, 150ms);
+$duration-n: var(--g-duration-n, 225ms);
+$duration-s: var(--g-duration-s, 350ms);

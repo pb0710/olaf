@@ -1,0 +1,9 @@
+@use '../../styles/mixins.scss' as *;
+
+.g-trigger {
+	&-content {
+		z-index: 2000;
+		position: absolute;
+		width: max-content;
+	}
+}

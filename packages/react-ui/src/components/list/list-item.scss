@@ -1,0 +1,37 @@
+@use '../../styles/mixins.scss' as *;
+.g-list-item {
+	@include basic;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 16px;
+	&-mr {
+		margin-right: 12px;
+	}
+	&-ml {
+		margin-left: 12px;
+	}
+	&-bordered {
+		& + .g-list-item {
+			border-top: 1px solid #ddd;
+		}
+	}
+	&-content {
+		width: 100%;
+	}
+	&-small {
+		&.g-list-item {
+			min-height: 32px;
+		}
+	}
+	&-medium {
+		&.g-list-item {
+			min-height: 40px;
+		}
+	}
+	&-large {
+		&.g-list-item {
+			min-height: 48px;
+		}
+	}
+}

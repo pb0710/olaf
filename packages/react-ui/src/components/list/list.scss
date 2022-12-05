@@ -1,0 +1,9 @@
+@use '../../styles/mixins.scss' as *;
+.g-list {
+	@include basic;
+	background: #fff;
+	&-bordered {
+		border: 1px solid #ddd;
+		border-radius: $radius-l;
+	}
+}

@@ -1,0 +1,13 @@
+@use '../../styles/mixins.scss' as *;
+
+.g-popover-content {
+	@include basic;
+	width: max-content;
+	padding: 12px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: #ccc;
+	border-radius: $radius-m;
+	box-shadow: $shadow-m;
+	font-size: $text-font-size-m;
+}
