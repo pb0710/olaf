@@ -15,5 +15,10 @@
     "dependencies": {},
     "lint-staged": {
         "*.{js,ts,jsx,tsx}": "eslint --cache --fix"
-    }
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "not dead"
+    ]
 }
