@@ -20,13 +20,11 @@
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@floating-ui/react-dom": "^1.0.1",
-        "@floating-ui/react-dom-interactions": "^0.13.0",
         "@mui/material": "^5.8.1",
         "@olaf/react-hook": "workspace:*",
         "@olaf/utils": "workspace:*",
         "modern-css-reset": "^1.4.0",
         "react-countup": "^6.2.0",
-        "react-merge-refs": "^2.0.1",
         "react-textarea-autosize": "^8.3.4",
         "react-transition-group": "^4.4.2"
     },

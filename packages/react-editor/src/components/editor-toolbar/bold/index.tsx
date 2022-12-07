@@ -8,7 +8,7 @@ import './index.scss'
 export default (props: { editor: Editor }) => {
 	const { editor } = props
 	return (
-		<Tooltip placement="bottom" popup="粗体">
+		<Tooltip placement="bottom" title="粗体">
 			<div
 				className={cls('g-bold-icon', {
 					active: editor.isActive('bold')

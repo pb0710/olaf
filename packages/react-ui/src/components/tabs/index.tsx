@@ -15,7 +15,7 @@ interface TabsProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
 	onChange?: (name: PanelItem['name']) => void
 }
 
-const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, outerRef) => {
+const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, propRef) => {
 	const { children, className, type = 'line', size = 'large', lazyLoad = false, value, onChange, ...rest } = props
 
 	const containerRef = useRef<HTMLDivElement>(null)
@@ -75,7 +75,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, outerRef) => {
 
 	return (
 		<TabsCtx.Provider value={{ subscribe, lazyLoad, selection, container }}>
-			<div ref={outerRef} className={cls(className, prefixCls)} {...rest}>
+			<div ref={propRef} className={cls(className, prefixCls)} {...rest}>
 				<div className={`${prefixCls}-header`}>{isSegment ? segmentTabsEle : tabsEle}</div>
 				<div
 					ref={containerRef}

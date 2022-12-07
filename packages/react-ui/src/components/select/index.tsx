@@ -12,13 +12,12 @@ import React, {
 import { cls, is } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './select.scss'
-// import Icon from '../icon'
-// import { mdiCheck, mdiChevronDown } from '@mdi/js'
 import Dropdown from '../dropdown'
 import { useBoolean, useLatestRef } from '@olaf/react-hook/src'
 import Tag from '../tag'
 import Space from '../space'
 import Input from '../input'
+import { TbCheck, TbChevronDown } from 'react-icons/tb'
 
 interface SelectProps extends Omit<HTMLAttributes<HTMLElement>, 'defaultValue' | 'onChange'> {
 	block?: boolean
@@ -148,13 +147,13 @@ const Select: FC<SelectProps> = props => {
 					return (
 						<Dropdown.Item
 							key={opt.value}
-							// icon={
-							// 	active ? (
-							// 		<Icon className={`${prefixCls}-item-icon`} path={mdiCheck} />
-							// 	) : (
-							// 		<div className={`${prefixCls}-item-icon`}></div>
-							// 	)
-							// }
+							icon={
+								active ? (
+									<TbCheck className={`${prefixCls}-item-icon`} />
+								) : (
+									<div className={`${prefixCls}-item-icon`}></div>
+								)
+							}
 							active={active}
 							onClick={handleSelect}
 						>
@@ -244,7 +243,7 @@ const Select: FC<SelectProps> = props => {
 			onClickOutside={() => {
 				hideDropdown()
 			}}
-			popup={dropdownContentEle}
+			content={dropdownContentEle}
 		>
 			<div>
 				<div
@@ -257,7 +256,7 @@ const Select: FC<SelectProps> = props => {
 					{...rest}
 				>
 					{selectionEle}
-					{/* <Icon className={`${prefixCls}-arrow`} path={mdiChevronDown} /> */}
+					<TbChevronDown className={`${prefixCls}-arrow`} />
 				</div>
 			</div>
 		</Dropdown>

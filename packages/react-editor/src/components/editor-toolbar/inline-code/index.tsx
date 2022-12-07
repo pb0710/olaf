@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" popup="代码">
+		<Tooltip placement="bottom" title="代码">
 			<div
 				className={cls('g-inline-code-icon', {
 					active: editor.isActive('code')

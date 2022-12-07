@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react'
 import Divider, { DividerProps } from '../divider'
 
-const DropdownDivider = forwardRef<HTMLDivElement, DividerProps>((props, outerRef) => {
+const DropdownDivider = forwardRef<HTMLDivElement, DividerProps>((props, propRef) => {
 	const { size = 'small', ...rest } = props
-	return <Divider ref={outerRef} size={size} {...rest} />
+	return <Divider ref={propRef} size={size} {...rest} />
 })
 
 export default DropdownDivider

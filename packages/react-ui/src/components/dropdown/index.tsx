@@ -1,20 +1,60 @@
-import React, { forwardRef } from 'react'
+import React, { Children, cloneElement, forwardRef, ReactNode } from 'react'
 import DropdownMenu from './DropdownMenu'
 import DropdownItem from './DropdownItem'
 import DropdownTitle from './DropdownTitle'
 import DropdownDivider from './DropdownDivider'
-import Trigger, { TriggerProps } from '../trigger'
+import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
+import { pick, pickDataAttrs } from '@olaf/utils/src'
 
-interface DropdownProps extends TriggerProps {
-	overlayClassName?: string // FIXME: useless
+interface DropdownProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
+	content?: ReactNode
 }
 
-const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, outerRef) => {
-	const { children, popup: content, spacing = 4, ...rest } = props
+const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, propRef) => {
+	const {
+		children,
+		content,
+		placement = 'bottom-start',
+		open,
+		defaultOpen,
+		trigger,
+		mouseEnterDelay,
+		mouseLeaveDelay,
+		spacing,
+		disabled,
+		unmountOnExit,
+		offsetX,
+		offsetY,
+		appendTo,
+		onClickOutside,
+		onVisibleChange,
+		...rest
+	} = props
 
 	return (
-		<Trigger ref={outerRef} popup={content} spacing={spacing} motion="stretch" {...rest}>
-			{children}
+		<Trigger
+			ref={propRef}
+			popup={content}
+			placement={placement}
+			open={open}
+			defaultOpen={defaultOpen}
+			trigger={trigger}
+			disabled={disabled}
+			mouseEnterDelay={mouseEnterDelay}
+			mouseLeaveDelay={mouseLeaveDelay}
+			spacing={spacing}
+			unmountOnExit={unmountOnExit}
+			offsetX={offsetX}
+			offsetY={offsetY}
+			appendTo={appendTo}
+			onClickOutside={onClickOutside}
+			onVisibleChange={onVisibleChange}
+			motion="stretch"
+		>
+			{cloneElement(Children.only(children), {
+				...pick(rest, ...EventsByTriggerNeed),
+				...pickDataAttrs(rest)
+			})}
 		</Trigger>
 	)
 })

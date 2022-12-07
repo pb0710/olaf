@@ -1,7 +1,7 @@
 @use '../../styles/mixins.scss' as *;
 .g-textarea {
 	@include basic;
-	display: inline-flex;
+	display: flex;
 	width: max-content;
 	background: #fff;
 	border-radius: $radius-m;

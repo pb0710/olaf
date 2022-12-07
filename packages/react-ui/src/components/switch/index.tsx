@@ -23,12 +23,12 @@ interface SwitchProps
 	onChange?: ChangeEventHandler<HTMLInputElement> & ((value?: boolean) => void)
 }
 
-const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, outerRef) => {
+const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, propRef) => {
 	const { className, size = 'medium', disabled = false, defaultValue, value = false, onChange, ...rest } = props
 
 	const isControlled = is.undefined(defaultValue)
 	const innerRef = useRef<HTMLInputElement>(null)
-	const switchRef = (outerRef ?? innerRef) as MutableRefObject<HTMLInputElement>
+	const switchRef = (propRef ?? innerRef) as MutableRefObject<HTMLInputElement>
 	const defaultChecked = isControlled ? value : defaultValue ?? false
 	const [checked, setChecked] = useState(defaultChecked)
 
@@ -48,7 +48,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, outerRef) => {
 
 	return (
 		<label
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, {
 				[`${prefixCls}-disabled`]: disabled,
 				[`${prefixCls}-checked`]: checked

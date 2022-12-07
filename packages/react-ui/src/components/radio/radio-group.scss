@@ -1,11 +1,12 @@
 @use '../../styles/mixins.scss' as *;
 .g-radio-group {
 	@include basic;
+	width: max-content;
 	&-disabled {
 		cursor: not-allowed;
 	}
 	&-tab {
-		display: inline-flex;
+		display: flex;
 		background: #eee;
 		padding: 2px;
 		border-radius: calc($radius-m + 2px);

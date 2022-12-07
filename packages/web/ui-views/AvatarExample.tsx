@@ -1,6 +1,6 @@
-// import { mdiAccount, mdiFileImageRemove } from '@mdi/js'
 import React from 'react'
 import { Avatar, Divider, Space } from '@olaf/react-ui/src'
+import { TbPictureInPictureOff, TbUser } from 'react-icons/tb'
 
 export default () => {
 	const picSrc = 'https://iph.href.lu/200x200'
@@ -19,13 +19,13 @@ export default () => {
 				<Avatar size="large" src={picSrc} />
 			</Space>
 			<Divider />
-			{/* <Avatar src={picSrc}>
-				<Icon path={mdiAccount} size="24px" />
-			</Avatar> */}
+			<Avatar src={picSrc}>
+				<TbUser size="24px" />
+			</Avatar>
 			<Divider />
 			<Avatar src={picSrc}>text</Avatar>
 			<Divider />
-			{/* <Avatar src="http://error.path.jpg" fallback={<Icon path={mdiFileImageRemove} size="24px" />} /> */}
+			<Avatar src="http://error.path.jpg" fallback={<TbPictureInPictureOff />} />
 			<Divider />
 			<Avatar badge="99+" src={picSrc} />
 			<Divider />

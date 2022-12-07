@@ -26,7 +26,7 @@ export interface RadioProps
 	onChange?: ChangeEventHandler<HTMLInputElement> & ((value: boolean) => void)
 }
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>((props, outerRef) => {
+const Radio = forwardRef<HTMLInputElement, RadioProps>((props, propRef) => {
 	const {
 		className,
 		children,
@@ -42,7 +42,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((props, outerRef) => {
 	const isControlled = !is.undefined(value)
 
 	const innerRef = useRef<HTMLInputElement>(null)
-	const radioRef = (outerRef ?? innerRef) as MutableRefObject<HTMLInputElement>
+	const radioRef = (propRef ?? innerRef) as MutableRefObject<HTMLInputElement>
 	const [checked, setChecked] = useState(isControlled ? value : defaultValue)
 
 	useEffect(() => {

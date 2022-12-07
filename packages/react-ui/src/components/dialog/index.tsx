@@ -3,12 +3,11 @@ import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './dialog.scss'
 import Modal, { ModalProps } from '../modal'
-// import Icon from '../icon'
-// import { mdiClose } from '@mdi/js'
 import Space from '../space'
 import Button from '../button'
 import Card from '../card'
 import Motion from '../motion'
+import { TbX } from 'react-icons/tb'
 
 interface DialogProps extends ModalProps {
 	hasCancel?: boolean
@@ -55,13 +54,7 @@ const Dialog: FC<DialogProps> = props => {
 					header={
 						<div className={`${prefixCls}-header`}>
 							<strong className={`${prefixCls}-header-title`}>{title}</strong>
-							{/* <Icon
-								className={`${prefixCls}-header-close-icon`}
-								path={mdiClose}
-								size="16px"
-								canHover
-								onClick={onCancel}
-							/> */}
+							<TbX className={`${prefixCls}-header-close-icon`} onClick={onCancel} />
 						</div>
 					}
 					footer={

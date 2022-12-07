@@ -1,7 +1,7 @@
-// import { mdiCheck, mdiClose } from '@mdi/js'
 import React from 'react'
 import { Button, Divider, Space, Switch, Tooltip } from '@olaf/react-ui/src'
 import './tooltip-example.scss'
+import { TbCheck, TbSearch, TbX } from 'react-icons/tb'
 
 export default () => {
 	const ceilStyle = {
@@ -21,65 +21,65 @@ export default () => {
 					justifyContent: 'center'
 				}}
 			>
-				<Tooltip placement="top-start" popup="Top start">
+				<Tooltip placement="top-start" title="Top start">
 					<Button block style={ceilStyle}>
 						Top start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="top" popup="Top">
+				<Tooltip placement="top" title="Top">
 					<Button block style={ceilStyle}>
 						Top
 					</Button>
 				</Tooltip>
-				<Tooltip placement="top-end" popup="Top end">
+				<Tooltip placement="top-end" title="Top end">
 					<Button block style={ceilStyle}>
 						Top end
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left-start" popup="Left start">
+				<Tooltip placement="left-start" title="Left start">
 					<Button block style={ceilStyle}>
 						Left start
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right-start" popup="Right start">
+				<Tooltip placement="right-start" title="Right start">
 					<Button block style={ceilStyle}>
 						Right start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left" popup="Left">
+				<Tooltip placement="left" title="Left">
 					<Button block style={ceilStyle}>
 						Left
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right" popup="Right">
+				<Tooltip placement="right" title="Right">
 					<Button block style={ceilStyle}>
 						Right
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left-end" popup="Left end">
+				<Tooltip placement="left-end" title="Left end">
 					<Button block style={ceilStyle}>
 						Left end
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right-end" popup="Right end">
+				<Tooltip placement="right-end" title="Right end">
 					<Button block style={ceilStyle}>
 						Right end
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom-start" popup="Bottom start">
+				<Tooltip placement="bottom-start" title="Bottom start">
 					<Button block style={ceilStyle}>
 						Bottom start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom" popup="Bottom">
+				<Tooltip placement="bottom" title="Bottom">
 					<Button block style={ceilStyle}>
 						Bottom
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom-end" popup="Bottom end">
+				<Tooltip placement="bottom-end" title="Bottom end">
 					<Button block style={ceilStyle}>
 						Bottom end
 					</Button>
@@ -87,36 +87,38 @@ export default () => {
 			</div>
 			<Divider />
 			<Space size="large">
-				<Tooltip popup="Icon tooltip">
-					<Button circle>{/* <Icon path={mdiCheck} /> */}</Button>
+				<Tooltip title="Icon tooltip">
+					<Button circle>
+						<TbSearch />
+					</Button>
 				</Tooltip>
-				<Tooltip popup="Button tooltip">
+				<Tooltip title="Button tooltip">
 					<Button primary>Primary button</Button>
 				</Tooltip>
-				<Tooltip popup="Switch tooltip">
+				<Tooltip title="Switch tooltip">
 					<Switch />
 				</Tooltip>
-				<Tooltip popup="Tooltip">
+				<Tooltip title="Tooltip">
 					<span>Text or anything</span>
 				</Tooltip>
 			</Space>
 			<Divider />
 			<Space size="large">
-				<Tooltip popup="Dark tooltip">
+				<Tooltip title="Dark tooltip">
 					<Button>dark</Button>
 				</Tooltip>
-				<Tooltip light popup="Light tooltip">
+				<Tooltip light title="Light tooltip">
 					<Button>light</Button>
 				</Tooltip>
 			</Space>
 			<Divider />
 			<Space>
-				{/* <Tooltip content="Enabled">
-					<Button icon={<Icon path={mdiCheck} />}>Enabled</Button>
+				<Tooltip title="Enabled">
+					<Button icon={<TbCheck />}>Enabled</Button>
 				</Tooltip>
-				<Tooltip content="Disabled" disabled>
-					<Button icon={<Icon path={mdiClose} />}>Disabled</Button>
-				</Tooltip> */}
+				<Tooltip title="Disabled" disabled>
+					<Button icon={<TbX />}>Disabled</Button>
+				</Tooltip>
 			</Space>
 		</div>
 	)

@@ -1,6 +1,6 @@
-// import { mdiPlus, mdiMinus } from '@mdi/js'
 import React, { useState } from 'react'
 import { Space, Progress, Button, Divider } from '@olaf/react-ui/src'
+import { TbMinus, TbPlus } from 'react-icons/tb'
 
 export default () => {
 	const [percent, setPercent] = useState(70)
@@ -14,7 +14,7 @@ export default () => {
 					setPercent(p => p - 5)
 				}}
 			>
-				{/* <Icon path={mdiMinus} /> */}
+				<TbMinus />
 			</Button>
 			<Button
 				circle
@@ -23,7 +23,7 @@ export default () => {
 					setPercent(p => p + 5)
 				}}
 			>
-				{/* <Icon path={mdiPlus} /> */}
+				<TbPlus />
 			</Button>
 		</Space>
 	)

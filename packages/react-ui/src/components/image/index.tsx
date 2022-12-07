@@ -1,12 +1,3 @@
-// import {
-// 	mdiClose,
-// 	mdiMagnifyMinusOutline,
-// 	mdiMagnifyPlusOutline,
-// 	mdiReload,
-// 	mdiRestore,
-// 	mdiBackupRestore,
-// 	mdiDownloadOutline
-// } from '@mdi/js'
 import Motion from '../motion'
 import { useBoolean, useLatestRef } from '@olaf/react-hook/src'
 import { cls, is } from '@olaf/utils/src'
@@ -22,11 +13,12 @@ import React, {
 } from 'react'
 import './image.scss'
 import { UI_PREFIX } from '../../constants'
-// import Icon from '../icon'
 import Space from '../space'
 import Modal from '../modal'
 import Tooltip from '../tooltip'
 import Loading from '../loading'
+import { TbDownload, TbResize, TbRotate, TbRotateClockwise, TbX, TbZoomIn, TbZoomOut } from 'react-icons/tb'
+import Button from '../button'
 
 type Coordinate = {
 	x: number
@@ -39,7 +31,7 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	scaleRange?: number[]
 }
 
-const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
+const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 	const {
 		className,
 		src = '',
@@ -52,7 +44,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 	} = props
 
 	const innerRef = useRef<HTMLImageElement>(null)
-	const imgRef = outerRef || innerRef
+	const imgRef = propRef || innerRef
 	const imgDetailRef = useRef<HTMLImageElement>(null)
 
 	const [detailVisible, { setTrue: showDetail, setFalse: hideDetail }] = useBoolean(false)
@@ -127,13 +119,13 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 		}, ONE_SECOND)
 	}
 
-	const handleZoom = () => {
+	const handleZoomIn = () => {
 		if (!detailLoaded) return
 
 		updateScale(p => p + 1)
 		handleShowRatio()
 	}
-	const handleShrink = () => {
+	const handleZoomOut = () => {
 		if (!detailLoaded) return
 
 		updateScale(p => p - 1)
@@ -177,9 +169,9 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 
 	const handleWheel: WheelEventHandler<HTMLElement> = event => {
 		if (event.deltaY < 0) {
-			handleShrink()
+			handleZoomOut()
 		} else {
-			handleZoom()
+			handleZoomIn()
 		}
 	}
 
@@ -195,45 +187,45 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 	const toolbarList = [
 		{
 			id: 0,
-			content: '向左旋转90°',
-			// iconPath: mdiRestore,
-			clickHandler: handleLeftRotate
+			title: '逆时针旋转90°',
+			icon: <TbRotate className={`${prefixCls}-detail-icon`} />,
+			handler: handleLeftRotate
 		},
 		{
 			id: 1,
-			content: '向右旋转90°',
-			// iconPath: mdiReload,
-			clickHandler: handleRightRotate
+			title: '顺时针旋转90°',
+			icon: <TbRotateClockwise className={`${prefixCls}-detail-icon`} />,
+			handler: handleRightRotate
 		},
 		{
 			id: 2,
-			content: '缩小',
-			// iconPath: mdiMagnifyMinusOutline,
-			clickHandler: handleShrink
+			title: '缩小',
+			icon: <TbZoomOut className={`${prefixCls}-detail-icon`} />,
+			handler: handleZoomOut
 		},
 		{
 			id: 3,
-			content: '放大',
-			// iconPath: mdiMagnifyPlusOutline,
-			clickHandler: handleZoom
+			title: '放大',
+			icon: <TbZoomIn className={`${prefixCls}-detail-icon`} />,
+			handler: handleZoomIn
 		},
 		{
 			id: 4,
-			content: '重置',
-			// iconPath: mdiBackupRestore,
-			clickHandler: handleReset
+			title: '重置',
+			icon: <TbResize className={`${prefixCls}-detail-icon`} />,
+			handler: handleReset
 		},
 		{
 			id: 5,
-			content: '下载',
-			// iconPath: mdiDownloadOutline,
-			clickHandler: handleDownload
+			title: '下载',
+			icon: <TbDownload className={`${prefixCls}-detail-icon`} />,
+			handler: handleDownload
 		},
 		{
 			id: 6,
-			content: '关闭',
-			// iconPath: mdiClose,
-			clickHandler: hideDetail
+			title: '关闭',
+			icon: <TbX className={`${prefixCls}-detail-icon`} />,
+			handler: hideDetail
 		}
 	]
 	const toolbarEle = (
@@ -241,15 +233,10 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 			<div className={`${prefixCls}-detail-toolbar`}>
 				<Space size="small">
 					{toolbarList.map(item => (
-						<Tooltip key={item.id} spacing={12} placement="top" popup={item.content}>
-							{/* <Icon
-								className={`${prefixCls}-detail-icon`}
-								size="20px"
-								canHover
-								path={item.iconPath}
-								onClick={item.clickHandler}
-							/> */}
-							<div>123213</div>
+						<Tooltip key={item.id} spacing={12} placement="top" title={item.title}>
+							<Button circle onClick={item.handler}>
+								{item.icon}
+							</Button>
 						</Tooltip>
 					))}
 				</Space>

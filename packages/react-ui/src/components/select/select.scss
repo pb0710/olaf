@@ -1,9 +1,10 @@
 @use '../../styles/mixins.scss' as *;
 .g-select {
 	@include basic;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: max-content;
 	min-height: 32px;
 	border: 1px solid #ddd;
 	border-bottom-color: #ccc;

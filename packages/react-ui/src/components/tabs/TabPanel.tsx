@@ -9,7 +9,7 @@ interface TabPanelProps extends HTMLAttributes<HTMLElement> {
 	tab?: string
 }
 
-const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>((props, outerRef) => {
+const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>((props, propRef) => {
 	const { children, className, name, tab, ...rest } = props
 
 	const { subscribe, lazyLoad = false, selection } = useContext(TabsCtx)
@@ -30,7 +30,7 @@ const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>((props, outerRef) => 
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-active`]: isActive
 			})}

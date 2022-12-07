@@ -4,11 +4,11 @@ import { UI_PREFIX } from '../../constants'
 import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
 import './popover.scss'
 
-interface PopoverProps extends Omit<TriggerProps, 'growTransformOrigin' | 'motion' | 'popup'> {
+interface PopoverProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
 	content?: ReactNode
 }
 
-const Popover = forwardRef<HTMLElement, PopoverProps>((props, outerRef) => {
+const Popover = forwardRef<HTMLElement, PopoverProps>((props, propRef) => {
 	const {
 		children,
 		content,
@@ -50,7 +50,7 @@ const Popover = forwardRef<HTMLElement, PopoverProps>((props, outerRef) => {
 
 	return (
 		<Trigger
-			ref={outerRef}
+			ref={propRef}
 			popup={popup}
 			placement={placement}
 			open={open}

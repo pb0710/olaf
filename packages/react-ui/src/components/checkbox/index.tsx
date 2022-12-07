@@ -1,4 +1,6 @@
 import { cls, is } from '@olaf/utils/src'
+import { BsCheckLg } from 'react-icons/bs'
+import { GoCheck } from 'react-icons/go'
 import React, {
 	ChangeEventHandler,
 	forwardRef,
@@ -9,9 +11,6 @@ import React, {
 	useState
 } from 'react'
 import './checkbox.scss'
-// import { mdiCheckBold } from '@mdi/js'
-// // import Icon from '../icon'
-// import Icon from '@mdi/react'
 import CheckboxGroup from './CheckboxGroup'
 import { UI_PREFIX } from '../../constants'
 
@@ -28,7 +27,7 @@ export interface CheckboxProps
 	onChange?: ChangeEventHandler<HTMLInputElement> & ((value: boolean) => void)
 }
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, outerRef) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, propRef) => {
 	const {
 		className,
 		children,
@@ -43,7 +42,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, outerRef) =
 	const isControlled = !is.undefined(value)
 
 	const ref = useRef<HTMLInputElement>(null)
-	const checkboxRef = (outerRef ?? ref) as MutableRefObject<HTMLInputElement>
+	const checkboxRef = (propRef ?? ref) as MutableRefObject<HTMLInputElement>
 	const [checked, setChecked] = useState(isControlled ? value : defaultValue)
 
 	useEffect(() => {
@@ -61,11 +60,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, outerRef) =
 
 	const prefixCls = `${UI_PREFIX}-checkbox`
 	const checkedProps = isControlled ? { checked } : { defaultChecked: defaultValue }
-
-	let iconSize = 13
-	if (size === 'small') iconSize = 10
-	else if (size === 'medium') iconSize = 13
-	else if (size === 'large') iconSize = 16
 
 	return (
 		<label
@@ -85,7 +79,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, outerRef) =
 				onChange={handleChange}
 			/>
 			<div className={`${prefixCls}-icon`}>
-				{/* <Icon className={`${prefixCls}-icon-inner`} path={mdiCheckBold} size={`${iconSize}px`} /> */}
+				<GoCheck className={cls(`${prefixCls}-icon-inner`, `${prefixCls}-icon-inner-${size}`)} />
 			</div>
 			{children}
 		</label>

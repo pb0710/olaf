@@ -28,7 +28,7 @@ interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange
 	onChange?: (value: string | number) => void
 }
 
-const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, outerRef) => {
+const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, propRef) => {
 	const {
 		children,
 		className,
@@ -98,14 +98,19 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, outerRef)
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-disabled`]: disabled,
 				[`${prefixCls}-tab`]: isTab
 			})}
 			{...rest}
 		>
-			{isTab ? <div>{radiosEle}</div> : <Space direction={direction}>{radiosEle}</Space>}
+			{isTab ? (
+				// <div style={{ display: 'flex' }}>{radiosEle}</div>
+				radiosEle
+			) : (
+				<Space direction={direction}>{radiosEle}</Space>
+			)}
 		</div>
 	)
 })

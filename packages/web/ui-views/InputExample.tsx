@@ -1,6 +1,6 @@
 import { Button, Divider, Input, Space } from '@olaf/react-ui/src'
 import React, { useRef, useState } from 'react'
-// import { mdiArrowUp, mdiMagnify } from '@mdi/js'
+import { TbEyeOff, TbSearch } from 'react-icons/tb'
 
 export default () => {
 	const [inputVal, setInputVal] = useState('controlled input')
@@ -28,14 +28,8 @@ export default () => {
 			</Space>
 			<Divider />
 			<Space>
-				<Input
-					placeholder="Prefix"
-					// prefix={<Icon style={{ backgroundColor: '#fff' }} path={mdiMagnify} canHover />}
-				/>
-				<Input
-					placeholder="Suffix"
-					// suffix={<Icon style={{ backgroundColor: '#fff' }} path={mdiArrowUp} canHover />}
-				/>
+				<Input placeholder="Prefix" prefix={<TbSearch style={{ margin: '0 4px' }} />} />
+				<Input placeholder="Suffix" suffix={<TbEyeOff style={{ margin: '0 4px' }} />} />
 			</Space>
 			<Divider />
 			<Space>
@@ -49,8 +43,8 @@ export default () => {
 				<Input
 					placeholder="Round with prefix and suffix"
 					round
-					// prefix={<Icon style={{ backgroundColor: '#fff' }} path={mdiMagnify} canHover round />}
-					// suffix={<Icon style={{ backgroundColor: '#fff' }} path={mdiArrowUp} canHover round />}
+					prefix={<TbSearch style={{ margin: '0 4px' }} />}
+					suffix={<TbEyeOff style={{ margin: '0 4px' }} />}
 				/>
 				<Input placeholder="Round block" round block />
 			</Space>

@@ -1,6 +1,6 @@
-// import { mdiLoading } from '@mdi/js'
 import React, { useState } from 'react'
 import { Button, Card, Divider, Loading, Space } from '@olaf/react-ui/src'
+import { TbLoader } from 'react-icons/tb'
 
 export default () => {
 	const [spinning, setSpinning] = useState(false)
@@ -31,10 +31,10 @@ export default () => {
 				</Loading>
 			</Space>
 			<Divider />
-			{/* <Loading icon={<Icon path={mdiLoading} spin={1} size="24px" />} style={{ fontSize: 20 }}>
+			<Loading icon={<TbLoader />} spinning>
 				<Card header="custom spinning icon">Content</Card>
 			</Loading>
-			<Divider /> */}
+			<Divider />
 			<Loading description="text description">
 				<Card header="text description">Content</Card>
 			</Loading>

@@ -1,7 +1,6 @@
-// import { mdiChevronDown } from '@mdi/js'
 import { cls, is, omit } from '@olaf/utils/src'
 import React, { FC, HTMLAttributes, ReactNode } from 'react'
-// import Icon from '../icon'
+import { TbChevronDown } from 'react-icons/tb'
 import './collapse-panel.scss'
 import { UI_PREFIX } from '../../constants'
 import Motion from '../motion'
@@ -14,7 +13,7 @@ export interface CollapsePanelProps extends Omit<HTMLAttributes<HTMLElement>, 't
 }
 
 const CollapsePanel: FC<CollapsePanelProps> = props => {
-	const { className, children, expend, title, onChange, ...rest } = omit(props, 'itemKey')
+	const { className, children, expend, title, onChange, onClick, ...rest } = omit(props, 'itemKey')
 
 	const prefixCls = `${UI_PREFIX}-collapse-panel`
 
@@ -29,18 +28,19 @@ const CollapsePanel: FC<CollapsePanelProps> = props => {
 			{isCustomHeader ? (
 				title
 			) : (
-				<div className={cls(className, `${prefixCls}-header`)} {...rest}>
+				<div
+					className={cls(className, `${prefixCls}-header`)}
+					onClick={event => {
+						onClick?.(event)
+						onChange?.(!expend)
+					}}
+					{...rest}
+				>
 					<div>{title}</div>
-					{/* <Icon
+					<TbChevronDown
 						className={`${prefixCls}-header-icon`}
-						path={mdiChevronDown}
-						canHover
-						size="16px"
-						rotate={expend ? 0 : -90}
-						onClick={() => {
-							onChange?.(!expend)
-						}}
-					/> */}
+						style={{ transform: `rotate(${expend ? 0 : -90}deg)` }}
+					/>
 				</div>
 			)}
 			<Motion.Collapse in={expend}>{children}</Motion.Collapse>

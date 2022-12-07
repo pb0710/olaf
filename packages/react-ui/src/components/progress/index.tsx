@@ -15,7 +15,7 @@ interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
 	format?: ((ref: RenderCounterProps) => ReactNode) | null
 }
 
-const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, outerRef) => {
+const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, propRef) => {
 	const {
 		className,
 		size = 'medium',
@@ -50,7 +50,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, outerRef) => 
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, `${prefixCls}-${direction}`)}
 			{...rest}
 		>

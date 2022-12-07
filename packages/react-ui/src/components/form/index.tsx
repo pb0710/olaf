@@ -11,7 +11,7 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement>, Omit<Partial<Fo
 	layout?: 'horizontal' | 'vertical' | 'inline'
 }
 
-const Form = forwardRef<HTMLFormElement, FormProps>((props, outerRef) => {
+const Form = forwardRef<HTMLFormElement, FormProps>((props, propRef) => {
 	const { className, children, layout = 'horizontal', form, labelSuffix, ...rest } = omit(props, 'labelWidth')
 	let { labelWidth } = props
 
@@ -36,7 +36,7 @@ const Form = forwardRef<HTMLFormElement, FormProps>((props, outerRef) => {
 				labelAlign
 			}}
 		>
-			<form ref={outerRef} className={cls(className, prefixCls, `${prefixCls}-${layout}`)} {...rest}>
+			<form ref={propRef} className={cls(className, prefixCls, `${prefixCls}-${layout}`)} {...rest}>
 				{children}
 			</form>
 		</FormCtx.Provider>

@@ -1,6 +1,6 @@
 import React from 'react'
-// import { mdiPlus, mdiMagnify, mdiShieldCheckOutline } from '@mdi/js'
 import { Button, Divider, Space, Tooltip } from '@olaf/react-ui/src'
+import { TbSearch, TbUpload } from 'react-icons/tb'
 
 export default () => {
 	return (
@@ -10,20 +10,24 @@ export default () => {
 				<Button>Click me</Button>
 				<Button primary>Primary</Button>
 				<Button round>Round</Button>
-				<Tooltip popup="square button">
-					<Button square>{/* <Icon path={mdiPlus}></Icon> */}</Button>
-				</Tooltip>
-				<Tooltip popup="square primary button">
-					<Button square primary>
-						{/* <Icon path={mdiMagnify}></Icon> */}
+				<Tooltip title="square button">
+					<Button square>
+						<TbSearch />
 					</Button>
 				</Tooltip>
-				<Tooltip popup="circle button">
-					<Button circle>{/* <Icon path={mdiPlus}></Icon> */}</Button>
+				<Tooltip title="square primary button">
+					<Button square primary>
+						<TbSearch />
+					</Button>
 				</Tooltip>
-				<Tooltip popup="circle primary button">
+				<Tooltip title="circle button">
+					<Button circle>
+						<TbSearch />
+					</Button>
+				</Tooltip>
+				<Tooltip title="circle primary button">
 					<Button circle primary>
-						{/* <Icon path={mdiMagnify}></Icon> */}
+						<TbSearch />
 					</Button>
 				</Tooltip>
 			</Space>
@@ -45,7 +49,7 @@ export default () => {
 					Loading
 				</Button>
 				<Button circle loading>
-					{/* <Icon path={mdiPlus}></Icon> */}
+					<TbSearch />
 				</Button>
 			</Space>
 			<Divider />
@@ -60,15 +64,15 @@ export default () => {
 				</a>
 			</Space>
 			<Divider />
-			{/* <Space>
-				<Button icon={<Icon path={mdiShieldCheckOutline}></Icon>}>Icon button</Button>
-				<Button icon={<Icon path={mdiShieldCheckOutline}></Icon>} primary>
+			<Space>
+				<Button icon={<TbUpload />}>Icon button</Button>
+				<Button icon={<TbUpload />} primary>
 					Icon primary button
 				</Button>
-				<Button icon={<Icon path={mdiShieldCheckOutline}></Icon>} loading>
+				<Button icon={<TbUpload />} loading>
 					Icon loading button
 				</Button>
-			</Space> */}
+			</Space>
 		</div>
 	)
 }

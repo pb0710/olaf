@@ -1,8 +1,9 @@
 @use '../../styles/mixins.scss' as *;
 .g-radio {
 	@include basic;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
+	width: max-content;
 	user-select: none;
 	transition: filter $duration-f;
 	&-inner {
@@ -82,7 +83,7 @@
 
 	&-tab {
 		@include basic;
-		display: inline-flex;
+		display: flex;
 		align-items: center;
 		background: #eee;
 		border-radius: $radius-m;

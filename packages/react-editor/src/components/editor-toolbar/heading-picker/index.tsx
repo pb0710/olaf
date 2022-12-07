@@ -69,7 +69,7 @@ export default ({ editor }: { editor: Editor }) => {
 			onClickOutside={() => {
 				hide()
 			}}
-			popup={
+			content={
 				<Dropdown.Menu className="g-heading-dropdown">
 					{options.map(opt => {
 						const heading = createElement(opt.tagName, {}, opt.label)
@@ -86,7 +86,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</Dropdown.Menu>
 			}
 		>
-			<Tooltip placement="bottom" popup="标题">
+			<Tooltip placement="bottom" title="标题">
 				<div className="g-heading-picker" onClick={toggle}>
 					<div className="g-heading-label">{selection.label}</div>
 					<div className="g-heading-arrow">

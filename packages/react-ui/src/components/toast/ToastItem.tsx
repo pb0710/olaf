@@ -2,8 +2,7 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './toast-item.scss'
-// import Icon from '../icon'
-// import { mdiClose } from '@mdi/js'
+import { TbX } from 'react-icons/tb'
 
 export interface ToastItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
 	title?: ReactNode
@@ -12,18 +11,18 @@ export interface ToastItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ti
 	onClose?: () => void
 }
 
-const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>((props, outerRef) => {
+const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>((props, propRef) => {
 	const { className, title, icon, closable = false, onClose, ...rest } = props
 
 	const prefixCls = `${UI_PREFIX}-toast-item`
 
 	return (
-		<div ref={outerRef} className={cls(className, prefixCls)} {...rest}>
+		<div ref={propRef} className={cls(className, prefixCls)} {...rest}>
 			{icon && <div className={`${prefixCls}-icon`}>{icon}</div>}
 			<div className={`${prefixCls}-title-wrap`}>{title}</div>
 			{closable && (
 				<div className={`${prefixCls}-close-icon`}>
-					{/* <Icon path={mdiClose} onClick={() => onClose?.()} /> */}
+					<TbX onClick={() => onClose?.()} />
 				</div>
 			)}
 		</div>

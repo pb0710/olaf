@@ -1,6 +1,6 @@
-// import { mdiCheck } from '@mdi/js'
 import React, { useState } from 'react'
 import { Button, Divider, Dropdown, Space } from '@olaf/react-ui/src'
+import { TbCheck } from 'react-icons/tb'
 
 export default () => {
 	const [visible, setVisible] = useState(false)
@@ -10,7 +10,7 @@ export default () => {
 			<Divider />
 			<Space>
 				<Dropdown
-					popup={
+					content={
 						<Dropdown.Menu>
 							<Dropdown.Item>dropdown item 1</Dropdown.Item>
 							<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -22,7 +22,7 @@ export default () => {
 				</Dropdown>
 				<Dropdown
 					trigger="click"
-					popup={
+					content={
 						<Dropdown.Menu>
 							<Dropdown.Item>dropdown item 1</Dropdown.Item>
 							<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -42,7 +42,7 @@ export default () => {
 					onClickOutside={() => {
 						setVisible(false)
 					}}
-					popup={
+					content={
 						<Dropdown.Menu>
 							<Dropdown.Item
 								onClick={() => {
@@ -72,7 +72,7 @@ export default () => {
 			</Space>
 			<Divider />
 			<Dropdown
-				popup={
+				content={
 					<Dropdown.Menu>
 						<Dropdown.Title>Group 1</Dropdown.Title>
 						<Dropdown.Item>dropdown item 1</Dropdown.Item>
@@ -88,12 +88,12 @@ export default () => {
 			</Dropdown>
 			<Divider />
 			<Dropdown
-				popup={
+				content={
 					<Dropdown.Menu>
 						<Dropdown.Item>dropdown item 1</Dropdown.Item>
 						<Dropdown
 							placement="right-start"
-							popup={
+							content={
 								<Dropdown.Menu>
 									<Dropdown.Item>dropdown item 1</Dropdown.Item>
 									<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -115,11 +115,11 @@ export default () => {
 			<Divider />
 			<Dropdown
 				trigger="click"
-				popup={
+				content={
 					<Dropdown.Menu>
-						{/* <Dropdown.Item icon={<Icon path={mdiCheck} />}>Dropdown item 1</Dropdown.Item>
-						<Dropdown.Item icon={<Icon path={mdiCheck} />}>Dropdown item 2</Dropdown.Item>
-						<Dropdown.Item icon={<Icon path={mdiCheck} />}>Dropdown item 3</Dropdown.Item> */}
+						<Dropdown.Item icon={<TbCheck />}>Dropdown item 1</Dropdown.Item>
+						<Dropdown.Item icon={<TbCheck />}>Dropdown item 2</Dropdown.Item>
+						<Dropdown.Item icon={<TbCheck />}>Dropdown item 3</Dropdown.Item>
 					</Dropdown.Menu>
 				}
 			>

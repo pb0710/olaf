@@ -1,8 +1,9 @@
 @use '../../styles/mixins.scss' as *;
 .g-avatar-group {
 	@include basic;
-	display: inline-flex;
+	display: flex;
 	flex-wrap: nowrap;
+	width: max-content;
 	> * {
 		border: 2px solid #fff;
 	}

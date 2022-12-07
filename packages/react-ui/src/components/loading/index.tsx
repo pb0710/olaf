@@ -11,7 +11,7 @@ interface LoadingProps extends HTMLAttributes<HTMLElement> {
 	description?: ReactNode
 }
 
-const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, outerRef) => {
+const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, propRef) => {
 	const { className, children, spinning = true, size = 'medium', icon = <SpinSvg />, description, ...rest } = props
 
 	const isWrapper = Boolean(children)
@@ -20,7 +20,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, outerRef) => {
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-spinning`]: spinning,
 				[`${prefixCls}-is-wrapper`]: isWrapper,

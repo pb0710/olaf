@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Divider, Space, Toast } from '@olaf/react-ui/src'
-// import { mdiInformationOutline } from '@mdi/js'
+import { TbInfoCircle } from 'react-icons/tb'
 
 export default () => {
 	return (
@@ -16,7 +16,7 @@ export default () => {
 			<Divider />
 			<Button
 				onClick={() => {
-					// Toast.show({ title: 'With icon', icon: <Icon path={mdiInformationOutline} /> })
+					Toast.show({ title: 'With icon', icon: <TbInfoCircle /> })
 				}}
 			>
 				With icon toast

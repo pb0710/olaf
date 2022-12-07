@@ -13,7 +13,7 @@ interface FieldProps
 	form?: Form
 }
 
-const Field = forwardRef<HTMLLabelElement & HTMLDivElement, FieldProps>((props, outerRef) => {
+const Field = forwardRef<HTMLLabelElement & HTMLDivElement, FieldProps>((props, propRef) => {
 	const { className, children, form, label, labelText, labelWidth, labelAlign, labelSuffix, ...rest } = props
 
 	const formCtx = useContext(FormCtx)
@@ -40,7 +40,7 @@ const Field = forwardRef<HTMLLabelElement & HTMLDivElement, FieldProps>((props, 
 	const wrapCls = cls(className, prefixCls, `${prefixCls}-align-${labelAttrs.align}`)
 
 	return (
-		<div ref={outerRef} className={wrapCls} {...rest}>
+		<div ref={propRef} className={wrapCls} {...rest}>
 			<label
 				className={`${prefixCls}-label`}
 				style={{

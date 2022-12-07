@@ -8,12 +8,12 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
 	direction?: 'horizontal' | 'vertical'
 }
 
-const Divider = forwardRef<HTMLDivElement, DividerProps>((props, outerRef) => {
+const Divider = forwardRef<HTMLDivElement, DividerProps>((props, propRef) => {
 	const { children, className, size = 'medium', direction = 'horizontal' } = props
 	const prefixCls = `${UI_PREFIX}-divider`
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${direction}`, `${prefixCls}-${direction}-${size}`)}
 		>
 			{children}

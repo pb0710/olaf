@@ -1,4 +1,3 @@
-// import { mdiCloseCircle } from '@mdi/js'
 import { useBoolean } from '@olaf/react-hook/src'
 import { cls, is } from '@olaf/utils/src'
 import React, {
@@ -14,7 +13,7 @@ import React, {
 	useRef
 } from 'react'
 import { UI_PREFIX } from '../../constants'
-// import Icon from '../icon'
+import { IoMdCloseCircle } from 'react-icons/io'
 import './input.scss'
 import Textarea from './Textarea'
 
@@ -31,7 +30,7 @@ interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'maxLength' 
 	onChange?: ChangeEventHandler<HTMLInputElement> & ((value: string | number) => void)
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>((props, outerRef) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 	const {
 		className,
 		defaultValue,
@@ -51,7 +50,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, outerRef) => {
 	} = props
 
 	const ref = useRef<HTMLInputElement>(null)
-	const inputRef = (outerRef ?? ref) as MutableRefObject<HTMLInputElement>
+	const inputRef = (propRef ?? ref) as MutableRefObject<HTMLInputElement>
 	const [focus, { setTrue: setFocus, setFalse: setBlur }] = useBoolean(false)
 	const [clearVisible, { setTrue: showClear, setFalse: hideClear, setBool: setClearVisible }] = useBoolean(false)
 	const isControlled = !is.undefined(value)
@@ -81,7 +80,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, outerRef) => {
 		hideClear()
 	}
 
-	const handleMouseDown: MouseEventHandler<HTMLElement> = event => {
+	const handleMouseDown: MouseEventHandler<SVGElement> = event => {
 		if (event.target instanceof Element) {
 			if (event.target.tagName !== 'INPUT') event.preventDefault()
 		}
@@ -119,15 +118,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, outerRef) => {
 				onBlur={handleBlur}
 				onChange={handleChange}
 			/>
-			{/* {allowClear && focus && clearVisible && (
-				<Icon
+			{allowClear && (
+				<IoMdCloseCircle
 					className={`${prefixCls}-clear-icon`}
-					path={mdiCloseCircle}
-					color="#999"
+					style={{ visibility: focus && clearVisible ? 'initial' : 'hidden' }}
 					onClick={handleClear}
 					onMouseDown={handleMouseDown}
 				/>
-			)} */}
+			)}
 			{suffix}
 		</label>
 	)

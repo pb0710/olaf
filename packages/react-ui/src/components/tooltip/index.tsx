@@ -1,15 +1,35 @@
-import { cls } from '@olaf/utils/src'
-import React, { forwardRef } from 'react'
+import { cls, pick, pickDataAttrs } from '@olaf/utils/src'
+import React, { Children, cloneElement, forwardRef } from 'react'
 import { UI_PREFIX } from '../../constants'
-import Trigger, { TriggerProps } from '../trigger'
+import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
 import './tooltip.scss'
 
-interface TooltipProps extends TriggerProps {
+interface TooltipProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
+	title?: string
 	light?: boolean
 }
 
-const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, outerRef) => {
-	const { children, popup: content, light = false, placement = 'top', ...rest } = props
+const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, propRef) => {
+	const {
+		children,
+		title,
+		light = false,
+		placement = 'top',
+		open,
+		defaultOpen,
+		trigger,
+		mouseEnterDelay,
+		mouseLeaveDelay,
+		spacing,
+		disabled,
+		unmountOnExit = false,
+		offsetX,
+		offsetY,
+		appendTo,
+		onClickOutside,
+		onVisibleChange,
+		...rest
+	} = props
 
 	const originMap = {
 		'top-start': 'bottom left',
@@ -28,21 +48,35 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, outerRef) => {
 	const growTransformOrigin = originMap[placement]
 	const prefixCls = `${UI_PREFIX}-tooltip`
 
-	const contentEle = (
-		<div className={cls(`${prefixCls}-content`, `${prefixCls}-content-${light ? 'light' : 'dark'}`)}>{content}</div>
+	const popup = (
+		<div className={cls(`${prefixCls}-content`, `${prefixCls}-content-${light ? 'light' : 'dark'}`)}>{title}</div>
 	)
 
 	return (
 		<Trigger
-			ref={outerRef}
-			popup={contentEle}
+			ref={propRef}
+			popup={popup}
 			placement={placement}
+			open={open}
+			defaultOpen={defaultOpen}
+			trigger={trigger}
+			disabled={disabled}
+			mouseEnterDelay={mouseEnterDelay}
+			mouseLeaveDelay={mouseLeaveDelay}
+			spacing={spacing}
+			unmountOnExit={unmountOnExit}
+			offsetX={offsetX}
+			offsetY={offsetY}
+			appendTo={appendTo}
+			onClickOutside={onClickOutside}
+			onVisibleChange={onVisibleChange}
 			motion="grow"
 			growTransformOrigin={growTransformOrigin}
-			unmountOnExit={false}
-			{...rest}
 		>
-			{children}
+			{cloneElement(Children.only(children), {
+				...pick(rest, ...EventsByTriggerNeed),
+				...pickDataAttrs(rest)
+			})}
 		</Trigger>
 	)
 })

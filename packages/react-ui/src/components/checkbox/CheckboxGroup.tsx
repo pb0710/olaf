@@ -27,7 +27,7 @@ interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange
 	onChange?: (value: (string | number)[]) => void
 }
 
-const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, outerRef) => {
+const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, propRef) => {
 	const {
 		children,
 		className,
@@ -74,7 +74,7 @@ const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, out
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-disabled`]: disabled
 			})}

@@ -1,6 +1,5 @@
-// import { mdiApple, mdiGoogle, mdiTwitter } from '@mdi/js'
 import React, { useState } from 'react'
-import { Divider, List, Radio } from '@olaf/react-ui/src'
+import { Avatar, Divider, List, Radio } from '@olaf/react-ui/src'
 
 export default () => {
 	const [size, setSize] = useState<'small' | 'medium' | 'large'>('small')
@@ -37,17 +36,17 @@ export default () => {
 				<List.Item>Rimless list item 2</List.Item>
 			</List>
 			<Divider />
-			{/* <List>
-				<List.Item prefix={<Icon path={mdiApple} />}>Prefix list item 1</List.Item>
-				<List.Item prefix={<Icon path={mdiTwitter} />}>Prefix list item 2</List.Item>
-				<List.Item prefix={<Icon path={mdiGoogle} />}>Prefix list item 2</List.Item>
+			<List>
+				<List.Item prefix={<Avatar />}>Prefix list item 1</List.Item>
+				<List.Item prefix={<Avatar />}>Prefix list item 2</List.Item>
+				<List.Item prefix={<Avatar />}>Prefix list item 2</List.Item>
 			</List>
 			<Divider />
 			<List>
-				<List.Item suffix={<Icon path={mdiApple} />}>Suffix list item 1</List.Item>
-				<List.Item suffix={<Icon path={mdiTwitter} />}>Suffix list item 2</List.Item>
-				<List.Item suffix={<Icon path={mdiGoogle} />}>Suffix list item 2</List.Item>
-			</List> */}
+				<List.Item suffix={<Avatar />}>Suffix list item 1</List.Item>
+				<List.Item suffix={<Avatar />}>Suffix list item 2</List.Item>
+				<List.Item suffix={<Avatar />}>Suffix list item 2</List.Item>
+			</List>
 		</div>
 	)
 }

@@ -15,7 +15,7 @@ interface ProgressProps extends CircleProps {
 	format?: ((props: RenderCounterProps) => ReactNode) | null
 }
 
-const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, outerRef) => {
+const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, propRef) => {
 	const {
 		className,
 		size = 'medium',
@@ -37,7 +37,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, outerRef) => 
 
 	return (
 		<Circle
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${size}`)}
 			defaultMolecule={defaultMolecule}
 			molecule={molecule}

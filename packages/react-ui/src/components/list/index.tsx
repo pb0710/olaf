@@ -9,14 +9,14 @@ interface ListProps extends HTMLAttributes<HTMLDivElement> {
 	bordered?: boolean
 }
 
-const List = forwardRef<HTMLDivElement, ListProps>((props, outerRef) => {
+const List = forwardRef<HTMLDivElement, ListProps>((props, propRef) => {
 	const { className, children, size = 'medium', bordered = true, ...rest } = props
 
 	const prefixCls = `${UI_PREFIX}-list`
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-bordered`]: bordered
 			})}
@@ -30,6 +30,7 @@ const List = forwardRef<HTMLDivElement, ListProps>((props, outerRef) => {
 		</div>
 	)
 })
+List.displayName = 'List'
 
 const ExportList = List as typeof List & {
 	Item: typeof ListItem

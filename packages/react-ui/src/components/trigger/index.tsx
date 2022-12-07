@@ -58,7 +58,7 @@ export interface TriggerProps extends HTMLAttributes<HTMLElement> {
 	onVisibleChange?: (visible: boolean) => void
 }
 
-const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
+const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 	const {
 		children,
 		popup,
@@ -218,7 +218,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
 		}
 	}
 
-	const ref = useComposeRef(outerRef, refs.reference)
+	const ref = useComposeRef(propRef, refs.reference)
 	const triggerEle = cloneElement(child, {
 		ref,
 		...mixProps

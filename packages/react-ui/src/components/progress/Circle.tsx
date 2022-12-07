@@ -21,7 +21,7 @@ interface SizeData {
 	strokeWidth: number
 }
 
-const Circle = forwardRef<HTMLDivElement, CircleProps>((props, outerRef) => {
+const Circle = forwardRef<HTMLDivElement, CircleProps>((props, propRef) => {
 	const {
 		children,
 		className,
@@ -85,7 +85,7 @@ const Circle = forwardRef<HTMLDivElement, CircleProps>((props, outerRef) => {
 	const prefixCls = `${UI_PREFIX}-circle`
 
 	return (
-		<div ref={outerRef} className={cls(className, prefixCls, `${prefixCls}-${size}`)} {...rest}>
+		<div ref={propRef} className={cls(className, prefixCls, `${prefixCls}-${size}`)} {...rest}>
 			{children}
 			<svg width={sizeData.width} height={sizeData.height}>
 				<circle

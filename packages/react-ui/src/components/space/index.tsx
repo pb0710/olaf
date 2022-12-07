@@ -10,7 +10,7 @@ interface SpaceProps extends HTMLAttributes<HTMLElement> {
 	block?: boolean
 }
 
-const Space = forwardRef<HTMLDivElement, SpaceProps>((props, outerRef) => {
+const Space = forwardRef<HTMLDivElement, SpaceProps>((props, propRef) => {
 	const {
 		children,
 		className,
@@ -42,7 +42,7 @@ const Space = forwardRef<HTMLDivElement, SpaceProps>((props, outerRef) => {
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={wrapCls}
 			style={{
 				display: toDisplay(block),

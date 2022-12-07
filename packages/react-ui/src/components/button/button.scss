@@ -1,9 +1,10 @@
 @use '../../styles/mixins.scss' as *;
 .g-button {
 	@include basic;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: max-content;
 	padding: 4px 12px;
 	outline: none;
 	border: 1px solid #ddd;

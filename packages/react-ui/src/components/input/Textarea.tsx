@@ -22,7 +22,7 @@ interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>
 	onChange?: ChangeEventHandler<HTMLTextAreaElement> & ((value?: string | number) => void)
 }
 
-const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, outerRef) => {
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, propRef) => {
 	const {
 		className,
 		autosize = false,
@@ -39,7 +39,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, outerRef
 	} = props
 
 	const innerRef = useRef<HTMLTextAreaElement>(null)
-	const textareaRef = (outerRef || innerRef) as MutableRefObject<null>
+	const textareaRef = (propRef || innerRef) as MutableRefObject<null>
 	const [focus, { setTrue: setFocus, setFalse: setBlur }] = useBoolean(false)
 	const isControlled = !is.undefined(value)
 

@@ -21,8 +21,9 @@
 		background: $color-secondary;
 	}
 	&-icon-wrap {
-		display: inline-flex;
-    align-items: center;
+		display: flex;
+		align-items: center;
+		width: max-content;
 		margin-right: 8px;
 	}
 }

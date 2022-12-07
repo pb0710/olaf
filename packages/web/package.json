@@ -13,8 +13,7 @@
     "@olaf/react-editor": "workspace:*",
     "@olaf/react-hook": "workspace:*",
     "@olaf/react-ui": "workspace:*",
-    "@olaf/utils": "workspace:*",
-    "react-icons": "^4.6.0"
+    "@olaf/utils": "workspace:*"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "eslint --cache --fix"

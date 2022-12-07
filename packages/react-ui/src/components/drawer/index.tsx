@@ -3,9 +3,8 @@ import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './drawer.scss'
 import { createPortal } from 'react-dom'
-// import Icon from '../icon'
-// import { mdiClose } from '@mdi/js'
 import Motion from '../motion'
+import { TbX } from 'react-icons/tb'
 
 interface DrawerProps extends HTMLAttributes<HTMLElement> {
 	visible?: boolean
@@ -80,14 +79,7 @@ const Drawer: FC<DrawerProps> = props => {
 						style={{ ...style, width, height }}
 						{...rest}
 					>
-						{/* {closable && (
-							<Icon
-								className={`${prefixCls}-wrap-close`}
-								path={mdiClose}
-								canHover
-								onClick={() => onCancel?.()}
-							/>
-						)} */}
+						{closable && <TbX className={`${prefixCls}-wrap-close`} onClick={() => onCancel?.()} />}
 						{children}
 					</div>
 				</Motion.Slide>

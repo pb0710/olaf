@@ -51,7 +51,7 @@ export default ({ editor }: { editor: Editor }) => {
 			placement="bottom"
 			content={contentEle}
 		>
-			<Tooltip placement="bottom" popup="编辑图片">
+			<Tooltip placement="bottom" title="编辑图片">
 				<div
 					className={cls('g-img-editor')}
 					onClick={() => {

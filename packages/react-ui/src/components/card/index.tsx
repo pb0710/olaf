@@ -11,7 +11,7 @@ interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
 	cover?: ReactNode
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>((props, outerRef) => {
+const Card = forwardRef<HTMLDivElement, CardProps>((props, propRef) => {
 	const { children, className, bordered = true, shadow = false, header, footer, cover, ...rest } = props
 
 	const prefixCls = `${UI_PREFIX}-card`
@@ -25,7 +25,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, outerRef) => {
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-bordered`]: bordered,
 				[`${prefixCls}-shadow`]: shadow

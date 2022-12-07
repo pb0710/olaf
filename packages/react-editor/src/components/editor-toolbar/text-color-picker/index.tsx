@@ -46,7 +46,7 @@ export default ({ editor }: { editor: Editor }) => {
 	}
 
 	return (
-		<Tooltip placement="bottom" popup="文字颜色">
+		<Tooltip placement="bottom" title="文字颜色">
 			<div className="g-text-color-picker">
 				<div
 					className={cls('g-text-color-setter', {

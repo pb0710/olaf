@@ -2,8 +2,9 @@
 .g-checkbox {
 	@include basic;
 	position: relative;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
+	width: max-content;
 	user-select: none;
 	transition: filter $duration-f;
 	&-input {
@@ -15,6 +16,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 1em;
+		height: 1em;
 		border: 1px solid #ddd;
 		border-bottom-color: #ccc;
 		border-radius: $radius-s;
@@ -50,20 +53,17 @@
 	}
 	&-small {
 		.g-checkbox-icon {
-			width: 12px;
-			height: 12px;
+			font-size: 12px;
 		}
 	}
 	&-medium {
 		.g-checkbox-icon {
-			width: 16px;
-			height: 16px;
+			font-size: 16px;
 		}
 	}
 	&-large {
 		.g-checkbox-icon {
-			width: 20px;
-			height: 20px;
+			font-size: 20px;
 		}
 	}
 }

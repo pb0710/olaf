@@ -2,9 +2,9 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './tag.scss'
-// import Icon from '../icon'
-// import { mdiClose, mdiLoading } from '@mdi/js'
 import { useBoolean } from '@olaf/react-hook/src'
+import Loading from '../loading'
+import { TbX } from 'react-icons/tb'
 
 interface TagProps extends HTMLAttributes<HTMLDivElement> {
 	size?: 'small' | 'medium' | 'large'
@@ -17,7 +17,7 @@ interface TagProps extends HTMLAttributes<HTMLDivElement> {
 	onClose?: () => void | Promise<void>
 }
 
-const Tag = forwardRef<HTMLDivElement, TagProps>((props, outerRef) => {
+const Tag = forwardRef<HTMLDivElement, TagProps>((props, propRef) => {
 	const {
 		children,
 		className,
@@ -39,7 +39,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>((props, outerRef) => {
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, {
 				[`${prefixCls}-round`]: round,
 				[`${prefixCls}-bordered`]: bordered
@@ -55,11 +55,10 @@ const Tag = forwardRef<HTMLDivElement, TagProps>((props, outerRef) => {
 			<div>{children}</div>
 			{closable && (
 				<div className={`${prefixCls}-close`}>
-					{/* {loading ? (
-						<Icon path={mdiLoading} spin={1} />
+					{loading ? (
+						<Loading size="small" />
 					) : (
-						<Icon
-							path={mdiClose}
+						<TbX
 							onClick={() => {
 								const res = onClose?.()
 								if (res instanceof Promise) {
@@ -70,7 +69,7 @@ const Tag = forwardRef<HTMLDivElement, TagProps>((props, outerRef) => {
 								}
 							}}
 						/>
-					)} */}
+					)}
 				</div>
 			)}
 		</div>

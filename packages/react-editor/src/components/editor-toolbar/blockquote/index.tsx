@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" popup="引用">
+		<Tooltip placement="bottom" title="引用">
 			<div
 				className={cls('g-blockquote', {
 					active: editor.isActive('blockquote')

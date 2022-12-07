@@ -11,7 +11,7 @@ interface CollapseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>
 	onChange?: (actives: (string | number)[]) => void
 }
 
-const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, outerRef) => {
+const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, propRef) => {
 	const { className, children, accordion = false, defaultActives = [], actives, onChange, ...rest } = props
 	const [_actives, _setActives] = useState<(string | number)[]>(defaultActives)
 
@@ -23,7 +23,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, outerRef) => 
 	const prefixCls = `${UI_PREFIX}-collapse`
 
 	return (
-		<div ref={outerRef} className={cls(className, prefixCls)} {...rest}>
+		<div ref={propRef} className={cls(className, prefixCls)} {...rest}>
 			{Children.map(children, child => {
 				if (!isValidElement<CollapsePanelProps>(child)) return child
 

@@ -120,7 +120,7 @@ export const componentRoutes = [
 	{
 		name: 'Trigger',
 		path: 'trigger',
-		element: createElement(lazy(() => import('@ui/SwitchExample')))
+		element: createElement(lazy(() => import('@ui/TriggerExample')))
 	},
 	{
 		name: 'Popup',

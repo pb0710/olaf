@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" popup="有序列表">
+		<Tooltip placement="bottom" title="有序列表">
 			<div
 				className={cls('g-order-list-icon', {
 					active: editor.isActive('orderlist')

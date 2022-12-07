@@ -46,7 +46,7 @@ export default ({ editor }: { editor: Editor }) => {
 	}
 
 	return (
-		<Tooltip placement="bottom" popup="标记">
+		<Tooltip placement="bottom" title="标记">
 			<div className="g-highlight-picker">
 				<div
 					className={cls('g-highlight-setter', {

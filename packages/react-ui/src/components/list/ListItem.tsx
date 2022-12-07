@@ -10,14 +10,14 @@ export interface ListItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'pre
 	bordered?: boolean
 }
 
-const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, outerRef) => {
+const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, propRef) => {
 	const { className, children, size = 'medium', bordered = true, prefix, suffix, ...rest } = props
 
 	const prefixCls = `${UI_PREFIX}-list-item`
 
 	return (
 		<div
-			ref={outerRef}
+			ref={propRef}
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, {
 				[`${prefixCls}-bordered`]: bordered
 			})}
@@ -29,5 +29,6 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, outerRef) => 
 		</div>
 	)
 })
+ListItem.displayName = 'ListItem'
 
 export default ListItem
