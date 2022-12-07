@@ -10,7 +10,7 @@ export default () => {
 			<Divider />
 			<Space>
 				<Dropdown
-					content={
+					popup={
 						<Dropdown.Menu>
 							<Dropdown.Item>dropdown item 1</Dropdown.Item>
 							<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -22,7 +22,7 @@ export default () => {
 				</Dropdown>
 				<Dropdown
 					trigger="click"
-					content={
+					popup={
 						<Dropdown.Menu>
 							<Dropdown.Item>dropdown item 1</Dropdown.Item>
 							<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -34,7 +34,7 @@ export default () => {
 				</Dropdown>
 				<Dropdown
 					trigger="manual"
-					visible={visible}
+					open={visible}
 					onVisibleChange={val => {
 						console.log('val: ', val)
 						setVisible(val)
@@ -42,7 +42,7 @@ export default () => {
 					onClickOutside={() => {
 						setVisible(false)
 					}}
-					content={
+					popup={
 						<Dropdown.Menu>
 							<Dropdown.Item
 								onClick={() => {
@@ -63,7 +63,7 @@ export default () => {
 				>
 					<Button
 						onClick={() => {
-							setVisible(pre => !pre)
+							setVisible(p => !p)
 						}}
 					>
 						manual
@@ -72,7 +72,7 @@ export default () => {
 			</Space>
 			<Divider />
 			<Dropdown
-				content={
+				popup={
 					<Dropdown.Menu>
 						<Dropdown.Title>Group 1</Dropdown.Title>
 						<Dropdown.Item>dropdown item 1</Dropdown.Item>
@@ -88,12 +88,12 @@ export default () => {
 			</Dropdown>
 			<Divider />
 			<Dropdown
-				content={
+				popup={
 					<Dropdown.Menu>
 						<Dropdown.Item>dropdown item 1</Dropdown.Item>
 						<Dropdown
 							placement="right-start"
-							content={
+							popup={
 								<Dropdown.Menu>
 									<Dropdown.Item>dropdown item 1</Dropdown.Item>
 									<Dropdown.Item>dropdown item 2</Dropdown.Item>
@@ -115,7 +115,7 @@ export default () => {
 			<Divider />
 			<Dropdown
 				trigger="click"
-				content={
+				popup={
 					<Dropdown.Menu>
 						{/* <Dropdown.Item icon={<Icon path={mdiCheck} />}>Dropdown item 1</Dropdown.Item>
 						<Dropdown.Item icon={<Icon path={mdiCheck} />}>Dropdown item 2</Dropdown.Item>

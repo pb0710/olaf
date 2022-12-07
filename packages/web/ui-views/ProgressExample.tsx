@@ -11,7 +11,7 @@ export default () => {
 				circle
 				disabled={percent <= 0}
 				onClick={() => {
-					setPercent(pre => pre - 5)
+					setPercent(p => p - 5)
 				}}
 			>
 				{/* <Icon path={mdiMinus} /> */}
@@ -20,7 +20,7 @@ export default () => {
 				circle
 				disabled={percent >= 100}
 				onClick={() => {
-					setPercent(pre => pre + 5)
+					setPercent(p => p + 5)
 				}}
 			>
 				{/* <Icon path={mdiPlus} /> */}

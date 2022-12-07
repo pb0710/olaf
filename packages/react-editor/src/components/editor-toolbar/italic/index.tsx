@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="斜体">
+		<Tooltip placement="bottom" popup="斜体">
 			<div
 				className={cls('g-italic-icon', {
 					active: editor.isActive('italic')

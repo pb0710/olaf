@@ -46,7 +46,7 @@ export default ({ editor }: { editor: Editor }) => {
 	}
 
 	return (
-		<Tooltip placement="bottom" content="标记">
+		<Tooltip placement="bottom" popup="标记">
 			<div className="g-highlight-picker">
 				<div
 					className={cls('g-highlight-setter', {
@@ -61,7 +61,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 				<Popover
 					trigger="manual"
-					visible={visible}
+					open={visible}
 					onVisibleChange={setVisible}
 					onClickOutside={() => {
 						hide()

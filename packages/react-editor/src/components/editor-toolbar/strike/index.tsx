@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="删除线">
+		<Tooltip placement="bottom" popup="删除线">
 			<div
 				className={cls('g-strike-icon', {
 					active: editor.isActive('strike')

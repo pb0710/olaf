@@ -1,11 +1,12 @@
-import { Placement, useFloating } from '@floating-ui/react-dom'
+import { autoUpdate, flip, Placement, useFloating } from '@floating-ui/react-dom'
 import { useComposeRef } from '@olaf/react-hook/src'
 import React, {
+	Children,
 	cloneElement,
 	forwardRef,
-	isValidElement,
+	HTMLAttributes,
 	MouseEvent,
-	MouseEventHandler,
+	ReactElement,
 	ReactNode,
 	useEffect,
 	useRef,
@@ -16,11 +17,31 @@ import { UI_PREFIX } from '../../constants'
 import Motion from '../motion'
 import './trigger.scss'
 
-export interface TriggerProps {
-	children: ReactNode
-	visible?: boolean
-	defaultVisible?: boolean
-	content?: ReactNode
+export const EventsByTriggerNeed = [
+	'onClick',
+	'onMouseEnter',
+	'onMouseLeave',
+	'onMouseMove',
+	'onFocus',
+	'onBlur',
+	'onContextMenu',
+	'onKeyDown'
+] as (
+	| 'onClick'
+	| 'onMouseEnter'
+	| 'onMouseLeave'
+	| 'onMouseMove'
+	| 'onFocus'
+	| 'onBlur'
+	| 'onContextMenu'
+	| 'onKeyDown'
+)[]
+
+export interface TriggerProps extends HTMLAttributes<HTMLElement> {
+	children: ReactElement
+	open?: boolean
+	defaultOpen?: boolean
+	popup?: ReactNode
 	trigger?: 'hover' | 'click' | 'manual'
 	placement?: Placement
 	mouseEnterDelay?: number
@@ -40,9 +61,9 @@ export interface TriggerProps {
 const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
 	const {
 		children,
-		content,
-		defaultVisible = false,
-		visible = defaultVisible,
+		popup,
+		defaultOpen: defaultOpen = false,
+		open = defaultOpen,
 		trigger = 'hover',
 		placement = 'bottom-start',
 		mouseEnterDelay = 100,
@@ -64,76 +85,75 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
 	const isManual = trigger === 'manual'
 
 	const { x, y, floating, strategy, refs } = useFloating({
-		placement
+		placement,
+		whileElementsMounted: autoUpdate,
+		middleware: [flip()]
 	})
 
 	const [stretchDirection] = placement.split('-') as ['left' | 'top' | 'right' | 'bottom']
-	let spacingName: 'paddingRight' | 'paddingLeft' | 'paddingBottom' | 'paddingTop'
-	switch (stretchDirection) {
-		case 'left':
-			spacingName = 'paddingRight'
-			break
-		case 'right':
-			spacingName = 'paddingLeft'
-			break
-		case 'top':
-			spacingName = 'paddingBottom'
-			break
-		case 'bottom':
-			spacingName = 'paddingTop'
-			break
-	}
+	const spacingName = {
+		left: 'paddingRight',
+		right: 'paddingLeft',
+		top: 'paddingBottom',
+		bottom: 'paddingTop'
+	}[stretchDirection] as 'paddingRight' | 'paddingLeft' | 'paddingBottom' | 'paddingTop'
 
-	const [_visible, _setVisible] = useState(isManual ? visible : defaultVisible)
+	const [_open, _setOpen] = useState(isManual ? open : defaultOpen)
 
 	const timerRef = useRef(0)
-	const setVisibleDelay = (val: boolean, delay: number) => {
+	const setDelayOpen = (val: boolean, delay: number) => {
 		if (delay) {
 			clearTimeout(timerRef.current)
 			timerRef.current = window.setTimeout(() => {
 				onVisibleChange?.(val)
-				_setVisible(val)
+				_setOpen(val)
 			}, delay)
 		} else {
 			onVisibleChange?.(val)
-			_setVisible(val)
+			_setOpen(val)
 		}
 	}
 
-	const createHoverhandler = (onMouseEnter?: MouseEventHandler, onMouseLeave?: MouseEventHandler) => {
-		if (!isHover) {
-			return {}
-		}
-		return {
-			onMouseEnter(event: MouseEvent) {
-				onMouseEnter?.(event)
-				setVisibleDelay(true, mouseEnterDelay)
-			},
-			onMouseLeave(event: MouseEvent) {
-				onMouseLeave?.(event)
-				setVisibleDelay(false, mouseLeaveDelay)
-			}
-		}
+	const child = Children.only(children)
+	const doChildEvent = (eventName: string, event: MouseEvent) => {
+		child.props[eventName]?.(event)
 	}
 
-	const createClickHandler = (onClick?: MouseEventHandler) => {
-		if (!isClick) {
-			return {}
-		}
-		return {
-			onClick(event: MouseEvent) {
-				onClick?.(event)
-				event.nativeEvent.stopImmediatePropagation()
-				_setVisible(pre => !pre)
-			}
-		}
+	const onMouseEnter = (event: MouseEvent) => {
+		doChildEvent('onMouseEnter', event)
+		setDelayOpen(true, mouseEnterDelay)
+	}
+	const onMouseLeave = (event: MouseEvent) => {
+		doChildEvent('onMouseLeave', event)
+		setDelayOpen(false, mouseLeaveDelay)
+	}
+	const onClick = (event: MouseEvent) => {
+		doChildEvent('onClick', event)
+		event.nativeEvent.stopImmediatePropagation()
+		_setOpen(p => !p)
+	}
+
+	const mixProps: Record<string, any> = {
+		[`data-open`]: _open
+	}
+	if (isHover) {
+		mixProps.onMouseEnter = onMouseEnter
+		mixProps.onMouseLeave = onMouseLeave
+	} else if (isClick) {
+		mixProps.onClick = onClick
+	}
+
+	const popupProps: Record<string, any> = {}
+	if (isHover) {
+		popupProps.onMouseEnter = onMouseEnter
+		popupProps.onMouseLeave = onMouseLeave
 	}
 
 	useEffect(() => {
 		const hide = (event: globalThis.MouseEvent) => {
-			if (!_visible) return
+			if (!_open) return
 			if (isClick) {
-				_setVisible(false)
+				_setOpen(false)
 			}
 			onClickOutside?.(event)
 		}
@@ -141,15 +161,15 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
 		return () => {
 			document.removeEventListener('click', hide)
 		}
-	}, [_visible, isClick, onClickOutside])
+	}, [_open, isClick, onClickOutside])
 
 	useEffect(() => {
-		_setVisible(visible)
-	}, [visible])
+		_setOpen(open)
+	}, [open])
 
 	const prefixCls = `${UI_PREFIX}-trigger`
 
-	const contentEle = (
+	const popupEle = (
 		<div
 			ref={floating}
 			className={`${prefixCls}-content`}
@@ -160,64 +180,56 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, outerRef) => {
 				width: 'max-content',
 				[spacingName]: spacing
 			}}
-			{...createHoverhandler()}
+			{...mixProps}
 			onClick={event => {
 				event.nativeEvent.stopImmediatePropagation()
 			}}
 		>
-			{content}
+			{popup}
 		</div>
 	)
 
-	let portalEle: ReactNode
-	switch (motion) {
-		case 'none':
-			if (unmountOnExit) {
-				portalEle = _visible ? contentEle : null
-			} else {
-				portalEle = (
-					<div style={{ width: 'max-content', display: _visible ? 'initial' : 'none' }}>{contentEle}</div>
+	function createPortalEle() {
+		switch (motion) {
+			case 'none':
+				if (unmountOnExit) {
+					return _open ? popupEle : null
+				}
+				return <div style={{ width: 'max-content', display: _open ? 'initial' : 'none' }}>{popupEle}</div>
+
+			case 'stretch':
+				return (
+					<Motion.Stretch in={_open} mountOnEnter unmountOnExit={unmountOnExit} direction={stretchDirection}>
+						{popupEle}
+					</Motion.Stretch>
 				)
-			}
-			break
-		case 'stretch':
-			portalEle = (
-				<Motion.Stretch in={_visible} mountOnEnter unmountOnExit={unmountOnExit} direction={stretchDirection}>
-					{contentEle}
-				</Motion.Stretch>
-			)
-			break
-		case 'grow':
-			portalEle = (
-				<Motion.Grow
-					in={_visible}
-					mountOnEnter
-					unmountOnExit={unmountOnExit}
-					style={{ transformOrigin: growTransformOrigin }}
-				>
-					{contentEle}
-				</Motion.Grow>
-			)
-			break
+
+			case 'grow':
+				return (
+					<Motion.Grow
+						in={_open}
+						mountOnEnter
+						unmountOnExit={unmountOnExit}
+						style={{ transformOrigin: growTransformOrigin }}
+					>
+						{popupEle}
+					</Motion.Grow>
+				)
+		}
 	}
 
 	const ref = useComposeRef(outerRef, refs.reference)
-	const triggerEle = isValidElement<any>(children)
-		? cloneElement(children, {
-				ref,
-				...createHoverhandler(children.props.onMouseEnter, children.props.onMouseLeave),
-				...createClickHandler(children.props.onClick)
-		  })
-		: null
+	const triggerEle = cloneElement(child, {
+		ref,
+		...mixProps
+	})
 
 	return disabled ? (
-		isValidElement(children) ? (
-			children
-		) : null
+		child
 	) : (
 		<>
 			{triggerEle}
-			{createPortal(portalEle, appendTo)}
+			{createPortal(createPortalEle(), appendTo)}
 		</>
 	)
 })

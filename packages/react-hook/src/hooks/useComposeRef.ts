@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react'
+import { Ref, useMemo } from 'react'
 
-export function fillRef<T>(ref: React.Ref<T>, node: T) {
+function fillRef<T>(ref: Ref<T>, node: T) {
 	if (typeof ref === 'function') {
 		ref(node)
 	} else if (typeof ref === 'object' && ref && 'current' in ref) {
@@ -8,10 +8,7 @@ export function fillRef<T>(ref: React.Ref<T>, node: T) {
 	}
 }
 
-/**
- * Merge refs into one ref function to support ref passing.
- */
-export function composeRef<T>(...refs: React.Ref<T>[]): React.Ref<T> {
+export function composeRef<T>(...refs: Ref<T>[]): Ref<T> {
 	const refList = refs.filter(ref => ref)
 	if (refList.length <= 1) {
 		return refList[0]
@@ -24,7 +21,7 @@ export function composeRef<T>(...refs: React.Ref<T>[]): React.Ref<T> {
 	}
 }
 
-export function useComposeRef<T>(...refs: React.Ref<T>[]): React.Ref<T> {
+export function useComposeRef<T>(...refs: Ref<T>[]): Ref<T> {
 	return useMemo(
 		() => composeRef(...refs),
 		// eslint-disable-next-line react-hooks/exhaustive-deps

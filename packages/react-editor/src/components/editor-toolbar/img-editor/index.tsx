@@ -43,7 +43,7 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Popover
 			trigger="manual"
-			visible={visible}
+			open={visible}
 			onVisibleChange={setVisible}
 			onClickOutside={() => {
 				hide()
@@ -51,7 +51,7 @@ export default ({ editor }: { editor: Editor }) => {
 			placement="bottom"
 			content={contentEle}
 		>
-			<Tooltip placement="bottom" content="编辑图片">
+			<Tooltip placement="bottom" popup="编辑图片">
 				<div
 					className={cls('g-img-editor')}
 					onClick={() => {

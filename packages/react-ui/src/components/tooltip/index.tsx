@@ -9,7 +9,7 @@ interface TooltipProps extends TriggerProps {
 }
 
 const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, outerRef) => {
-	const { children, content, light = false, placement = 'top', ...rest } = props
+	const { children, popup: content, light = false, placement = 'top', ...rest } = props
 
 	const originMap = {
 		'top-start': 'bottom left',
@@ -35,7 +35,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, outerRef) => {
 	return (
 		<Trigger
 			ref={outerRef}
-			content={contentEle}
+			popup={contentEle}
 			placement={placement}
 			motion="grow"
 			growTransformOrigin={growTransformOrigin}

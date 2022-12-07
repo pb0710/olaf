@@ -10,10 +10,10 @@ interface DropdownProps extends TriggerProps {
 }
 
 const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, outerRef) => {
-	const { children, content, spacing = 4, ...rest } = props
+	const { children, popup: content, spacing = 4, ...rest } = props
 
 	return (
-		<Trigger ref={outerRef} content={content} spacing={spacing} motion="stretch" {...rest}>
+		<Trigger ref={outerRef} popup={content} spacing={spacing} motion="stretch" {...rest}>
 			{children}
 		</Trigger>
 	)

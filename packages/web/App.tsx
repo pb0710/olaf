@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { NavLink, useRoutes } from 'react-router-dom'
 import { cls } from '@olaf/utils/src'
 import './App.scss'
 import router, { componentRoutes } from './routes'
-import { Space } from '@olaf/react-ui/src'
+import { Loading, Space } from '@olaf/react-ui/src'
 
 const App = () => {
 	const contentEle = useRoutes(router)
@@ -29,7 +29,9 @@ const App = () => {
 	return (
 		<div className="example">
 			<div className="nav-bar">{navEle}</div>
-			<div className="content">{contentEle}</div>
+			<div className="content">
+				<Suspense fallback={<Loading />}>{contentEle}</Suspense>
+			</div>
 		</div>
 	)
 }

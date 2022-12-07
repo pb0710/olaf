@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="删除图片">
+		<Tooltip placement="bottom" popup="删除图片">
 			<div
 				className={cls('g-img-cleaner')}
 				onClick={() => {

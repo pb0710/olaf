@@ -1,156 +1,136 @@
-import React from 'react'
+import React, { createElement, lazy } from 'react'
 import { Navigate } from 'react-router-dom'
-import ButtonExample from '@ui/ButtonExample'
-import SwitchExample from '@ui/SwitchExample'
-import RadioExample from '@ui/RadioExample'
-import CheckboxExample from '@ui/CheckboxExample'
-import InputExample from '@ui/InputExample'
-import TooltipExample from '@ui/TooltipExample'
-import CollapseExample from '@ui/CollapseExample'
-import LoadingExample from '@ui/LoadingExample'
-import ListExample from '@ui/ListExample'
-import ModalExample from '@ui/ModalExample'
-import CardExample from '@ui/CardExample'
-import ProgressExample from '@ui/ProgressExample'
-import AvatarExample from '@ui/AvatarExample'
-import ImageExample from '@ui/ImageExample'
-import FormExample from '@ui/FormExample'
-import DialogExample from '@ui/DialogExample'
-import PopoverExample from '@ui/PopoverExample'
-import TabsExample from '@ui/TabsExample'
-import SelectExample from '@ui/SelectExample'
-import ToastExample from '@ui/ToastExample'
-import TagExample from '@ui/TagExample'
-import DrawerExample from '@ui/DrawerExample'
-import DropdownExample from '@ui/DropdownExample'
-import EditorExample from '@editor/EditorExample'
-import TriggerExample from '@ui/TriggerExample'
-1
+
 export const componentRoutes = [
 	{
 		name: 'Button',
 		path: 'button',
-		element: <ButtonExample />
+		element: createElement(lazy(() => import('@ui/ButtonExample')))
 	},
 	{
 		name: 'Switch',
 		path: 'switch',
-		element: <SwitchExample />
+		element: createElement(lazy(() => import('@ui/SwitchExample')))
 	},
 	{
 		name: 'Radio',
 		path: 'radio',
-		element: <RadioExample />
+		element: createElement(lazy(() => import('@ui/RadioExample')))
 	},
 	{
 		name: 'Checkbox',
 		path: 'checkbox',
-		element: <CheckboxExample />
+		element: createElement(lazy(() => import('@ui/CheckboxExample')))
 	},
 	{
 		name: 'Input',
 		path: 'input',
-		element: <InputExample />
+		element: createElement(lazy(() => import('@ui/InputExample')))
 	},
 	{
 		name: 'Tooltip',
 		path: 'tooltip',
-		element: <TooltipExample />
+		element: createElement(lazy(() => import('@ui/TooltipExample')))
 	},
 	{
 		name: 'Collapse',
 		path: 'collapse',
-		element: <CollapseExample />
+		element: createElement(lazy(() => import('@ui/CollapseExample')))
 	},
 	{
 		name: 'Loading',
 		path: 'loading',
-		element: <LoadingExample />
+		element: createElement(lazy(() => import('@ui/LoadingExample')))
 	},
 	{
 		name: 'List',
 		path: 'list',
-		element: <ListExample />
+		element: createElement(lazy(() => import('@ui/ListExample')))
 	},
 	{
 		name: 'Modal',
 		path: 'modal',
-		element: <ModalExample />
+		element: createElement(lazy(() => import('@ui/ModalExample')))
 	},
 	{
 		name: 'Card',
 		path: 'card',
-		element: <CardExample />
+		element: createElement(lazy(() => import('@ui/CardExample')))
 	},
 	{
 		name: 'Progress',
 		path: 'progress',
-		element: <ProgressExample />
+		element: createElement(lazy(() => import('@ui/ProgressExample')))
 	},
 	{
 		name: 'Avatar',
 		path: 'avatar',
-		element: <AvatarExample />
+		element: createElement(lazy(() => import('@ui/AvatarExample')))
 	},
 	{
 		name: 'Image',
 		path: 'image',
-		element: <ImageExample />
+		element: createElement(lazy(() => import('@ui/ImageExample')))
 	},
 	{
 		name: 'Form',
 		path: 'form',
-		element: <FormExample />
+		element: createElement(lazy(() => import('@ui/FormExample')))
 	},
 	{
 		name: 'Dialog',
 		path: 'dialog',
-		element: <DialogExample />
+		element: createElement(lazy(() => import('@ui/DialogExample')))
 	},
 	{
 		name: 'Popover',
 		path: 'popover',
-		element: <PopoverExample />
+		element: createElement(lazy(() => import('@ui/PopoverExample')))
 	},
 	{
 		name: 'Tabs',
 		path: 'tabs',
-		element: <TabsExample />
+		element: createElement(lazy(() => import('@ui/TabsExample')))
 	},
 	{
 		name: 'Select',
 		path: 'select',
-		element: <SelectExample />
+		element: createElement(lazy(() => import('@ui/SelectExample')))
 	},
 	{
 		name: 'Toast',
 		path: 'toast',
-		element: <ToastExample />
+		element: createElement(lazy(() => import('@ui/ToastExample')))
 	},
 	{
 		name: 'Tag',
 		path: 'tag',
-		element: <TagExample />
+		element: createElement(lazy(() => import('@ui/TagExample')))
 	},
 	{
 		name: 'Drawer',
 		path: 'drawer',
-		element: <DrawerExample />
+		element: createElement(lazy(() => import('@ui/DrawerExample')))
 	},
 	{
 		name: 'Dropdown',
 		path: 'dropdown',
-		element: <DropdownExample />
+		element: createElement(lazy(() => import('@ui/DropdownExample')))
 	},
 	{
 		name: 'Trigger',
 		path: 'trigger',
-		element: <TriggerExample />
+		element: createElement(lazy(() => import('@ui/SwitchExample')))
+	},
+	{
+		name: 'Popup',
+		path: 'popup',
+		element: createElement(lazy(() => import('@ui/PopupExample')))
 	},
 	{
 		name: 'Editor',
 		path: 'editor',
-		element: <EditorExample />
+		element: createElement(lazy(() => import('@editor/EditorExample')))
 	}
 ]
 
