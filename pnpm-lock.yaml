@@ -26,7 +26,6 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: ^6.4.3
-      rollup-plugin-react-scoped-css: ^0.7.0
       sass: ^1.56.1
       ts-jest: ^29.0.3
       turbo: 1.6.3
@@ -34,6 +33,7 @@ importers:
       vite: ^3.2.4
       vite-plugin-css-injected-by-js: ^2.1.1
       vite-plugin-dts: ^1.7.1
+      vite-plugin-swc-react-refresh: ^2.2.1
       vite-tsconfig-paths: ^3.6.0
     dependencies:
       react: registry.npmmirror.com/react/18.2.0
@@ -59,7 +59,6 @@ importers:
       jest-environment-jsdom: registry.npmmirror.com/jest-environment-jsdom/29.3.1
       lint-staged: registry.npmmirror.com/lint-staged/13.1.0
       prettier: registry.npmmirror.com/prettier/2.8.0
-      rollup-plugin-react-scoped-css: registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0_biqbaboplfbrettd7655fr4n2y
       sass: registry.npmmirror.com/sass/1.56.1
       ts-jest: registry.npmmirror.com/ts-jest/29.0.3_gruvivcimsmdfhnjphbo3uejz4
       turbo: registry.npmmirror.com/turbo/1.6.3
@@ -67,6 +66,7 @@ importers:
       vite: registry.npmmirror.com/vite/3.2.5_ajklay5k626t46b6fyghkbup3i
       vite-plugin-css-injected-by-js: registry.npmmirror.com/vite-plugin-css-injected-by-js/2.1.1_vite@3.2.5
       vite-plugin-dts: registry.npmmirror.com/vite-plugin-dts/1.7.1_vite@3.2.5
+      vite-plugin-swc-react-refresh: registry.npmmirror.com/vite-plugin-swc-react-refresh/2.2.1_vite@3.2.5
       vite-tsconfig-paths: registry.npmmirror.com/vite-tsconfig-paths/3.6.0_vite@3.2.5
 
   packages/react-editor:
@@ -164,12 +164,15 @@ importers:
       '@olaf/react-ui': workspace:*
       '@olaf/utils': workspace:*
       react-icons: ^4.6.0
+      rollup-plugin-react-scoped-css: ^0.7.0
     dependencies:
       '@olaf/react-editor': link:../react-editor
       '@olaf/react-hook': link:../react-hook
       '@olaf/react-ui': link:../react-ui
       '@olaf/utils': link:../utils
       react-icons: registry.npmmirror.com/react-icons/4.7.1_react@18.2.0
+    devDependencies:
+      rollup-plugin-react-scoped-css: registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0_react@18.2.0
 
 packages:
 
@@ -1791,6 +1794,140 @@ packages:
       '@sinonjs/commons': registry.npmmirror.com/@sinonjs/commons/1.8.6
     dev: true
 
+  registry.npmmirror.com/@swc/core-darwin-arm64/1.3.21:
+    resolution: {integrity: sha512-5dBrJyrCzdHOQ9evS9NBJm2geKcXffIuAvSrnwbMHkfTpl+pOM7crry2tolydFXdOE/Jbx8yyahAIXPne1fTHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.21.tgz}
+    name: '@swc/core-darwin-arm64'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-darwin-x64/1.3.21:
+    resolution: {integrity: sha512-CAtzfsRoVZr7DLKOOWPua6npFdj06wRuv1us275CY2QS3mg1bPl9BxA3c94q3mMcu5Bf06+dzUOjJSGrsBD7Ig==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-darwin-x64/-/core-darwin-x64-1.3.21.tgz}
+    name: '@swc/core-darwin-x64'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-linux-arm-gnueabihf/1.3.21:
+    resolution: {integrity: sha512-oPO7oFr89pjDFlHJ2aZvzGR6hwy5nmQyeiuqpTgfn+RFFLLbipFawJe/2NBWyD35bxuguW6a3/w9I6edKTpLUw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.3.21.tgz}
+    name: '@swc/core-linux-arm-gnueabihf'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-linux-arm64-gnu/1.3.21:
+    resolution: {integrity: sha512-cgPw35T8HO4gB/tvPJMwjJuNNpydmw6U5hkxZ+7jiE+qA8hN8a71i+BBfXeSzlo60t4c44+zK4t+gK7UacZg2w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.3.21.tgz}
+    name: '@swc/core-linux-arm64-gnu'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-linux-arm64-musl/1.3.21:
+    resolution: {integrity: sha512-kwH+HHtcakSqR3gF5QJ7N7SPs96ilFiXuauB02Ct3UflaGbVYVoeFYj/VEIJ+ZJvlvvOEDByOiLyrk2bw0bG7A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.3.21.tgz}
+    name: '@swc/core-linux-arm64-musl'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-linux-x64-gnu/1.3.21:
+    resolution: {integrity: sha512-/kLQLNxwdX6kO2R751uUrxXZsAhOkA1EeQzAqj+5Y+bzt3hA5asH5evkY0w0Aj1zCofX4p4o/Q35mandUPxMlw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.21.tgz}
+    name: '@swc/core-linux-x64-gnu'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-linux-x64-musl/1.3.21:
+    resolution: {integrity: sha512-s+l3LqUzDli6rbmIPR3IfO23IOLYBVxk97CDdcJWrRTVtCwUKFhFVJVZyErveriqLXSGJhy5+UL+aOuxC4dk8g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.21.tgz}
+    name: '@swc/core-linux-x64-musl'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-win32-arm64-msvc/1.3.21:
+    resolution: {integrity: sha512-59gWcdbZxvmyzh+J50yCCodKDYRUnMwNypzzfamF1Vusa4Np+IGMWEaE2KsZUq50OQIRo0PGHpBPMKVYkuGv8g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.3.21.tgz}
+    name: '@swc/core-win32-arm64-msvc'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-win32-ia32-msvc/1.3.21:
+    resolution: {integrity: sha512-3gH86ffVAiCmeRy+xSxR5iWSbKy4nUddo4PIahD1zwGJx6LC5ahC/I6EpL1pvoX3KdJKVioUBn0KDfPDUYfqJw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.3.21.tgz}
+    name: '@swc/core-win32-ia32-msvc'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core-win32-x64-msvc/1.3.21:
+    resolution: {integrity: sha512-JKWLJdJ3oFc8fGBk4P6mGKhW8n+FmEjLLbsST+h94bZmelrSTeShBt3rr+pMMatFevlu/c9lM3OW2GHsZeZNkg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.21.tgz}
+    name: '@swc/core-win32-x64-msvc'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@swc/core/1.3.21:
+    resolution: {integrity: sha512-RTmqkm5e5sb+Q+YbyqiE52xjvX+kcIVDgaSdSD7mNy2opgDfIdFMhExmB8UQStt3TLrlpAslWaFNWNmvaHP9rg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/core/-/core-1.3.21.tgz}
+    name: '@swc/core'
+    version: 1.3.21
+    engines: {node: '>=10'}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      '@swc/core-darwin-arm64': registry.npmmirror.com/@swc/core-darwin-arm64/1.3.21
+      '@swc/core-darwin-x64': registry.npmmirror.com/@swc/core-darwin-x64/1.3.21
+      '@swc/core-linux-arm-gnueabihf': registry.npmmirror.com/@swc/core-linux-arm-gnueabihf/1.3.21
+      '@swc/core-linux-arm64-gnu': registry.npmmirror.com/@swc/core-linux-arm64-gnu/1.3.21
+      '@swc/core-linux-arm64-musl': registry.npmmirror.com/@swc/core-linux-arm64-musl/1.3.21
+      '@swc/core-linux-x64-gnu': registry.npmmirror.com/@swc/core-linux-x64-gnu/1.3.21
+      '@swc/core-linux-x64-musl': registry.npmmirror.com/@swc/core-linux-x64-musl/1.3.21
+      '@swc/core-win32-arm64-msvc': registry.npmmirror.com/@swc/core-win32-arm64-msvc/1.3.21
+      '@swc/core-win32-ia32-msvc': registry.npmmirror.com/@swc/core-win32-ia32-msvc/1.3.21
+      '@swc/core-win32-x64-msvc': registry.npmmirror.com/@swc/core-win32-x64-msvc/1.3.21
+    dev: true
+
   registry.npmmirror.com/@tiptap/core/2.0.0-beta.205_rd5pjtxohzfgv2zee3iufpqkay:
     resolution: {integrity: sha512-uGV+U5UfKkhu3sidyG2LC2IzqeU1MfkuHxv3NF1PvvFDX6cSNbOy8ZBxXHfIqUMsloqzMv9mXrrqiPUB3jQisg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tiptap/core/-/core-2.0.0-beta.205.tgz}
     id: registry.npmmirror.com/@tiptap/core/2.0.0-beta.205
@@ -2713,13 +2850,13 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmmirror.com/@vue/component-compiler-utils/3.3.0_biqbaboplfbrettd7655fr4n2y:
+  registry.npmmirror.com/@vue/component-compiler-utils/3.3.0_react@18.2.0:
     resolution: {integrity: sha512-97sfH2mYNU+2PzGrmK2haqffDpVASuib9/w2/noxiFi31Z54hW+q3izKQXXQZSNhtiUpAI36uSuYepeBe4wpHQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/component-compiler-utils/-/component-compiler-utils-3.3.0.tgz}
     id: registry.npmmirror.com/@vue/component-compiler-utils/3.3.0
     name: '@vue/component-compiler-utils'
     version: 3.3.0
     dependencies:
-      consolidate: registry.npmmirror.com/consolidate/0.15.1_biqbaboplfbrettd7655fr4n2y
+      consolidate: registry.npmmirror.com/consolidate/0.15.1_react@18.2.0
       hash-sum: registry.npmmirror.com/hash-sum/1.0.2
       lru-cache: registry.npmmirror.com/lru-cache/4.1.5
       merge-source-map: registry.npmmirror.com/merge-source-map/1.1.0
@@ -3508,7 +3645,7 @@ packages:
       yargs: registry.npmmirror.com/yargs/17.6.2
     dev: true
 
-  registry.npmmirror.com/consolidate/0.15.1_biqbaboplfbrettd7655fr4n2y:
+  registry.npmmirror.com/consolidate/0.15.1_react@18.2.0:
     resolution: {integrity: sha512-DW46nrsMJgy9kqAbPt5rKaCr7uFtpo4mSUvLHIUbJEjm0vo+aY5QLwBUq3FK4tRnJr/X0Psc0C4jf/h+HtXSMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/consolidate/-/consolidate-0.15.1.tgz}
     id: registry.npmmirror.com/consolidate/0.15.1
     name: consolidate
@@ -3678,7 +3815,6 @@ packages:
     dependencies:
       bluebird: registry.npmmirror.com/bluebird/3.7.2
       react: registry.npmmirror.com/react/18.2.0
-      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
     dev: true
 
   registry.npmmirror.com/conventional-changelog-angular/5.0.13:
@@ -7053,6 +7189,7 @@ packages:
     version: 2.8.0
     engines: {node: '>=10.13.0'}
     hasBin: true
+    requiresBuild: true
     dev: true
 
   registry.npmmirror.com/pretty-format/29.3.1:
@@ -7254,6 +7391,7 @@ packages:
       loose-envify: registry.npmmirror.com/loose-envify/1.4.0
       react: registry.npmmirror.com/react/18.2.0
       scheduler: registry.npmmirror.com/scheduler/0.23.0
+    dev: false
 
   registry.npmmirror.com/react-icons/4.7.1_react@18.2.0:
     resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-icons/-/react-icons-4.7.1.tgz}
@@ -7571,14 +7709,14 @@ packages:
       glob: registry.npmmirror.com/glob/7.2.3
     dev: true
 
-  registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0_biqbaboplfbrettd7655fr4n2y:
+  registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0_react@18.2.0:
     resolution: {integrity: sha512-YUVqHDubSc4dLfCf4SSlxv56m8d2ktTY6UFO/ZChD9OFDTQJ1+ljfEhfQEETobdjL6e6tqZrvUaUnttDe68dig==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-plugin-react-scoped-css/-/rollup-plugin-react-scoped-css-0.7.0.tgz}
     id: registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0
     name: rollup-plugin-react-scoped-css
     version: 0.7.0
     dependencies:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/4.2.1
-      '@vue/component-compiler-utils': registry.npmmirror.com/@vue/component-compiler-utils/3.3.0_biqbaboplfbrettd7655fr4n2y
+      '@vue/component-compiler-utils': registry.npmmirror.com/@vue/component-compiler-utils/3.3.0_react@18.2.0
       escodegen: registry.npmmirror.com/escodegen/2.0.0
       js-xxhash: registry.npmmirror.com/js-xxhash/1.0.4
       rollup: registry.npmmirror.com/rollup/2.79.1
@@ -7719,6 +7857,7 @@ packages:
     version: 0.23.0
     dependencies:
       loose-envify: registry.npmmirror.com/loose-envify/1.4.0
+    dev: false
 
   registry.npmmirror.com/semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-5.7.1.tgz}
@@ -8736,6 +8875,18 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
+
+  registry.npmmirror.com/vite-plugin-swc-react-refresh/2.2.1_vite@3.2.5:
+    resolution: {integrity: sha512-5j1y3VYVboNRmeuPsN2GKK2aZfEeYcxx6OBcGVT8zGdwouzIoA1cBIZtqFpcYH7AawHlQ840gCJT6hJibC+64Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-swc-react-refresh/-/vite-plugin-swc-react-refresh-2.2.1.tgz}
+    id: registry.npmmirror.com/vite-plugin-swc-react-refresh/2.2.1
+    name: vite-plugin-swc-react-refresh
+    version: 2.2.1
+    peerDependencies:
+      vite: ^2 || ^3
+    dependencies:
+      '@swc/core': registry.npmmirror.com/@swc/core/1.3.21
+      vite: registry.npmmirror.com/vite/3.2.5_ajklay5k626t46b6fyghkbup3i
     dev: true
 
   registry.npmmirror.com/vite-tsconfig-paths/3.6.0_vite@3.2.5:

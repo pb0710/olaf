@@ -25,7 +25,7 @@ import DrawerExample from '@ui/DrawerExample'
 import DropdownExample from '@ui/DropdownExample'
 import EditorExample from '@editor/EditorExample'
 import TriggerExample from '@ui/TriggerExample'
-
+1
 export const componentRoutes = [
 	{
 		name: 'Button',

@@ -23,5 +23,8 @@
     "last 1 version",
     "> 1%",
     "not dead"
-  ]
+  ],
+  "devDependencies": {
+    "rollup-plugin-react-scoped-css": "^0.7.0"
+  }
 }
