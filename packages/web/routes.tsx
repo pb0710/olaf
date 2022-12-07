@@ -25,6 +25,7 @@ import DrawerExample from '@ui/DrawerExample'
 import DropdownExample from '@ui/DropdownExample'
 import EditorExample from '@editor/EditorExample'
 import TriggerExample from '@ui/TriggerExample'
+import PopupExample from '@ui/PopupExample'
 
 export const componentRoutes = [
 	{
@@ -146,6 +147,11 @@ export const componentRoutes = [
 		name: 'Trigger',
 		path: 'trigger',
 		element: <TriggerExample />
+	},
+	{
+		name: 'Popup',
+		path: 'popup',
+		element: <PopupExample />
 	},
 	{
 		name: 'Editor',

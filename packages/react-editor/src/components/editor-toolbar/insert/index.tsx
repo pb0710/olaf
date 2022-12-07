@@ -16,12 +16,12 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Dropdown
 			trigger="manual"
-			visible={visible}
+			open={visible}
 			onVisibleChange={setVisible}
 			onClickOutside={() => {
 				hide()
 			}}
-			content={
+			popup={
 				<Dropdown.Menu className="g-insert-dropdown">
 					<ImgPicker editor={editor} />
 					<TablePicker editor={editor} />
@@ -32,7 +32,7 @@ export default ({ editor }: { editor: Editor }) => {
 			}
 		>
 			<div>
-				<Tooltip placement="bottom" content="插入">
+				<Tooltip placement="bottom" popup="插入">
 					<div className="g-insert" onClick={toggle}>
 						<div className="g-insert-icon">
 							<MdOutlineAddCircleOutline />

@@ -130,26 +130,26 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 	const handleZoom = () => {
 		if (!detailLoaded) return
 
-		updateScale(pre => pre + 1)
+		updateScale(p => p + 1)
 		handleShowRatio()
 	}
 	const handleShrink = () => {
 		if (!detailLoaded) return
 
-		updateScale(pre => pre - 1)
+		updateScale(p => p - 1)
 		handleShowRatio()
 	}
 
 	const handleLeftRotate = () => {
 		if (!detailLoaded) return
 
-		setRotate(pre => pre - 90)
+		setRotate(p => p - 90)
 	}
 
 	const handleRightRotate = () => {
 		if (!detailLoaded) return
 
-		setRotate(pre => pre + 90)
+		setRotate(p => p + 90)
 	}
 
 	const handleDownload = () => {
@@ -241,7 +241,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, outerRef) => {
 			<div className={`${prefixCls}-detail-toolbar`}>
 				<Space size="small">
 					{toolbarList.map(item => (
-						<Tooltip key={item.id} spacing={12} placement="top" content={item.content}>
+						<Tooltip key={item.id} spacing={12} placement="top" popup={item.content}>
 							{/* <Icon
 								className={`${prefixCls}-detail-icon`}
 								size="20px"

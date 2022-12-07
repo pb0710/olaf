@@ -21,65 +21,65 @@ export default () => {
 					justifyContent: 'center'
 				}}
 			>
-				<Tooltip placement="top-start" content="Top start">
+				<Tooltip placement="top-start" popup="Top start">
 					<Button block style={ceilStyle}>
 						Top start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="top" content="Top">
+				<Tooltip placement="top" popup="Top">
 					<Button block style={ceilStyle}>
 						Top
 					</Button>
 				</Tooltip>
-				<Tooltip placement="top-end" content="Top end">
+				<Tooltip placement="top-end" popup="Top end">
 					<Button block style={ceilStyle}>
 						Top end
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left-start" content="Left start">
+				<Tooltip placement="left-start" popup="Left start">
 					<Button block style={ceilStyle}>
 						Left start
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right-start" content="Right start">
+				<Tooltip placement="right-start" popup="Right start">
 					<Button block style={ceilStyle}>
 						Right start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left" content="Left">
+				<Tooltip placement="left" popup="Left">
 					<Button block style={ceilStyle}>
 						Left
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right" content="Right">
+				<Tooltip placement="right" popup="Right">
 					<Button block style={ceilStyle}>
 						Right
 					</Button>
 				</Tooltip>
-				<Tooltip placement="left-end" content="Left end">
+				<Tooltip placement="left-end" popup="Left end">
 					<Button block style={ceilStyle}>
 						Left end
 					</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
-				<Tooltip placement="right-end" content="Right end">
+				<Tooltip placement="right-end" popup="Right end">
 					<Button block style={ceilStyle}>
 						Right end
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom-start" content="Bottom start">
+				<Tooltip placement="bottom-start" popup="Bottom start">
 					<Button block style={ceilStyle}>
 						Bottom start
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom" content="Bottom">
+				<Tooltip placement="bottom" popup="Bottom">
 					<Button block style={ceilStyle}>
 						Bottom
 					</Button>
 				</Tooltip>
-				<Tooltip placement="bottom-end" content="Bottom end">
+				<Tooltip placement="bottom-end" popup="Bottom end">
 					<Button block style={ceilStyle}>
 						Bottom end
 					</Button>
@@ -87,25 +87,25 @@ export default () => {
 			</div>
 			<Divider />
 			<Space size="large">
-				<Tooltip content="Icon tooltip">
+				<Tooltip popup="Icon tooltip">
 					<Button circle>{/* <Icon path={mdiCheck} /> */}</Button>
 				</Tooltip>
-				<Tooltip content="Button tooltip">
+				<Tooltip popup="Button tooltip">
 					<Button primary>Primary button</Button>
 				</Tooltip>
-				<Tooltip content="Switch tooltip">
+				<Tooltip popup="Switch tooltip">
 					<Switch />
 				</Tooltip>
-				<Tooltip content="Tooltip">
+				<Tooltip popup="Tooltip">
 					<span>Text or anything</span>
 				</Tooltip>
 			</Space>
 			<Divider />
 			<Space size="large">
-				<Tooltip content="Dark tooltip">
+				<Tooltip popup="Dark tooltip">
 					<Button>dark</Button>
 				</Tooltip>
-				<Tooltip light content="Light tooltip">
+				<Tooltip light popup="Light tooltip">
 					<Button>light</Button>
 				</Tooltip>
 			</Space>

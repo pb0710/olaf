@@ -21,7 +21,7 @@ export default () => {
 			<Space direction="vertical">
 				<Button
 					onClick={() => {
-						setSpinning(pre => !pre)
+						setSpinning(p => !p)
 					}}
 				>
 					Toggle spinning

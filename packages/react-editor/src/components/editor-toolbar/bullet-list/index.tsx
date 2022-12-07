@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="无序列表">
+		<Tooltip placement="bottom" popup="无序列表">
 			<div
 				className={cls('g-bullet-list-icon', {
 					active: editor.isActive('bulletlist')

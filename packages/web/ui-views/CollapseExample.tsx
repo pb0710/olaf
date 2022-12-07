@@ -71,7 +71,7 @@ export default () => {
 				title={
 					<Button
 						onClick={() => {
-							setCustomHeaderExpend(pre => !pre)
+							setCustomHeaderExpend(p => !p)
 						}}
 					>
 						Toggle collapse

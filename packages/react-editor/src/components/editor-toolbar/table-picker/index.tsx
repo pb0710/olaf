@@ -61,7 +61,7 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Popover
 			trigger="hover"
-			visible={visible}
+			open={visible}
 			onVisibleChange={setVisible}
 			placement="right-start"
 			content={contentEle}

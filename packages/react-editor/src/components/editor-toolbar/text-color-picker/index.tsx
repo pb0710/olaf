@@ -46,7 +46,7 @@ export default ({ editor }: { editor: Editor }) => {
 	}
 
 	return (
-		<Tooltip placement="bottom" content="文字颜色">
+		<Tooltip placement="bottom" popup="文字颜色">
 			<div className="g-text-color-picker">
 				<div
 					className={cls('g-text-color-setter', {
@@ -61,7 +61,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 				<Popover
 					trigger="manual"
-					visible={visible}
+					open={visible}
 					onVisibleChange={setVisible}
 					onClickOutside={() => {
 						hide()

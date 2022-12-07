@@ -21,13 +21,13 @@ export default () => {
 				<Popover
 					trigger="manual"
 					content="Show by manual"
-					visible={visible}
+					open={visible}
 					onVisibleChange={val => {
 						console.log('val', val)
 						setVisible(val)
 					}}
 				>
-					<Button onClick={() => setVisible(pre => !pre)}>Manual</Button>
+					<Button onClick={() => setVisible(p => !p)}>Manual</Button>
 				</Popover>
 			</Space>
 			<Divider />

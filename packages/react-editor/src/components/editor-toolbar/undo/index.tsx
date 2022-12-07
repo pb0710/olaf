@@ -8,7 +8,7 @@ import './index.scss'
 export default ({ editor }: { editor: Editor }) => {
 	const disabled = !editor.can().undo()
 	return (
-		<Tooltip placement="bottom" content="撤销">
+		<Tooltip placement="bottom" popup="撤销">
 			<div
 				className={cls('g-undo', {
 					disabled

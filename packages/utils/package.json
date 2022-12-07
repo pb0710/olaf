@@ -2,11 +2,15 @@
     "name": "@olaf/utils",
     "version": "1.0.0",
     "description": "",
+    "author": "Grey",
+    "license": "MIT",
     "type": "module",
     "main": "dist/src/index.js",
     "types": "dist/index.d.ts",
-    "author": "Grey",
-    "license": "MIT",
+    "files": [
+        "src",
+        "dist"
+    ],
     "scripts": {
         "build": "rm -rf ./dist && tsc",
         "watch": "tsc -w",

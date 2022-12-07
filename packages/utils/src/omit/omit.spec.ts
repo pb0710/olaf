@@ -1,4 +1,4 @@
-import omit from '.'
+import { omit } from '.'
 
 describe('use omit', () => {
 	interface TestObj {

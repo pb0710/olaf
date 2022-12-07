@@ -130,23 +130,27 @@ importers:
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
       '@floating-ui/react-dom': ^1.0.1
+      '@floating-ui/react-dom-interactions': ^0.13.0
       '@mui/material': ^5.8.1
       '@olaf/react-hook': workspace:*
       '@olaf/utils': workspace:*
       '@types/react-transition-group': ^4.4.4
       modern-css-reset: ^1.4.0
       react-countup: ^6.2.0
+      react-merge-refs: ^2.0.1
       react-textarea-autosize: ^8.3.4
       react-transition-group: ^4.4.2
     dependencies:
       '@emotion/react': 11.10.5_3lzqd2prgnu7gkxqqdmtvzna5u
       '@emotion/styled': 11.10.5_ppx5djbehzu6mud6n44ek3p3mi
       '@floating-ui/react-dom': registry.npmmirror.com/@floating-ui/react-dom/1.0.1_biqbaboplfbrettd7655fr4n2y
+      '@floating-ui/react-dom-interactions': registry.npmmirror.com/@floating-ui/react-dom-interactions/0.13.0_biqbaboplfbrettd7655fr4n2y
       '@mui/material': 5.10.13_5rzy53przelm5jchjmb5vr6dxy
       '@olaf/react-hook': link:../react-hook
       '@olaf/utils': link:../utils
       modern-css-reset: registry.npmmirror.com/modern-css-reset/1.4.0
       react-countup: 6.3.2_react@18.2.0
+      react-merge-refs: registry.npmmirror.com/react-merge-refs/2.0.1
       react-textarea-autosize: 8.4.0_react@18.2.0
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
     devDependencies:
@@ -3130,21 +3134,39 @@ packages:
     dev: true
 
   registry.npmmirror.com/@floating-ui/core/1.0.2:
-    resolution: {integrity: sha512-Skfy0YS3NJ5nV9us0uuPN0HDk1Q4edljaOhRBJGDWs9EBa7ZVMYBHRFlhLvvmwEoaIM9BlH6QJFn9/uZg0bACg==, registry: http://111.230.199.61:6888/, tarball: https://registry.npmmirror.com/@floating-ui/core/-/core-1.0.2.tgz}
+    resolution: {integrity: sha512-Skfy0YS3NJ5nV9us0uuPN0HDk1Q4edljaOhRBJGDWs9EBa7ZVMYBHRFlhLvvmwEoaIM9BlH6QJFn9/uZg0bACg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/core/-/core-1.0.2.tgz}
     name: '@floating-ui/core'
     version: 1.0.2
     dev: false
 
   registry.npmmirror.com/@floating-ui/dom/1.0.7:
-    resolution: {integrity: sha512-6RsqvCYe0AYWtsGvuWqCm7mZytnXAZCjWtsWu1Kg8dI3INvj/DbKlDsZO+mKSaQdPT12uxIW9W2dAWJkPx4Y5g==, registry: http://111.230.199.61:6888/, tarball: https://registry.npmmirror.com/@floating-ui/dom/-/dom-1.0.7.tgz}
+    resolution: {integrity: sha512-6RsqvCYe0AYWtsGvuWqCm7mZytnXAZCjWtsWu1Kg8dI3INvj/DbKlDsZO+mKSaQdPT12uxIW9W2dAWJkPx4Y5g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/dom/-/dom-1.0.7.tgz}
     name: '@floating-ui/dom'
     version: 1.0.7
     dependencies:
       '@floating-ui/core': registry.npmmirror.com/@floating-ui/core/1.0.2
     dev: false
 
+  registry.npmmirror.com/@floating-ui/react-dom-interactions/0.13.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-R+jXsv3eJ8LQn879NMO9ONvk9Hy0XQiPvBWK+wdWADZsrvu7FmmlSq5xG/qid745g+uNs3xvhf+lNnCIlEZpEA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/react-dom-interactions/-/react-dom-interactions-0.13.0.tgz}
+    id: registry.npmmirror.com/@floating-ui/react-dom-interactions/0.13.0
+    name: '@floating-ui/react-dom-interactions'
+    version: 0.13.0
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/react-dom': registry.npmmirror.com/@floating-ui/react-dom/1.0.1_biqbaboplfbrettd7655fr4n2y
+      aria-hidden: registry.npmmirror.com/aria-hidden/1.2.2_react@18.2.0
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      tabbable: registry.npmmirror.com/tabbable/6.0.1
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   registry.npmmirror.com/@floating-ui/react-dom/1.0.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-UW0t1Gi8ikbDRr8cQPVcqIDMBwUEENe5V4wlHWdrJ5egFnRQFBV9JirauTBFI6S8sM1qFUC1i+qa3g87E6CLTw==, registry: http://111.230.199.61:6888/, tarball: https://registry.npmmirror.com/@floating-ui/react-dom/-/react-dom-1.0.1.tgz}
+    resolution: {integrity: sha512-UW0t1Gi8ikbDRr8cQPVcqIDMBwUEENe5V4wlHWdrJ5egFnRQFBV9JirauTBFI6S8sM1qFUC1i+qa3g87E6CLTw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/react-dom/-/react-dom-1.0.1.tgz}
     id: registry.npmmirror.com/@floating-ui/react-dom/1.0.1
     name: '@floating-ui/react-dom'
     version: 1.0.1
@@ -4444,6 +4466,23 @@ packages:
     name: argparse
     version: 2.0.1
     dev: true
+
+  registry.npmmirror.com/aria-hidden/1.2.2_react@18.2.0:
+    resolution: {integrity: sha512-6y/ogyDTk/7YAe91T3E2PR1ALVKyM2QbTio5HwM+N1Q6CMlCKhvClyIjkckBswa0f2xJhjsfzIGa1yVSe1UMVA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/aria-hidden/-/aria-hidden-1.2.2.tgz}
+    id: registry.npmmirror.com/aria-hidden/1.2.2
+    name: aria-hidden
+    version: 1.2.2
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.9.0 || ^17.0.0 || ^18.0.0
+      react: ^16.9.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+      tslib: registry.npmmirror.com/tslib/2.4.1
+    dev: false
 
   registry.npmmirror.com/array-includes/3.1.6:
     resolution: {integrity: sha512-sgTbLvL6cNnw24FnbaDyjmvddQ2ML8arZsgaJhoABMoplz/4QRhtrYS+alr1BUM1Bwp6dhx8vVCBSLG+StwOFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/array-includes/-/array-includes-3.1.6.tgz}
@@ -7201,6 +7240,12 @@ packages:
     name: react-is
     version: 18.2.0
 
+  registry.npmmirror.com/react-merge-refs/2.0.1:
+    resolution: {integrity: sha512-pywF6oouJWuqL26xV3OruRSIqai31R9SdJX/I3gP2q8jLxUnA1IwXcLW8werUHLZOrp4N7YOeQNZrh/BKrHI4A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-merge-refs/-/react-merge-refs-2.0.1.tgz}
+    name: react-merge-refs
+    version: 2.0.1
+    dev: false
+
   registry.npmmirror.com/react-transition-group/4.4.5_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-transition-group/-/react-transition-group-4.4.5.tgz}
     id: registry.npmmirror.com/react-transition-group/4.4.5
@@ -7754,6 +7799,12 @@ packages:
     version: 1.0.0
     engines: {node: '>= 0.4'}
 
+  registry.npmmirror.com/tabbable/6.0.1:
+    resolution: {integrity: sha512-SYJSIgeyXW7EuX1ytdneO5e8jip42oHWg9xl/o3oTYhmXusZVgiA+VlPvjIN+kHii9v90AmzTZEBcsEvuAY+TA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tabbable/-/tabbable-6.0.1.tgz}
+    name: tabbable
+    version: 6.0.1
+    dev: false
+
   registry.npmmirror.com/text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/text-table/-/text-table-0.2.0.tgz}
     name: text-table
@@ -7842,7 +7893,6 @@ packages:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.4.1.tgz}
     name: tslib
     version: 2.4.1
-    dev: true
 
   registry.npmmirror.com/tsutils/3.21.0_typescript@4.9.3:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsutils/-/tsutils-3.21.0.tgz}

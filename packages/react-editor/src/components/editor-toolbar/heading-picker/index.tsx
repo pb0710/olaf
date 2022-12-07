@@ -64,12 +64,12 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Dropdown
 			trigger="manual"
-			visible={visible}
+			open={visible}
 			onVisibleChange={setVisible}
 			onClickOutside={() => {
 				hide()
 			}}
-			content={
+			popup={
 				<Dropdown.Menu className="g-heading-dropdown">
 					{options.map(opt => {
 						const heading = createElement(opt.tagName, {}, opt.label)
@@ -86,7 +86,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</Dropdown.Menu>
 			}
 		>
-			<Tooltip placement="bottom" content="标题">
+			<Tooltip placement="bottom" popup="标题">
 				<div className="g-heading-picker" onClick={toggle}>
 					<div className="g-heading-label">{selection.label}</div>
 					<div className="g-heading-arrow">

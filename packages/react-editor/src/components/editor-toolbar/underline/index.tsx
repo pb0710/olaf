@@ -7,7 +7,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="下划线">
+		<Tooltip placement="bottom" popup="下划线">
 			<div
 				className={cls('g-underline-icon', {
 					active: editor.isActive('underline')

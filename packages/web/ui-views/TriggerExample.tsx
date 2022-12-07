@@ -22,30 +22,25 @@ export default () => {
 		<div style={{ padding: 24 }}>
 			<h1>Trigger</h1>
 			<Space>
-				<Trigger trigger="hover" content={createContent('tooltip')}>
+				<Trigger trigger="hover" popup={createContent('tooltip')}>
 					<Button>hover</Button>
 				</Trigger>
-				<Trigger trigger="click" content={createContent('tooltip')}>
+				<Trigger trigger="click" popup={createContent('tooltip')}>
 					<Button>click</Button>
 				</Trigger>
-				<Trigger
-					trigger="manual"
-					content={createContent('tooltip')}
-					visible={visible}
-					onVisibleChange={setVisible}
-				>
-					<Button onClick={() => setVisible(pre => !pre)}>manual</Button>
+				<Trigger trigger="manual" popup={createContent('tooltip')} open={visible} onVisibleChange={setVisible}>
+					<Button onClick={() => setVisible(p => !p)}>manual</Button>
 				</Trigger>
 			</Space>
 			<Divider />
 			<Space>
-				<Trigger motion="none" content={createContent('tooltip')}>
+				<Trigger motion="none" popup={createContent('tooltip')}>
 					<Button>no motion</Button>
 				</Trigger>
-				<Trigger motion="grow" content={createContent('tooltip')}>
+				<Trigger motion="grow" popup={createContent('tooltip')}>
 					<Button>grow</Button>
 				</Trigger>
-				<Trigger motion="stretch" content={createContent('tooltip')}>
+				<Trigger motion="stretch" popup={createContent('tooltip')}>
 					<Button>stretch</Button>
 				</Trigger>
 			</Space>

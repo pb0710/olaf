@@ -24,9 +24,9 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, outerRef) => {
 	const [tabs, setTabs] = useState<PanelItem[]>([])
 
 	const subscribe = useCallback((panel: PanelItem) => {
-		setTabs(pre => [...pre, panel])
+		setTabs(p => [...p, panel])
 		return () => {
-			setTabs(pre => pre.filter(tab => tab.name !== panel.name))
+			setTabs(p => p.filter(tab => tab.name !== panel.name))
 		}
 	}, [])
 

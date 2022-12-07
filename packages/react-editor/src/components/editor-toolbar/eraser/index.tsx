@@ -6,7 +6,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	return (
-		<Tooltip placement="bottom" content="清除格式">
+		<Tooltip placement="bottom" popup="清除格式">
 			<div
 				className="g-eraser"
 				onClick={() => {

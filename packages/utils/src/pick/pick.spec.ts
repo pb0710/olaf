@@ -1,4 +1,4 @@
-import pick from '.'
+import { pick } from '.'
 
 describe('use pick', () => {
 	interface TestObj {

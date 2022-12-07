@@ -200,8 +200,8 @@ const Select: FC<SelectProps> = props => {
 			onKeyDown={e => {
 				if (!filter || !multiple) return
 				if (e.key === 'Backspace') {
-					_setValue(pre => {
-						const selection = [...(pre as (string | number)[])]
+					_setValue(p => {
+						const selection = [...(p as (string | number)[])]
 						selection.pop()
 						return selection
 					})
@@ -239,12 +239,12 @@ const Select: FC<SelectProps> = props => {
 	return (
 		<Dropdown
 			trigger="manual"
-			visible={dropdownVisible}
+			open={dropdownVisible}
 			onVisibleChange={setDropdownVisible}
 			onClickOutside={() => {
 				hideDropdown()
 			}}
-			content={dropdownContentEle}
+			popup={dropdownContentEle}
 		>
 			<div>
 				<div

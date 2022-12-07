@@ -10,18 +10,18 @@ export default () => {
 				<Button>Click me</Button>
 				<Button primary>Primary</Button>
 				<Button round>Round</Button>
-				<Tooltip content="square button">
+				<Tooltip popup="square button">
 					<Button square>{/* <Icon path={mdiPlus}></Icon> */}</Button>
 				</Tooltip>
-				<Tooltip content="square primary button">
+				<Tooltip popup="square primary button">
 					<Button square primary>
 						{/* <Icon path={mdiMagnify}></Icon> */}
 					</Button>
 				</Tooltip>
-				<Tooltip content="circle button">
+				<Tooltip popup="circle button">
 					<Button circle>{/* <Icon path={mdiPlus}></Icon> */}</Button>
 				</Tooltip>
-				<Tooltip content="circle primary button">
+				<Tooltip popup="circle primary button">
 					<Button circle primary>
 						{/* <Icon path={mdiMagnify}></Icon> */}
 					</Button>

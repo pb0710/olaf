@@ -52,7 +52,7 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Popover
 			trigger="manual"
-			visible={visible}
+			open={visible}
 			onVisibleChange={setVisible}
 			onClickOutside={hide}
 			placement="bottom"
@@ -60,7 +60,7 @@ export default ({ editor }: { editor: Editor }) => {
 				<div className="g-text-align-popup">
 					{options.map(opt => {
 						return (
-							<Tooltip key={opt.value} placement="bottom" content={opt.label}>
+							<Tooltip key={opt.value} placement="bottom" popup={opt.label}>
 								<div
 									className={cls('g-align-icon-wrapper', {
 										active: editor.isActive({ textAlign: opt.value })
@@ -75,7 +75,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 			}
 		>
-			<Tooltip placement="bottom" content="对齐方式">
+			<Tooltip placement="bottom" popup="对齐方式">
 				<div className="g-text-align-picker" onClick={toggle}>
 					<div className="g-text-align-label">{selection.icon}</div>
 					<div className="g-text-align-dropdown">

@@ -28,8 +28,8 @@ export const Toast: FC & {
 	Toast.show = useCallback<Show>(props => {
 		const { id, position = 'top', duration = 3000, ...rest } = props
 
-		setToastList(pre => [
-			...pre,
+		setToastList(p => [
+			...p,
 			{
 				id,
 				position,
@@ -48,7 +48,7 @@ export const Toast: FC & {
 		if (is.undefined(id)) {
 			setToastList([])
 		} else {
-			setToastList(pre => pre.filter(toast => toast.id !== id))
+			setToastList(p => p.filter(toast => toast.id !== id))
 		}
 	}, [])
 
