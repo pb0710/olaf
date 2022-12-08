@@ -3,7 +3,7 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import { UI_PREFIX } from '../../constants'
 import './list-item.scss'
 
-export interface ListItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'prefix'> {
+interface ListItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'prefix'> {
 	prefix?: ReactNode
 	suffix?: ReactNode
 	size?: 'small' | 'medium' | 'large'

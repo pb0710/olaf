@@ -1,12 +1,12 @@
-import React, { Children, cloneElement, forwardRef, ReactNode } from 'react'
+import React, { Children, cloneElement, ComponentProps, forwardRef, ReactNode } from 'react'
 import DropdownMenu from './DropdownMenu'
 import DropdownItem from './DropdownItem'
 import DropdownTitle from './DropdownTitle'
-import DropdownDivider from './DropdownDivider'
-import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
+import Divider from '../divider'
+import Trigger, { EventsByTriggerNeed } from '../trigger'
 import { pick, pickDataAttrs } from '@olaf/utils/src'
 
-interface DropdownProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
+interface DropdownProps extends Omit<ComponentProps<typeof Trigger>, 'popup' | 'growTransformOrigin' | 'motion'> {
 	content?: ReactNode
 }
 
@@ -21,10 +21,9 @@ const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, propRef) => {
 		mouseEnterDelay,
 		mouseLeaveDelay,
 		spacing,
+		crossOffset,
 		disabled,
 		unmountOnExit,
-		offsetX,
-		offsetY,
 		appendTo,
 		onClickOutside,
 		onVisibleChange,
@@ -44,8 +43,7 @@ const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, propRef) => {
 			mouseLeaveDelay={mouseLeaveDelay}
 			spacing={spacing}
 			unmountOnExit={unmountOnExit}
-			offsetX={offsetX}
-			offsetY={offsetY}
+			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
 			onVisibleChange={onVisibleChange}
@@ -64,11 +62,11 @@ const ExportDropdown = Dropdown as typeof Dropdown & {
 	Menu: typeof DropdownMenu
 	Item: typeof DropdownItem
 	Title: typeof DropdownTitle
-	Divider: typeof DropdownDivider
+	Divider: typeof Divider
 }
 ExportDropdown.Menu = DropdownMenu
 ExportDropdown.Item = DropdownItem
 ExportDropdown.Title = DropdownTitle
-ExportDropdown.Divider = DropdownDivider
+ExportDropdown.Divider = Divider
 
 export default ExportDropdown

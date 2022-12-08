@@ -1,10 +1,10 @@
 import { pick, pickDataAttrs } from '@olaf/utils/src'
-import React, { Children, cloneElement, forwardRef, ReactNode } from 'react'
+import React, { Children, cloneElement, ComponentProps, forwardRef, ReactNode } from 'react'
 import { UI_PREFIX } from '../../constants'
-import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
+import Trigger, { EventsByTriggerNeed } from '../trigger'
 import './popover.scss'
 
-interface PopoverProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
+interface PopoverProps extends Omit<ComponentProps<typeof Trigger>, 'popup' | 'growTransformOrigin' | 'motion'> {
 	content?: ReactNode
 }
 
@@ -19,10 +19,9 @@ const Popover = forwardRef<HTMLElement, PopoverProps>((props, propRef) => {
 		mouseEnterDelay,
 		mouseLeaveDelay,
 		spacing,
+		crossOffset,
 		disabled,
 		unmountOnExit,
-		offsetX,
-		offsetY,
 		appendTo,
 		onClickOutside,
 		onVisibleChange,
@@ -61,8 +60,7 @@ const Popover = forwardRef<HTMLElement, PopoverProps>((props, propRef) => {
 			mouseLeaveDelay={mouseLeaveDelay}
 			spacing={spacing}
 			unmountOnExit={unmountOnExit}
-			offsetX={offsetX}
-			offsetY={offsetY}
+			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
 			onVisibleChange={onVisibleChange}

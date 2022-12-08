@@ -1,10 +1,10 @@
 import { cls, pick, pickDataAttrs } from '@olaf/utils/src'
-import React, { Children, cloneElement, forwardRef } from 'react'
+import React, { Children, cloneElement, ComponentProps, forwardRef } from 'react'
 import { UI_PREFIX } from '../../constants'
-import Trigger, { EventsByTriggerNeed, TriggerProps } from '../trigger'
+import Trigger, { EventsByTriggerNeed } from '../trigger'
 import './tooltip.scss'
 
-interface TooltipProps extends Omit<TriggerProps, 'popup' | 'growTransformOrigin' | 'motion'> {
+interface TooltipProps extends Omit<ComponentProps<typeof Trigger>, 'popup' | 'growTransformOrigin' | 'motion'> {
 	title?: string
 	light?: boolean
 }
@@ -21,10 +21,9 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, propRef) => {
 		mouseEnterDelay,
 		mouseLeaveDelay,
 		spacing,
+		crossOffset,
 		disabled,
 		unmountOnExit = false,
-		offsetX,
-		offsetY,
 		appendTo,
 		onClickOutside,
 		onVisibleChange,
@@ -65,8 +64,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, propRef) => {
 			mouseLeaveDelay={mouseLeaveDelay}
 			spacing={spacing}
 			unmountOnExit={unmountOnExit}
-			offsetX={offsetX}
-			offsetY={offsetY}
+			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
 			onVisibleChange={onVisibleChange}

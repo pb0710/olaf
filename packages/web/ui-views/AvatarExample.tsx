@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Divider, Space } from '@olaf/react-ui/src'
-import { TbPictureInPictureOff, TbUser } from 'react-icons/tb'
+import { TbPhotoOff, TbUser } from 'react-icons/tb'
 
 export default () => {
 	const picSrc = 'https://iph.href.lu/200x200'
@@ -20,12 +20,12 @@ export default () => {
 			</Space>
 			<Divider />
 			<Avatar src={picSrc}>
-				<TbUser size="24px" />
+				<TbUser size="20px" />
 			</Avatar>
 			<Divider />
 			<Avatar src={picSrc}>text</Avatar>
 			<Divider />
-			<Avatar src="http://error.path.jpg" fallback={<TbPictureInPictureOff />} />
+			<Avatar src="http://error.path.jpg" fallback={<TbPhotoOff size="20px" />} />
 			<Divider />
 			<Avatar badge="99+" src={picSrc} />
 			<Divider />

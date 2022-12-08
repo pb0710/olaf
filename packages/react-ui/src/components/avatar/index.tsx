@@ -59,6 +59,7 @@ const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 		</div>
 	)
 })
+Avatar.displayName = 'Avatar'
 
 const ExportAvatar = Avatar as typeof Avatar & {
 	Group: typeof AvatarGroup

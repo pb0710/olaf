@@ -1,16 +1,16 @@
+import { PromiseFnResult } from '@olaf/utils/src'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLatestRef } from './useLatestRef'
 
-type PromiseResult<T extends Promise<unknown>> = T extends Promise<infer R> ? R : never
 type Request = (...args: any[]) => Promise<any>
 interface Options<T extends Request> {
-	initialData?: PromiseResult<ReturnType<T>>
+	initialData?: PromiseFnResult<T>
 	manual?: boolean
 	ready?: boolean
 	loadingDelay?: number
 	refreshDeps?: any[]
 	defaultParams?: Parameters<T>
-	onSuccess?(res: PromiseResult<ReturnType<T>>): void
+	onSuccess?(res: PromiseFnResult<T>): void
 	onError?(err: Error | null): void
 }
 
@@ -38,12 +38,12 @@ export function useFetch<T extends Request, S extends Options<T>>(fetcher: T, op
 
 			fetcherRef
 				.current(...args)
-				.then((res: PromiseResult<ReturnType<T>>) => {
+				.then((res: PromiseFnResult<T>) => {
 					if (fetchCount.current !== preCount) return
 					onSuccess?.(res)
 					setData(res)
 				})
-				.catch((err: PromiseResult<ReturnType<T>>) => {
+				.catch((err: PromiseFnResult<T>) => {
 					if (fetchCount.current !== preCount) return
 					onError?.(new Error(err))
 					setError(new Error(err))

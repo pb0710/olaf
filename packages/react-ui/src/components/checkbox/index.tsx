@@ -84,6 +84,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, propRef) =>
 		</label>
 	)
 })
+Checkbox.displayName = 'CHheckbox'
 
 const ExportCheckbox = Checkbox as typeof Checkbox & {
 	Group: typeof CheckboxGroup

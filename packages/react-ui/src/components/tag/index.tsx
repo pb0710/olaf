@@ -75,5 +75,5 @@ const Tag = forwardRef<HTMLDivElement, TagProps>((props, propRef) => {
 		</div>
 	)
 })
-
+Tag.displayName = 'Tag'
 export default Tag

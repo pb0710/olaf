@@ -262,5 +262,5 @@ const Select: FC<SelectProps> = props => {
 		</Dropdown>
 	)
 }
-
+Select.displayName = 'Select'
 export default Select

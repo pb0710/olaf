@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect, useRef } from 'react'
 
-export function useLatestRef<S>(state: S, initialState?: S): MutableRefObject<S> {
-	const stateRef = useRef(initialState ?? state)
+export function useLatestRef<S>(state: S): MutableRefObject<S> {
+	const stateRef = useRef(state)
 	useEffect(() => {
 		stateRef.current = state
 	}, [state])

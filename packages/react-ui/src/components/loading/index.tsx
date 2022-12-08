@@ -38,5 +38,5 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, propRef) => {
 		</div>
 	)
 })
-
+Loading.displayName = 'Loading'
 export default Loading

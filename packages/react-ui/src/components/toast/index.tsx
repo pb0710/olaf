@@ -1,8 +1,8 @@
-import React, { FC, ReactElement, ReactNode, useCallback, useState } from 'react'
+import React, { ComponentProps, FC, ReactElement, ReactNode, useCallback, useState } from 'react'
 import { cls, is, uuid } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './toast.scss'
-import ToastItem, { ToastItemProps } from './ToastItem'
+import ToastItem from './ToastItem'
 import { createRoot, Root } from 'react-dom/client'
 import { TransitionGroup } from 'react-transition-group'
 import Motion from '../motion'
@@ -10,7 +10,7 @@ import Motion from '../motion'
 const prefixCls = `${UI_PREFIX}-toast`
 
 type Position = 'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right'
-interface ShowProps extends ToastItemProps {
+interface ShowProps extends ComponentProps<typeof ToastItem> {
 	id: string
 	duration?: number
 	position?: Position

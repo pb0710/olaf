@@ -4,7 +4,7 @@ import { UI_PREFIX } from '../../constants'
 import './toast-item.scss'
 import { TbX } from 'react-icons/tb'
 
-export interface ToastItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+interface ToastItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
 	title?: ReactNode
 	icon?: ReactNode
 	closable?: boolean
@@ -28,5 +28,5 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>((props, propRef) =>
 		</div>
 	)
 })
-
+ToastItem.displayName = 'ToastItem'
 export default ToastItem

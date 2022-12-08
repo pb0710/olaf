@@ -20,7 +20,7 @@ if (document) {
 	})
 }
 
-export interface ModalProps extends HTMLAttributes<HTMLElement> {
+interface ModalProps extends HTMLAttributes<HTMLElement> {
 	visible?: boolean
 	maskClassName?: string
 	maskClosable?: boolean
@@ -82,5 +82,5 @@ const Modal: FC<ModalProps> = props => {
 		document.body
 	)
 }
-
+Modal.displayName = 'Modal'
 export default Modal

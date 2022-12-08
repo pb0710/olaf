@@ -1,9 +1,9 @@
 import { useLayoutEffect } from 'react'
 import { useLatestRef } from './useLatestRef'
 
-export function useMounted(callback: () => void): void {
-	const callbackRef = useLatestRef(callback)
+export function useMounted(cb: () => void): void {
+	const cbRef = useLatestRef(cb)
 	useLayoutEffect(() => {
-		callbackRef.current?.()
-	}, [callbackRef])
+		cbRef.current?.()
+	}, [cbRef])
 }

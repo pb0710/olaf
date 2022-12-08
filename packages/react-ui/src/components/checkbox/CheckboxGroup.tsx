@@ -110,5 +110,5 @@ const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, pro
 		</div>
 	)
 })
-
+CheckboxGroup.displayName = 'CheckboxGroup'
 export default CheckboxGroup

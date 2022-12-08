@@ -1,8 +1,8 @@
 import { cls } from '@olaf/utils/src'
-import React, { Children, cloneElement, FC, forwardRef, HTMLAttributes, isValidElement } from 'react'
+import React, { Children, cloneElement, ComponentProps, forwardRef, HTMLAttributes, isValidElement } from 'react'
 import { UI_PREFIX } from '../../constants'
 import './list.scss'
-import ListItem, { ListItemProps } from './ListItem'
+import ListItem from './ListItem'
 
 interface ListProps extends HTMLAttributes<HTMLDivElement> {
 	size?: 'small' | 'medium' | 'large'
@@ -23,7 +23,7 @@ const List = forwardRef<HTMLDivElement, ListProps>((props, propRef) => {
 			{...rest}
 		>
 			{Children.map(children, child => {
-				if (!isValidElement<ListItemProps>(child)) return child
+				if (!isValidElement<ComponentProps<typeof ListItem>>(child)) return child
 
 				return cloneElement(child, { size, bordered })
 			})}

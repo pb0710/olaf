@@ -4,7 +4,7 @@
   "description": "DEMO",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "tsc && vite",
     "build": "vite build"
   },
   "author": "Grey",

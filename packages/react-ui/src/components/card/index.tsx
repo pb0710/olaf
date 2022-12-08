@@ -39,5 +39,5 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, propRef) => {
 		</div>
 	)
 })
-
+Card.displayName = 'Card'
 export default Card

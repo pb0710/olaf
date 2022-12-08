@@ -67,5 +67,5 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, propRef) => {
 		</label>
 	)
 })
-
+Switch.displayName = 'Switch'
 export default Switch

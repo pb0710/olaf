@@ -5,7 +5,7 @@ import './collapse-panel.scss'
 import { UI_PREFIX } from '../../constants'
 import Motion from '../motion'
 
-export interface CollapsePanelProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | 'onChange'> {
+interface CollapsePanelProps extends Omit<HTMLAttributes<HTMLElement>, 'title' | 'onChange'> {
 	itemKey?: string | number
 	title?: ReactNode
 	expend?: boolean

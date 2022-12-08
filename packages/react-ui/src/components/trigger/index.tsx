@@ -1,4 +1,4 @@
-import { autoUpdate, flip, Placement, useFloating } from '@floating-ui/react-dom'
+import { autoUpdate, flip, offset, Placement, useFloating } from '@floating-ui/react-dom'
 import { useComposeRef } from '@olaf/react-hook/src'
 import React, {
 	Children,
@@ -37,7 +37,7 @@ export const EventsByTriggerNeed = [
 	| 'onKeyDown'
 )[]
 
-export interface TriggerProps extends HTMLAttributes<HTMLElement> {
+interface TriggerProps extends HTMLAttributes<HTMLElement> {
 	children: ReactElement
 	open?: boolean
 	defaultOpen?: boolean
@@ -47,12 +47,11 @@ export interface TriggerProps extends HTMLAttributes<HTMLElement> {
 	mouseEnterDelay?: number
 	mouseLeaveDelay?: number
 	spacing?: number
+	crossOffset?: number
 	disabled?: boolean
 	unmountOnExit?: boolean
 	motion?: 'grow' | 'stretch' | 'none'
 	growTransformOrigin?: string
-	offsetX?: number
-	offsetY?: number
 	appendTo?: HTMLElement
 	onClickOutside?: (event: globalThis.MouseEvent) => void
 	onVisibleChange?: (visible: boolean) => void
@@ -69,12 +68,11 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 		mouseEnterDelay = 100,
 		mouseLeaveDelay = 100,
 		spacing = 8,
+		crossOffset = 0,
 		disabled = false,
 		unmountOnExit = true,
 		motion = 'none',
 		growTransformOrigin = 'center',
-		offsetX = 0,
-		offsetY = 0,
 		appendTo = document.body,
 		onClickOutside,
 		onVisibleChange
@@ -84,34 +82,29 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 	const isClick = trigger === 'click'
 	const isManual = trigger === 'manual'
 
+	const [_open, _setOpen] = useState(isManual ? open : defaultOpen)
 	const { x, y, floating, strategy, refs } = useFloating({
 		placement,
 		whileElementsMounted: (...args) =>
 			autoUpdate(...args, {
 				animationFrame: true
 			}),
-		middleware: [flip()]
+		middleware: [flip(), offset({ mainAxis: spacing, crossAxis: crossOffset })]
 	})
 
-	const [stretchDirection] = placement.split('-') as ['left' | 'top' | 'right' | 'bottom']
-	const spacingName = {
-		left: 'paddingRight',
-		right: 'paddingLeft',
-		top: 'paddingBottom',
-		bottom: 'paddingTop'
-	}[stretchDirection] as 'paddingRight' | 'paddingLeft' | 'paddingBottom' | 'paddingTop'
-
-	const [_open, _setOpen] = useState(isManual ? open : defaultOpen)
-
 	const timerRef = useRef(0)
+	const clearTimer = () => {
+		clearTimeout(timerRef.current)
+	}
 	const setDelayOpen = (val: boolean, delay: number) => {
 		if (delay) {
-			clearTimeout(timerRef.current)
+			clearTimer()
 			timerRef.current = window.setTimeout(() => {
 				onVisibleChange?.(val)
 				_setOpen(val)
 			}, delay)
 		} else {
+			console.log('delay: ', delay)
 			onVisibleChange?.(val)
 			_setOpen(val)
 		}
@@ -148,7 +141,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 
 	const popupProps: Record<string, any> = {}
 	if (isHover) {
-		popupProps.onMouseEnter = onMouseEnter
+		popupProps.onMouseEnter = clearTimer
 		popupProps.onMouseLeave = onMouseLeave
 	}
 
@@ -178,10 +171,9 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 			className={`${prefixCls}-content`}
 			style={{
 				position: strategy,
-				top: (y ?? 0) + offsetY,
-				left: (x ?? 0) + offsetX,
-				width: 'max-content',
-				[spacingName]: spacing
+				top: y ?? 0,
+				left: x ?? 0,
+				width: 'max-content'
 			}}
 			{...mixProps}
 			onClick={event => {
@@ -192,33 +184,32 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 		</div>
 	)
 
-	function createPortalEle(): ReactNode {
-		switch (motion) {
-			case 'none':
-				if (unmountOnExit) {
-					return _open ? popupEle : null
-				}
-				return <div style={{ width: 'max-content', display: _open ? 'initial' : 'none' }}>{popupEle}</div>
-
-			case 'stretch':
-				return (
-					<Motion.Stretch in={_open} mountOnEnter unmountOnExit={unmountOnExit} direction={stretchDirection}>
-						{popupEle}
-					</Motion.Stretch>
-				)
-
-			case 'grow':
-				return (
-					<Motion.Grow
-						in={_open}
-						mountOnEnter
-						unmountOnExit={unmountOnExit}
-						style={{ transformOrigin: growTransformOrigin }}
-					>
-						{popupEle}
-					</Motion.Grow>
-				)
-		}
+	const [stretchDirection] = placement.split('-') as ('left' | 'top' | 'right' | 'bottom')[]
+	let portalEle: ReactNode
+	switch (motion) {
+		case 'none':
+			if (unmountOnExit) portalEle = _open ? popupEle : null
+			else portalEle = <div style={{ width: 'max-content', display: _open ? 'initial' : 'none' }}>{popupEle}</div>
+			break
+		case 'stretch':
+			portalEle = (
+				<Motion.Stretch in={_open} mountOnEnter unmountOnExit={unmountOnExit} direction={stretchDirection}>
+					{popupEle}
+				</Motion.Stretch>
+			)
+			break
+		case 'grow':
+			portalEle = (
+				<Motion.Grow
+					in={_open}
+					mountOnEnter
+					unmountOnExit={unmountOnExit}
+					style={{ transformOrigin: growTransformOrigin }}
+				>
+					{popupEle}
+				</Motion.Grow>
+			)
+			break
 	}
 
 	const ref = useComposeRef(propRef, refs.reference)
@@ -232,7 +223,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 	) : (
 		<>
 			{triggerEle}
-			{createPortal(createPortalEle(), appendTo)}
+			{createPortal(portalEle, appendTo)}
 		</>
 	)
 })

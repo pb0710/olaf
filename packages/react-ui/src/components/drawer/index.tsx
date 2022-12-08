@@ -88,5 +88,5 @@ const Drawer: FC<DrawerProps> = props => {
 		document.body
 	)
 }
-
+Drawer.displayName = 'Drawer'
 export default Drawer

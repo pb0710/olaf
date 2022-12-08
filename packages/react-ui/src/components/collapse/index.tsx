@@ -1,8 +1,17 @@
 import { cls, is } from '@olaf/utils/src'
-import React, { Children, cloneElement, forwardRef, HTMLAttributes, isValidElement, useEffect, useState } from 'react'
+import React, {
+	Children,
+	cloneElement,
+	ComponentProps,
+	forwardRef,
+	HTMLAttributes,
+	isValidElement,
+	useEffect,
+	useState
+} from 'react'
 import { UI_PREFIX } from '../../constants'
 import './collapse.scss'
-import CollapsePanel, { CollapsePanelProps } from './CollapsePanel'
+import CollapsePanel from './CollapsePanel'
 
 interface CollapseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
 	accordion?: boolean
@@ -25,12 +34,12 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, propRef) => {
 	return (
 		<div ref={propRef} className={cls(className, prefixCls)} {...rest}>
 			{Children.map(children, child => {
-				if (!isValidElement<CollapsePanelProps>(child)) return child
+				if (!isValidElement<ComponentProps<typeof CollapsePanel>>(child)) return child
 
 				const { itemKey } = child.props
 				if (is.undefined(itemKey)) return child
 
-				return cloneElement<CollapsePanelProps>(child, {
+				return cloneElement<ComponentProps<typeof CollapsePanel>>(child, {
 					expend: _actives.includes(itemKey),
 					onChange(expend) {
 						let nextActives = _actives

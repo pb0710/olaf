@@ -20,6 +20,7 @@ const Stretch: FC<StretchProps> = props => {
 		</CSSTransition>
 	)
 }
+Stretch.displayName = 'Stretch'
 
 type SlipProps = Omit<CSSTransitionProps, 'addEventListener'> & {
 	direction?: 'top' | 'bottom' | 'left' | 'right'
@@ -34,6 +35,7 @@ const Slip: FC<SlipProps> = props => {
 		</CSSTransition>
 	)
 }
+Slip.displayName = 'Slip'
 
 const Motion = {
 	Fade,

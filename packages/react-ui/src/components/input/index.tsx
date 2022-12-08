@@ -130,6 +130,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 		</label>
 	)
 })
+Input.displayName = 'Input'
 
 const ExportInput = Input as typeof Input & {
 	Textarea: typeof Textarea

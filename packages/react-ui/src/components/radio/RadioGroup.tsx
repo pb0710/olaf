@@ -3,12 +3,13 @@ import React, {
 	ChangeEvent,
 	Children,
 	cloneElement,
+	ComponentProps,
 	forwardRef,
 	HTMLAttributes,
 	isValidElement,
 	ReactNode
 } from 'react'
-import Radio, { RadioProps } from '.'
+import Radio from '.'
 import { UI_PREFIX } from '../../constants'
 import Space from '../space'
 import './radio-group.scss'
@@ -83,7 +84,7 @@ const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, propRef) 
 				)
 			})}
 			{Children.map(children, child =>
-				isValidElement<RadioProps>(child)
+				isValidElement<ComponentProps<typeof Radio>>(child)
 					? cloneElement(child, {
 							size,
 							type,

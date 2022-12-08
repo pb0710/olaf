@@ -3,7 +3,7 @@ import React, { forwardRef, HTMLAttributes, useEffect, useRef } from 'react'
 import { UI_PREFIX } from '../../constants'
 import './circle.scss'
 
-export interface CircleProps extends HTMLAttributes<HTMLElement> {
+interface CircleProps extends HTMLAttributes<HTMLElement> {
 	size?: 'small' | 'medium' | 'large'
 	defaultMolecule?: number
 	molecule?: number

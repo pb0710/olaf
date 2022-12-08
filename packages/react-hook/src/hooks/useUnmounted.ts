@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLatestRef } from './useLatestRef'
 
-export function useUnmounted(callback: () => void): void {
-	const callbackRef = useLatestRef(callback)
-	useEffect(
+export function useUnmounted(cb: () => void): void {
+	const cbRef = useLatestRef(cb)
+	useLayoutEffect(
 		() => () => {
-			callbackRef.current()
+			cbRef.current()
 		},
-		[callbackRef]
+		[cbRef]
 	)
 }

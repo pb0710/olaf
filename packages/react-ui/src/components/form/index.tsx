@@ -42,6 +42,7 @@ const Form = forwardRef<HTMLFormElement, FormProps>((props, propRef) => {
 		</FormCtx.Provider>
 	)
 })
+Form.displayName = 'Form'
 
 const ExportForm = Form as typeof Form & {
 	Field: typeof Field

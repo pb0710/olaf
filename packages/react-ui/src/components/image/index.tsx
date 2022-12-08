@@ -321,5 +321,5 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 		</>
 	)
 })
-
+Image.displayName = 'Image'
 export default Image

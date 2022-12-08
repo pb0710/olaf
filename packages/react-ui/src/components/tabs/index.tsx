@@ -89,6 +89,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, propRef) => {
 		</TabsCtx.Provider>
 	)
 })
+Tabs.displayName = 'Tabs'
 
 const ExportTabs = Tabs as typeof Tabs & {
 	Panel: typeof TabPanel

@@ -67,7 +67,7 @@ export default ({ editor }: { editor: Editor }) => {
 						hide()
 					}}
 					placement="bottom-start"
-					// offsetX={-26}
+					crossOffset={-26}
 					content={
 						<div className="g-text-color-popup">
 							<Button block onClick={handleReset}>

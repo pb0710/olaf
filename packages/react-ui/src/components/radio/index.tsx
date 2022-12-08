@@ -12,7 +12,7 @@ import { UI_PREFIX } from '../../constants'
 import './radio.scss'
 import RadioGroup from './RadioGroup'
 
-export interface RadioProps
+interface RadioProps
 	extends Omit<
 		InputHTMLAttributes<HTMLInputElement>,
 		'onChange' | 'defaultValue' | 'defaultChecked' | 'checked' | 'value' | 'size'

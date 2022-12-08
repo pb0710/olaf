@@ -1,12 +1,12 @@
 import { cls, is, omit } from '@olaf/utils/src'
-import React, { forwardRef, ReactNode, useEffect, useRef } from 'react'
+import React, { ComponentProps, forwardRef, ReactNode, useEffect, useRef } from 'react'
 import CountUp from 'react-countup'
 import { RenderCounterProps } from 'react-countup/build/types'
 import { UI_PREFIX } from '../../constants'
-import Circle, { CircleProps } from './Circle'
+import Circle from './Circle'
 import './progress-circle.scss'
 
-interface ProgressProps extends CircleProps {
+interface ProgressProps extends ComponentProps<typeof Circle> {
 	size?: 'small' | 'medium' | 'large'
 	defaultMolecule?: number
 	molecule?: number

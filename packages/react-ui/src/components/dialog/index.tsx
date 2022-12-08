@@ -1,15 +1,15 @@
-import React, { FC } from 'react'
+import React, { ComponentProps, FC } from 'react'
 import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './dialog.scss'
-import Modal, { ModalProps } from '../modal'
+import Modal from '../modal'
 import Space from '../space'
 import Button from '../button'
 import Card from '../card'
 import Motion from '../motion'
 import { TbX } from 'react-icons/tb'
 
-interface DialogProps extends ModalProps {
+interface DialogProps extends ComponentProps<typeof Modal> {
 	hasCancel?: boolean
 	title?: string
 	okText?: string

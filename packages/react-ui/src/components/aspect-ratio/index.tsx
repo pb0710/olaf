@@ -22,5 +22,5 @@ const AspectRatio: FC<AspectRatioProps> = props => {
 		</div>
 	)
 }
-
+AspectRatio.displayName = 'AspectRatio'
 export default AspectRatio

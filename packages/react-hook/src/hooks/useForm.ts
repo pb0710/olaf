@@ -1,39 +1,44 @@
-import { is } from '@olaf/utils/src'
-import { FormEventHandler, useCallback, useRef } from 'react'
+import { is, ValueOf } from '@olaf/utils/src'
+import { FormEventHandler, useCallback, useRef, ChangeEvent, useState } from 'react'
 import { useLatestRef } from './useLatestRef'
 
 export interface State {
 	[key: string]: any
 }
-export interface Field {
-	label: string
-	options: Record<string, any> // TODO:
+// TODO:
+export interface FieldOptions {
+	[key: string]: any
 }
-export interface Options {
-	initialState: State
-	onFulfilled(state: State): void
+export interface Field<S> {
+	label: keyof S
+	options: FieldOptions
+}
+export type controllerChangeEvent = ChangeEvent<HTMLSelectElement | HTMLInputElement>
+export interface Options<S> {
+	defaultState: S
+	onFulfilled(state: S): void
 	onFailed?(): void
-	onStateChange?(source: Field): void
+	onStateChange?(org: Field<S>): void
 }
-export interface FieldController {
-	defaultValue?: any
-	value?: any
-	onChange(arg: any): void
+export interface FieldController<S = any> {
+	defaultValue?: ValueOf<S>
+	value?: ValueOf<S>
+	onChange(arg: ValueOf<S> | controllerChangeEvent): void
 }
-export interface Form {
+export interface Form<S = any> {
 	submit(): void
-	getState(): State
+	getState(): S
 	onSubmit: FormEventHandler<Element>
-	subscribe(label: Field['label'], options?: Field['options']): FieldController
+	subscribe(label: Field<S>['label'], options?: Field<S>['options']): FieldController<S>
 	unsubscribe(label: string): void
 }
 
-export function useForm(options: Options): Form {
+export function useForm<S extends State>(options: Options<S>): Form<S> {
 	const opts = useLatestRef(options)
 
-	const initialState = opts.current.initialState
-	const state = useRef<State>(initialState)
-	const fields = useRef<Field[]>([])
+	const [defaultState] = useState(opts.current.defaultState)
+	const state = useRef<S>(defaultState)
+	const fields = useRef<Field<S>[]>([])
 
 	const getState = useCallback(() => state.current, [])
 
@@ -51,27 +56,28 @@ export function useForm(options: Options): Form {
 	)
 
 	const subscribe = useCallback(
-		(label: Field['label'], options: Field['options'] = {}) => {
-			const field: Field = { label, options }
+		(label: Field<S>['label'], options: Field<S>['options'] = {}) => {
+			const field: Field<S> = { label, options }
 			fields.current.push(field)
-			const controller: FieldController = {
-				onChange(arg: any) {
+			const controller: FieldController<S> = {
+				onChange(arg) {
 					let val = arg
-					if (arg?.nativeEvent instanceof Event) {
-						val = (<HTMLSelectElement | HTMLInputElement>arg.target).value
-					}
-					state.current[label] = val
+					if ((arg as controllerChangeEvent)?.nativeEvent instanceof Event)
+						val = (arg as controllerChangeEvent).target.value as ValueOf<S>
+
+					state.current[label] = val as ValueOf<S>
 					opts.current.onStateChange?.(field)
 				}
 			}
+
 			if (is.undefined(state.current[label])) {
-				controller.defaultValue = initialState[label]
+				controller.defaultValue = defaultState[label]
 			} else {
 				controller.value = state.current[label]
 			}
 			return controller
 		},
-		[initialState, opts]
+		[defaultState, opts]
 	)
 	const unsubscribe = useCallback((label: string) => {
 		fields.current = fields.current.filter(field => field.label !== label)

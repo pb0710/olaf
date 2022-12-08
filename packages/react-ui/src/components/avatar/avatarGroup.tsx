@@ -33,5 +33,5 @@ const AvatarGroup: FC<AvatarGroupProps> = props => {
 		</div>
 	)
 }
-
+AvatarGroup.displayName = 'AvatarGroup'
 export default AvatarGroup

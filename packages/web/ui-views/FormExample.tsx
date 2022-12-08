@@ -5,7 +5,7 @@ export default () => {
 	const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('horizontal')
 
 	const form = Form.useForm({
-		initialState: {
+		defaultState: {
 			username: 'initial username',
 			pwd: '',
 			retypePwd: '',
@@ -21,7 +21,7 @@ export default () => {
 			console.log('submit failed')
 		},
 		onStateChange(source) {
-			console.log('state changed: ', source)
+			console.log('state changed: ', source, form.getState()[source.label])
 		}
 	})
 
