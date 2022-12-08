@@ -8,11 +8,8 @@
 		"esModuleInterop": true,
 		"emitDeclarationOnly": true,
 		"paths": {
-			"@editor/*": [
-				"editor-views/*"
-			],
-			"@ui/*": [
-				"ui-views/*"
+			"@/*": [
+				"src/*"
 			]
 		},
 	},

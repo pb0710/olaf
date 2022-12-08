@@ -1,7 +1,7 @@
 {
-  "name": "@olaf/web",
+  "name": "@olaf/doc-platform-fe",
   "version": "1.0.0",
-  "description": "DEMO",
+  "description": "Documentation platform frontend project",
   "type": "module",
   "scripts": {
     "dev": "vite",

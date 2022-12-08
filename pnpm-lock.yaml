@@ -73,6 +73,21 @@ importers:
       vite-plugin-swc-react-refresh: registry.npmmirror.com/vite-plugin-swc-react-refresh/2.2.1_vite@3.2.5
       vite-tsconfig-paths: registry.npmmirror.com/vite-tsconfig-paths/3.6.0_vite@3.2.5
 
+  packages/doc-platform-fe:
+    specifiers:
+      '@olaf/react-editor': workspace:*
+      '@olaf/react-hook': workspace:*
+      '@olaf/react-ui': workspace:*
+      '@olaf/utils': workspace:*
+      rollup-plugin-react-scoped-css: ^0.7.0
+    dependencies:
+      '@olaf/react-editor': link:../react-editor
+      '@olaf/react-hook': link:../react-hook
+      '@olaf/react-ui': link:../react-ui
+      '@olaf/utils': link:../utils
+    devDependencies:
+      rollup-plugin-react-scoped-css: registry.npmmirror.com/rollup-plugin-react-scoped-css/0.7.0
+
   packages/react-editor:
     specifiers:
       '@olaf/react-hook': workspace:*

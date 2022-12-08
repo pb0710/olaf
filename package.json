@@ -15,7 +15,8 @@
         "watch:react-ui": "pnpm -C packages/react-ui run watch",
         "watch:react-hook": "pnpm -C packages/react-hook run watch",
         "watch:utils": "pnpm -C packages/utils run watch",
-        "dev:web": "pnpm -C packages/web run dev"
+        "dev:web": "pnpm -C packages/web run dev",
+        "dev:doc-fe": "pnpm -C packages/doc-platform-fe run dev"
     },
     "bump": {
         "changelog": true,
