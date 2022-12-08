@@ -4,7 +4,7 @@ import { UI_PREFIX } from '../../constants'
 import './avatar.scss'
 import AvatarGroup from './avatarGroup'
 
-export interface AvatarProps extends HTMLAttributes<HTMLElement> {
+interface AvatarProps extends HTMLAttributes<HTMLElement> {
 	size?: 'small' | 'medium' | 'large'
 	round?: boolean
 	color?: string

@@ -1,7 +1,7 @@
 import { cls } from '@olaf/utils/src'
-import React, { Children, cloneElement, FC, HTMLAttributes, isValidElement } from 'react'
-import { AvatarProps } from '.'
+import React, { Children, cloneElement, ComponentProps, FC, HTMLAttributes, isValidElement } from 'react'
 import './avatar-group.scss'
+import Avatar from './'
 
 interface AvatarGroupProps extends HTMLAttributes<HTMLElement> {
 	size?: 'small' | 'medium' | 'large'
@@ -20,7 +20,7 @@ const AvatarGroup: FC<AvatarGroupProps> = props => {
 	return (
 		<div className={cls(className, 'g-avatar-group', `g-avatar-group-overlap-${overlapFrom}`)} {...rest}>
 			{Children.map(children, (child, index) =>
-				isValidElement<AvatarProps>(child)
+				isValidElement<ComponentProps<typeof Avatar>>(child)
 					? cloneElement(child, {
 							size,
 							round,

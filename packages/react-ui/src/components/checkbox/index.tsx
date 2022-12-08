@@ -1,5 +1,4 @@
 import { cls, is } from '@olaf/utils/src'
-import { BsCheckLg } from 'react-icons/bs'
 import { GoCheck } from 'react-icons/go'
 import React, {
 	ChangeEventHandler,
@@ -14,7 +13,7 @@ import './checkbox.scss'
 import CheckboxGroup from './CheckboxGroup'
 import { UI_PREFIX } from '../../constants'
 
-export interface CheckboxProps
+interface CheckboxProps
 	extends Omit<
 		InputHTMLAttributes<HTMLInputElement>,
 		'onChange' | 'defaultValue' | 'defaultChecked' | 'checked' | 'value' | 'size'

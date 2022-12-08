@@ -1,77 +1,74 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLatestRef } from './useLatestRef'
 
+type PromiseResult<T extends Promise<unknown>> = T extends Promise<infer R> ? R : never
 type Request = (...args: any[]) => Promise<any>
-type Result<T> = T extends Promise<infer U> ? U : T
-interface Options<F extends Request> {
-	initialData?: any
-	onlyManual?: boolean
+interface Options<T extends Request> {
+	initialData?: PromiseResult<ReturnType<T>>
+	manual?: boolean
 	ready?: boolean
 	loadingDelay?: number
 	refreshDeps?: any[]
-	defaultParams?: Parameters<F>
-	onSuccess?(res: any): void
-	onError?(err?: Error): void
-	formatResult?: (res: any) => any
+	defaultParams?: Parameters<T>
+	onSuccess?(res: PromiseResult<ReturnType<T>>): void
+	onError?(err: Error | null): void
 }
 
-export function useFetch<F extends Request, O extends Options<F>>(request: F, options: O) {
-	const { onlyManual = false, ready = true, loadingDelay = 0, refreshDeps = [] } = options
-	const requestRef = useLatestRef(request)
-	const optionsRef = useLatestRef(options)
-	const _refreshDeps = onlyManual ? [] : refreshDeps
+export function useFetch<T extends Request, S extends Options<T>>(fetcher: T, opts: S) {
+	const { manual = false, ready = true, loadingDelay = 0, refreshDeps = [] } = opts
+	const fetcherRef = useLatestRef(fetcher)
+	const optsRef = useLatestRef(opts)
+	const _refreshDeps = manual ? [] : refreshDeps
 
-	const [data, setData] = useState(optionsRef.current.initialData)
-	const [error, setError] = useState<Error>()
+	const [data, setData] = useState(optsRef.current.initialData)
+	const [error, setError] = useState<Error | null>(null)
 	const [loading, setLoading] = useState(false)
-	const requestCount = useRef(0)
+	const fetchCount = useRef(0)
 
 	const run = useCallback(
-		(...args: Parameters<F>[]) => {
+		(...args: Parameters<T>[]) => {
 			if (!ready) return
 
-			const preCount = requestCount.current
-			const { initialData, onSuccess, onError, formatResult = x => x } = optionsRef.current
-			setData(formatResult(initialData))
-			setError(undefined)
+			const preCount = fetchCount.current
+			const { onSuccess, onError } = optsRef.current
+			setError(null)
 			const loadingTimer = setTimeout(() => {
 				setLoading(true)
 			}, loadingDelay)
 
-			requestRef
+			fetcherRef
 				.current(...args)
-				.then((res: Result<ReturnType<F>>) => {
-					if (requestCount.current !== preCount) return
-					const formattedData = formatResult(res)
-					onSuccess?.(formattedData)
-					setData(formattedData)
+				.then((res: PromiseResult<ReturnType<T>>) => {
+					if (fetchCount.current !== preCount) return
+					onSuccess?.(res)
+					setData(res)
 				})
-				.catch((err: Result<ReturnType<F>>) => {
-					if (requestCount.current !== preCount) return
+				.catch((err: PromiseResult<ReturnType<T>>) => {
+					if (fetchCount.current !== preCount) return
 					onError?.(new Error(err))
 					setError(new Error(err))
 				})
 				.finally(() => {
-					if (requestCount.current !== preCount) return
+					if (fetchCount.current !== preCount) return
 					clearTimeout(loadingTimer)
 					setLoading(false)
 				})
 		},
-		[loadingDelay, optionsRef, ready, requestRef]
+		[loadingDelay, optsRef, ready, fetcherRef]
 	)
 
 	useEffect(
 		() => {
-			if (!onlyManual) {
-				const { defaultParams } = optionsRef.current
-				run(...defaultParams!)
+			if (!manual) {
+				const { defaultParams = [] } = optsRef.current
+				run(...defaultParams)
 			}
 			return () => {
-				requestCount.current += 1
+				fetchCount.current += 1
 			}
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[onlyManual, run, ..._refreshDeps]
+		[manual, run, ..._refreshDeps]
 	)
 
 	return { data, error, loading, run, mutate: setData }

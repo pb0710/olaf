@@ -67,7 +67,7 @@ export default ({ editor }: { editor: Editor }) => {
 						hide()
 					}}
 					placement="bottom-start"
-					offsetX={-26}
+					// offsetX={-26}
 					content={
 						<div className="g-highlight-popup">
 							<Button block onClick={() => editor.chain().focus().unsetHighlight().run()}>

@@ -3,12 +3,13 @@ import React, {
 	ChangeEvent,
 	Children,
 	cloneElement,
+	ComponentProps,
 	forwardRef,
 	HTMLAttributes,
 	isValidElement,
 	ReactNode
 } from 'react'
-import Checkbox, { CheckboxProps } from '.'
+import Checkbox from '.'
 import { UI_PREFIX } from '../../constants'
 import Space from '../space'
 import './checkbox-group.scss'
@@ -96,7 +97,7 @@ const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, pro
 					)
 				})}
 				{Children.map(children, child =>
-					isValidElement<CheckboxProps>(child)
+					isValidElement<ComponentProps<typeof Checkbox>>(child)
 						? cloneElement(child, {
 								size,
 								disabled: disabled || child.props.disabled,

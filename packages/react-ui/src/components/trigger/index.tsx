@@ -86,7 +86,10 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 
 	const { x, y, floating, strategy, refs } = useFloating({
 		placement,
-		whileElementsMounted: autoUpdate,
+		whileElementsMounted: (...args) =>
+			autoUpdate(...args, {
+				animationFrame: true
+			}),
 		middleware: [flip()]
 	})
 
@@ -189,7 +192,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 		</div>
 	)
 
-	function createPortalEle() {
+	function createPortalEle(): ReactNode {
 		switch (motion) {
 			case 'none':
 				if (unmountOnExit) {
