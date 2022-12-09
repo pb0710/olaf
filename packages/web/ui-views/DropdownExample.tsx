@@ -3,7 +3,7 @@ import { Button, Divider, Dropdown, Space } from '@olaf/react-ui/src'
 import { TbCheck } from 'react-icons/tb'
 
 export default () => {
-	const [visible, setVisible] = useState(false)
+	const [open, setOpen] = useState(false)
 	return (
 		<div style={{ padding: 24 }}>
 			<h1>Dropdown</h1>
@@ -34,26 +34,26 @@ export default () => {
 				</Dropdown>
 				<Dropdown
 					trigger="manual"
-					open={visible}
-					onVisibleChange={val => {
+					open={open}
+					onOpenChange={val => {
 						console.log('val: ', val)
-						setVisible(val)
+						setOpen(val)
 					}}
 					onClickOutside={() => {
-						setVisible(false)
+						setOpen(false)
 					}}
 					content={
 						<Dropdown.Menu>
 							<Dropdown.Item
 								onClick={() => {
-									setVisible(false)
+									setOpen(false)
 								}}
 							>
 								dropdown item 1
 							</Dropdown.Item>
 							<Dropdown.Item
 								onClick={() => {
-									setVisible(false)
+									setOpen(false)
 								}}
 							>
 								dropdown item 2
@@ -63,7 +63,7 @@ export default () => {
 				>
 					<Button
 						onClick={() => {
-							setVisible(p => !p)
+							setOpen(p => !p)
 						}}
 					>
 						manual

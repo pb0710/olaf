@@ -36,8 +36,6 @@ export default () => {
 				<Input placeholder="Allow clear" allowClear defaultValue="allow clear" />
 			</Space>
 			<Divider />
-			<Input placeholder="Block" block />
-			<Divider />
 			<Space direction="vertical">
 				<Input placeholder="Round" round />
 				<Input
@@ -46,7 +44,6 @@ export default () => {
 					prefix={<TbSearch style={{ margin: '0 4px' }} />}
 					suffix={<TbEyeOff style={{ margin: '0 4px' }} />}
 				/>
-				<Input placeholder="Round block" round block />
 			</Space>
 			<Divider />
 			<Space>
@@ -85,8 +82,6 @@ export default () => {
 			/>
 			<Divider />
 			<Input.Textarea autosize placeholder="Autosize textarea" />
-			<Divider />
-			<Input.Textarea block placeholder="Block textarea" />
 			<Divider />
 			<Space>
 				<Input.Textarea disabled placeholder="Disabled textarea" />

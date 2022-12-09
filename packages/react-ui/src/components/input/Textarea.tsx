@@ -12,11 +12,10 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { UI_PREFIX } from '../../constants'
 import { useBoolean } from '@olaf/react-hook/src'
 
-interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'style'> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	autosize?: boolean
 	minRows?: number
 	maxRows?: number
-	block?: boolean
 	disabled?: boolean
 	value?: string | number
 	onChange?: ChangeEventHandler<HTMLTextAreaElement> & ((value?: string | number) => void)
@@ -26,7 +25,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, propRef)
 	const {
 		className,
 		autosize = false,
-		block = false,
 		disabled = false,
 		minRows = 1,
 		maxRows = Infinity,
@@ -68,14 +66,13 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, propRef)
 		<label
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-focus`]: focus,
-				[`${prefixCls}-block`]: block,
 				[`${prefixCls}-disabled`]: disabled
 			})}
 		>
 			<TextareaComp
 				{...valueProps}
 				{...autosizeProps}
-				{...rest}
+				{...(rest as any)}
 				className={`${prefixCls}-inner`}
 				ref={textareaRef}
 				disabled={disabled}

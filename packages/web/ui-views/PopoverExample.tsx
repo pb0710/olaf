@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Divider, Popover, Space } from '@olaf/react-ui/src'
 
 export default () => {
-	const [visible, setVisible] = useState(false)
+	const [open, setOpen] = useState(false)
 	const ceilStyle = {
 		display: 'flex',
 		justifyContent: 'center',
@@ -21,13 +21,13 @@ export default () => {
 				<Popover
 					trigger="manual"
 					content="Show by manual"
-					open={visible}
-					onVisibleChange={val => {
+					open={open}
+					onOpenChange={val => {
 						console.log('val', val)
-						setVisible(val)
+						setOpen(val)
 					}}
 				>
-					<Button onClick={() => setVisible(p => !p)}>Manual</Button>
+					<Button onClick={() => setOpen(p => !p)}>Manual</Button>
 				</Popover>
 			</Space>
 			<Divider />
@@ -41,67 +41,43 @@ export default () => {
 				}}
 			>
 				<Popover trigger="hover" placement="top-start" content="Top start">
-					<Button block style={ceilStyle}>
-						Top start
-					</Button>
+					<Button style={ceilStyle}>Top start</Button>
 				</Popover>
 				<Popover trigger="hover" placement="top" content="Top">
-					<Button block style={ceilStyle}>
-						Top
-					</Button>
+					<Button style={ceilStyle}>Top</Button>
 				</Popover>
 				<Popover trigger="hover" placement="top-end" content="Top end">
-					<Button block style={ceilStyle}>
-						Top end
-					</Button>
+					<Button style={ceilStyle}>Top end</Button>
 				</Popover>
 				<Popover trigger="hover" placement="left-start" content="Left start">
-					<Button block style={ceilStyle}>
-						Left start
-					</Button>
+					<Button style={ceilStyle}>Left start</Button>
 				</Popover>
 				<div style={ceilStyle}></div>
 				<Popover trigger="hover" placement="right-start" content="Right start">
-					<Button block style={ceilStyle}>
-						Right start
-					</Button>
+					<Button style={ceilStyle}>Right start</Button>
 				</Popover>
 				<Popover trigger="hover" placement="left" content="Left">
-					<Button block style={ceilStyle}>
-						Left
-					</Button>
+					<Button style={ceilStyle}>Left</Button>
 				</Popover>
 				<div style={ceilStyle}></div>
 				<Popover trigger="hover" placement="right" content="Right">
-					<Button block style={ceilStyle}>
-						Right
-					</Button>
+					<Button style={ceilStyle}>Right</Button>
 				</Popover>
 				<Popover trigger="hover" placement="left-end" content="Left end">
-					<Button block style={ceilStyle}>
-						Left end
-					</Button>
+					<Button style={ceilStyle}>Left end</Button>
 				</Popover>
 				<div style={ceilStyle}></div>
 				<Popover trigger="hover" placement="right-end" content="Right end">
-					<Button block style={ceilStyle}>
-						Right end
-					</Button>
+					<Button style={ceilStyle}>Right end</Button>
 				</Popover>
 				<Popover trigger="hover" placement="bottom-start" content="Bottom start">
-					<Button block style={ceilStyle}>
-						Bottom start
-					</Button>
+					<Button style={ceilStyle}>Bottom start</Button>
 				</Popover>
 				<Popover trigger="hover" placement="bottom" content="Bottom">
-					<Button block style={ceilStyle}>
-						Bottom
-					</Button>
+					<Button style={ceilStyle}>Bottom</Button>
 				</Popover>
 				<Popover trigger="hover" placement="bottom-end" content="Bottom end">
-					<Button block style={ceilStyle}>
-						Bottom end
-					</Button>
+					<Button style={ceilStyle}>Bottom end</Button>
 				</Popover>
 			</div>
 		</div>

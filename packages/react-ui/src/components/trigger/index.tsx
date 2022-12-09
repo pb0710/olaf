@@ -54,7 +54,7 @@ interface TriggerProps extends HTMLAttributes<HTMLElement> {
 	growTransformOrigin?: string
 	appendTo?: HTMLElement
 	onClickOutside?: (event: globalThis.MouseEvent) => void
-	onVisibleChange?: (visible: boolean) => void
+	onOpenChange?: (open: boolean) => void
 }
 
 const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
@@ -75,7 +75,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 		growTransformOrigin = 'center',
 		appendTo = document.body,
 		onClickOutside,
-		onVisibleChange
+		onOpenChange
 	} = props
 
 	const isHover = trigger === 'hover'
@@ -100,12 +100,12 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 		if (delay) {
 			clearTimer()
 			timerRef.current = window.setTimeout(() => {
-				onVisibleChange?.(val)
+				onOpenChange?.(val)
 				_setOpen(val)
 			}, delay)
 		} else {
 			console.log('delay: ', delay)
-			onVisibleChange?.(val)
+			onOpenChange?.(val)
 			_setOpen(val)
 		}
 	}

@@ -31,7 +31,7 @@ export default ({ editor }: { editor: Editor }) => {
 	]
 
 	const [inkColor, setInkColor] = useState(DEFAULT_COLOR)
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 
 	const hasActive = options.some(opt => editor.isActive('textStyle', { color: opt }))
 
@@ -61,8 +61,8 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 				<Popover
 					trigger="manual"
-					open={visible}
-					onVisibleChange={setVisible}
+					open={open}
+					onOpenChange={setOpen}
 					onClickOutside={() => {
 						hide()
 					}}
@@ -70,9 +70,7 @@ export default ({ editor }: { editor: Editor }) => {
 					crossOffset={-26}
 					content={
 						<div className="g-text-color-popup">
-							<Button block onClick={handleReset}>
-								恢复默认
-							</Button>
+							<Button onClick={handleReset}>恢复默认</Button>
 							<Divider />
 							<div className="g-colors-wrapper">
 								{options.map(opt => {
@@ -93,7 +91,7 @@ export default ({ editor }: { editor: Editor }) => {
 				>
 					<div
 						className={cls('g-text-color-dropdown', {
-							active: visible
+							active: open
 						})}
 						onClick={toggle}
 					>

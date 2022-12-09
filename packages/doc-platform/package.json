@@ -1,5 +1,5 @@
 {
-  "name": "@olaf/doc-platform-fe",
+  "name": "@olaf/doc-platform",
   "version": "1.0.0",
   "description": "Documentation platform frontend project",
   "type": "module",
@@ -13,7 +13,9 @@
     "@olaf/react-editor": "workspace:*",
     "@olaf/react-hook": "workspace:*",
     "@olaf/react-ui": "workspace:*",
-    "@olaf/utils": "workspace:*"
+    "@olaf/utils": "workspace:*",
+    "@reduxjs/toolkit": "^1.9.1",
+    "react-redux": "^8.0.5"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "eslint --cache --fix"
@@ -22,8 +24,5 @@
     "last 1 version",
     "> 1%",
     "not dead"
-  ],
-  "devDependencies": {
-    "rollup-plugin-react-scoped-css": "^0.7.0"
-  }
+  ]
 }

@@ -26,7 +26,7 @@ const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, propRef) => {
 		unmountOnExit,
 		appendTo,
 		onClickOutside,
-		onVisibleChange,
+		onOpenChange,
 		...rest
 	} = props
 
@@ -46,7 +46,7 @@ const Dropdown = forwardRef<HTMLElement, DropdownProps>((props, propRef) => {
 			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
-			onVisibleChange={onVisibleChange}
+			onOpenChange={onOpenChange}
 			motion="stretch"
 		>
 			{cloneElement(Children.only(children), {

@@ -43,13 +43,13 @@ export default () => {
 			<div style={{ width: 640 }}>
 				<Form form={form} layout={layout} onSubmit={form.onSubmit}>
 					<Form.Field label="username" labelText="Username">
-						<Input block />
+						<Input />
 					</Form.Field>
 					<Form.Field label="pwd" labelText="Password">
-						<Input block />
+						<Input />
 					</Form.Field>
 					<Form.Field label="retypePwd" labelText="Retype password">
-						<Input block />
+						<Input />
 					</Form.Field>
 					<Form.Field label="system" labelText="System">
 						<Select

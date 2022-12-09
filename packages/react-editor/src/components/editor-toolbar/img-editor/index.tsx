@@ -7,7 +7,7 @@ import { TbEdit, TbX } from 'react-icons/tb'
 import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [src, setSrc] = useState('')
 
 	const contentEle = (
@@ -19,7 +19,7 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 			</div>
 			<Input.Textarea
-				block
+				style={{ width: 100 }}
 				autosize
 				minRows={3}
 				placeholder="图片地址"
@@ -43,8 +43,8 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Popover
 			trigger="manual"
-			open={visible}
-			onVisibleChange={setVisible}
+			open={open}
+			onOpenChange={setOpen}
 			onClickOutside={() => {
 				hide()
 			}}

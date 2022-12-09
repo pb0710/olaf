@@ -1,0 +1,19 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	overflow: hidden;
+}
+
+:root {
+	--g-text-1: #000000d9;
+	--g-radius-m: 4px;
+	--g-radius-l: 8px;
+	--g-text-font-size-m: 14px;
+	/*
+	--g-primary-color: #1890ff;
+	--g-text-font-size-m: 16px;
+	*/
+}

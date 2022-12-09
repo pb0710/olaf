@@ -23,7 +23,7 @@ const Dialog: FC<DialogProps> = props => {
 	const {
 		children,
 		className,
-		visible,
+		open,
 		maskClassName,
 		maskClosable,
 		hasCancel = true,
@@ -39,14 +39,8 @@ const Dialog: FC<DialogProps> = props => {
 	const prefixCls = `${UI_PREFIX}-dialog`
 
 	return (
-		<Modal
-			visible={visible}
-			maskClassName={maskClassName}
-			maskClosable={maskClosable}
-			onCancel={onCancel}
-			{...rest}
-		>
-			<Motion.Zoom in={visible}>
+		<Modal open={open} maskClassName={maskClassName} maskClosable={maskClosable} onCancel={onCancel} {...rest}>
+			<Motion.Zoom in={open}>
 				<Card
 					className={cls(className, prefixCls)}
 					shadow

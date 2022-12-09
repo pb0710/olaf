@@ -36,7 +36,7 @@ export default ({ editor }: { editor: Editor }) => {
 	]
 
 	const [inkColor, setInkColor] = useState('#faf594')
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 
 	const hasActive = options.some(opt => editor.isActive('highlight', { color: opt }))
 
@@ -61,8 +61,8 @@ export default ({ editor }: { editor: Editor }) => {
 				</div>
 				<Popover
 					trigger="manual"
-					open={visible}
-					onVisibleChange={setVisible}
+					open={open}
+					onOpenChange={setOpen}
 					onClickOutside={() => {
 						hide()
 					}}
@@ -70,9 +70,7 @@ export default ({ editor }: { editor: Editor }) => {
 					crossOffset={-26}
 					content={
 						<div className="g-highlight-popup">
-							<Button block onClick={() => editor.chain().focus().unsetHighlight().run()}>
-								无填充色
-							</Button>
+							<Button onClick={() => editor.chain().focus().unsetHighlight().run()}>无填充色</Button>
 							<Divider />
 							<div className="g-colors-wrapper">
 								{options.map(opt => {
@@ -93,7 +91,7 @@ export default ({ editor }: { editor: Editor }) => {
 				>
 					<div
 						className={cls('g-highlight-dropdown', {
-							active: visible
+							active: open
 						})}
 						onClick={toggle}
 					>

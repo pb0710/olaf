@@ -47,7 +47,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 	const imgRef = propRef || innerRef
 	const imgDetailRef = useRef<HTMLImageElement>(null)
 
-	const [detailVisible, { setTrue: showDetail, setFalse: hideDetail }] = useBoolean(false)
+	const [detailOpen, { setTrue: showDetail, setFalse: hideDetail }] = useBoolean(false)
 
 	const scaleRangeRef = useLatestRef(scaleRange)
 	const originalScaleIndex = scaleRangeRef.current.indexOf(1)
@@ -176,10 +176,10 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 	}
 
 	useEffect(() => {
-		if (!detailVisible) {
+		if (!detailOpen) {
 			handleReset()
 		}
-	}, [detailVisible, handleReset])
+	}, [detailOpen, handleReset])
 
 	const prefixCls = `${UI_PREFIX}-image`
 	const scalePercent = `${scale * 100}%`
@@ -247,47 +247,43 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 	const detailLoading = !_detailSrc || !detailLoaded
 
 	const detailEle = detailDisabled || (
-		<Modal visible={detailVisible} onCancel={hideDetail} onWheel={handleWheel} unmountOnExit>
-			{/* <Motion.Fade in={detailVisible} onExited={handleReset} exit={false} enter={false}> */}
-			{detailVisible && (
-				<div
-					className={`${prefixCls}-detail`}
-					onClick={event => {
-						// scale < 1 时，外层 detail 的宽高不变，点击 detail 也需要关闭弹窗。
-						if (event.target === event.currentTarget) {
+		<Modal open={detailOpen} onCancel={hideDetail} onWheel={handleWheel} unmountOnExit>
+			<div
+				className={`${prefixCls}-detail`}
+				onClick={event => {
+					// scale < 1 时，外层 detail 的宽高不变，点击 detail 也需要关闭弹窗。
+					if (event.target === event.currentTarget) {
+						hideDetail()
+					}
+				}}
+			>
+				{detailLoading && <Loading className={`${prefixCls}-detail-loading-icon`} size="large" />}
+				<img
+					ref={imgDetailRef}
+					className={cls(`${prefixCls}-detail-pic`, {
+						[`${prefixCls}-detail-pic-loaded`]: !detailLoading
+					})}
+					src={_detailSrc}
+					draggable={false}
+					style={{
+						transform: `scale(${scale}) rotate(${rotate}deg)`,
+						...(offset
+							? {
+									position: 'fixed',
+									left: offset.x,
+									top: offset.y
+							  }
+							: {})
+					}}
+					onMouseDown={handleDragDetailStart}
+					onLoad={handleDetailLoaded}
+					onClick={() => {
+						if (detailLoading) {
 							hideDetail()
 						}
 					}}
-				>
-					{detailLoading && <Loading className={`${prefixCls}-detail-loading-icon`} size="large" />}
-					<img
-						ref={imgDetailRef}
-						className={cls(`${prefixCls}-detail-pic`, {
-							[`${prefixCls}-detail-pic-loaded`]: !detailLoading
-						})}
-						src={_detailSrc}
-						draggable={false}
-						style={{
-							transform: `scale(${scale}) rotate(${rotate}deg)`,
-							...(offset
-								? {
-										position: 'fixed',
-										left: offset.x,
-										top: offset.y
-								  }
-								: {})
-						}}
-						onMouseDown={handleDragDetailStart}
-						onLoad={handleDetailLoaded}
-						onClick={() => {
-							if (detailLoading) {
-								hideDetail()
-							}
-						}}
-					/>
-				</div>
-			)}
-			{/* </Motion.Fade> */}
+				/>
+			</div>
 			{ratioVisible && <div className={`${prefixCls}-detail-ratio`}>{scalePercent}</div>}
 			{toolbarEle}
 		</Modal>

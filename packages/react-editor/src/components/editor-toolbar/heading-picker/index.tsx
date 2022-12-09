@@ -39,7 +39,7 @@ export default ({ editor }: { editor: Editor }) => {
 			tagName: 'span'
 		}
 	]
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 
 	let selection = options.find(opt => opt.value === 0)!
 	for (const opt of options) {
@@ -64,8 +64,8 @@ export default ({ editor }: { editor: Editor }) => {
 	return (
 		<Dropdown
 			trigger="manual"
-			open={visible}
-			onVisibleChange={setVisible}
+			open={open}
+			onOpenChange={setOpen}
 			onClickOutside={() => {
 				hide()
 			}}

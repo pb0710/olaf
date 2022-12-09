@@ -1,7 +1,7 @@
 import { Popover, Tooltip } from '@olaf/react-ui/src'
 import { cls } from '@olaf/utils/src'
 import { Editor } from '@tiptap/core'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { TbAlignCenter, TbAlignJustified, TbAlignLeft, TbAlignRight } from 'react-icons/tb'
 import { GoChevronDown } from 'react-icons/go'
 import './index.scss'
@@ -47,13 +47,13 @@ export default ({ editor }: { editor: Editor }) => {
 	const handleSelect = (opt: Option) => {
 		editor.chain().focus().setTextAlign(opt.value).run()
 	}
-	const [visible, { setReverse: toggle, setFalse: hide, setBool: setVisible }] = useBoolean(false)
+	const [open, { setReverse: toggle, setFalse: hide, setBool: setOpen }] = useBoolean(false)
 
 	return (
 		<Popover
 			trigger="manual"
-			open={visible}
-			onVisibleChange={setVisible}
+			open={open}
+			onOpenChange={setOpen}
 			onClickOutside={hide}
 			placement="bottom"
 			content={

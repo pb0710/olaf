@@ -7,7 +7,7 @@ import { TbTable } from 'react-icons/tb'
 import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [row, setRow] = useState(3)
 	const [col, setCol] = useState(3)
 
@@ -28,10 +28,10 @@ export default ({ editor }: { editor: Editor }) => {
 	}, [])
 
 	useEffect(() => {
-		if (visible) {
+		if (open) {
 			handleReset()
 		}
-	}, [visible])
+	}, [open])
 
 	const contentEle = (
 		<div className="g-table-popup">
@@ -59,13 +59,7 @@ export default ({ editor }: { editor: Editor }) => {
 	)
 
 	return (
-		<Popover
-			trigger="hover"
-			open={visible}
-			onVisibleChange={setVisible}
-			placement="right-start"
-			content={contentEle}
-		>
+		<Popover trigger="hover" open={open} onOpenChange={setOpen} placement="right-start" content={contentEle}>
 			<Dropdown.Item
 				icon={
 					<div className="g-table-picker">

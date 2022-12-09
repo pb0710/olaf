@@ -22,67 +22,43 @@ export default () => {
 				}}
 			>
 				<Tooltip placement="top-start" title="Top start">
-					<Button block style={ceilStyle}>
-						Top start
-					</Button>
+					<Button style={ceilStyle}>Top start</Button>
 				</Tooltip>
 				<Tooltip placement="top" title="Top">
-					<Button block style={ceilStyle}>
-						Top
-					</Button>
+					<Button style={ceilStyle}>Top</Button>
 				</Tooltip>
 				<Tooltip placement="top-end" title="Top end">
-					<Button block style={ceilStyle}>
-						Top end
-					</Button>
+					<Button style={ceilStyle}>Top end</Button>
 				</Tooltip>
 				<Tooltip placement="left-start" title="Left start">
-					<Button block style={ceilStyle}>
-						Left start
-					</Button>
+					<Button style={ceilStyle}>Left start</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
 				<Tooltip placement="right-start" title="Right start">
-					<Button block style={ceilStyle}>
-						Right start
-					</Button>
+					<Button style={ceilStyle}>Right start</Button>
 				</Tooltip>
 				<Tooltip placement="left" title="Left">
-					<Button block style={ceilStyle}>
-						Left
-					</Button>
+					<Button style={ceilStyle}>Left</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
 				<Tooltip placement="right" title="Right">
-					<Button block style={ceilStyle}>
-						Right
-					</Button>
+					<Button style={ceilStyle}>Right</Button>
 				</Tooltip>
 				<Tooltip placement="left-end" title="Left end">
-					<Button block style={ceilStyle}>
-						Left end
-					</Button>
+					<Button style={ceilStyle}>Left end</Button>
 				</Tooltip>
 				<div style={ceilStyle}></div>
 				<Tooltip placement="right-end" title="Right end">
-					<Button block style={ceilStyle}>
-						Right end
-					</Button>
+					<Button style={ceilStyle}>Right end</Button>
 				</Tooltip>
 				<Tooltip placement="bottom-start" title="Bottom start">
-					<Button block style={ceilStyle}>
-						Bottom start
-					</Button>
+					<Button style={ceilStyle}>Bottom start</Button>
 				</Tooltip>
 				<Tooltip placement="bottom" title="Bottom">
-					<Button block style={ceilStyle}>
-						Bottom
-					</Button>
+					<Button style={ceilStyle}>Bottom</Button>
 				</Tooltip>
 				<Tooltip placement="bottom-end" title="Bottom end">
-					<Button block style={ceilStyle}>
-						Bottom end
-					</Button>
+					<Button style={ceilStyle}>Bottom end</Button>
 				</Tooltip>
 			</div>
 			<Divider />

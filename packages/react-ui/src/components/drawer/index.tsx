@@ -7,7 +7,7 @@ import Motion from '../motion'
 import { TbX } from 'react-icons/tb'
 
 interface DrawerProps extends HTMLAttributes<HTMLElement> {
-	visible?: boolean
+	open?: boolean
 	placement?: 'left' | 'top' | 'right' | 'bottom'
 	width?: number | string
 	height?: number | string
@@ -23,7 +23,7 @@ const Drawer: FC<DrawerProps> = props => {
 	const {
 		children,
 		className,
-		visible = false,
+		open = false,
 		placement = 'right',
 		width,
 		height,
@@ -59,7 +59,7 @@ const Drawer: FC<DrawerProps> = props => {
 
 	return createPortal(
 		<Motion.Fade
-			in={visible}
+			in={open}
 			mountOnEnter
 			unmountOnExit={unmountOnExit}
 			onEnter={setBodyOverflowHidden}
@@ -73,7 +73,7 @@ const Drawer: FC<DrawerProps> = props => {
 					}}
 					style={maskStyle}
 				></div>
-				<Motion.Slide in={visible} direction={direction}>
+				<Motion.Slide in={open} direction={direction}>
 					<div
 						className={cls(className, `${prefixCls}-wrap`, `${prefixCls}-wrap-${placement}`)}
 						style={{ ...style, width, height }}

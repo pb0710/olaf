@@ -8,7 +8,7 @@ import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
 	const disabled = !editor.can().undo()
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [href, setHref] = useState('')
 
 	const unsetLink = () => {
@@ -33,7 +33,7 @@ export default ({ editor }: { editor: Editor }) => {
 					<TbX />
 				</div>
 			</div>
-			<Input block placeholder="链接地址" value={href} onChange={val => setHref(val as string)} />
+			<Input placeholder="链接地址" value={href} onChange={val => setHref(val as string)} />
 			<Space className="g-link-footer">
 				{isLink && <Button onClick={unsetLink}>移除</Button>}
 				<Button primary disabled={!href} onClick={setLink}>
@@ -44,13 +44,7 @@ export default ({ editor }: { editor: Editor }) => {
 	)
 
 	return (
-		<Popover
-			trigger="hover"
-			open={visible}
-			onVisibleChange={setVisible}
-			placement="right-start"
-			content={contentEle}
-		>
+		<Popover trigger="hover" open={open} onOpenChange={setOpen} placement="right-start" content={contentEle}>
 			<Dropdown.Item
 				icon={
 					<div

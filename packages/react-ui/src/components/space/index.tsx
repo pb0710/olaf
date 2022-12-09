@@ -7,24 +7,11 @@ interface SpaceProps extends HTMLAttributes<HTMLElement> {
 	size?: 'small' | 'medium' | 'large'
 	align?: 'start' | 'end' | 'center' | 'baseline'
 	direction?: 'horizontal' | 'vertical'
-	block?: boolean
 }
 
 const Space = forwardRef<HTMLDivElement, SpaceProps>((props, propRef) => {
-	const {
-		children,
-		className,
-		size = 'medium',
-		align = 'start',
-		direction = 'horizontal',
-		block = true,
-		style,
-		...rest
-	} = props
+	const { children, className, size = 'medium', align = 'start', direction = 'horizontal', style, ...rest } = props
 
-	function toDisplay(block: boolean) {
-		return block ? 'flex' : 'inline-flex'
-	}
 	function toAlignItems(align: string) {
 		if (['start', 'end'].includes(align)) {
 			return `flex-${align}`
@@ -45,7 +32,7 @@ const Space = forwardRef<HTMLDivElement, SpaceProps>((props, propRef) => {
 			ref={propRef}
 			className={wrapCls}
 			style={{
-				display: toDisplay(block),
+				display: 'flex',
 				alignItems: toAlignItems(align),
 				flexDirection: toFlexDirection(direction),
 				...style

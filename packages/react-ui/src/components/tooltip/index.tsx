@@ -26,7 +26,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, propRef) => {
 		unmountOnExit = false,
 		appendTo,
 		onClickOutside,
-		onVisibleChange,
+		onOpenChange,
 		...rest
 	} = props
 
@@ -67,7 +67,7 @@ const Tooltip = forwardRef<HTMLElement, TooltipProps>((props, propRef) => {
 			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
-			onVisibleChange={onVisibleChange}
+			onOpenChange={onOpenChange}
 			motion="grow"
 			growTransformOrigin={growTransformOrigin}
 		>

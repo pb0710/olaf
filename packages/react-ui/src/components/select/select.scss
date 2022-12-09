@@ -10,10 +10,6 @@
 	border-bottom-color: #ccc;
 	background: #fff;
 	border-radius: $radius-m;
-	&-block {
-		display: flex;
-		width: 100%;
-	}
 	&-disabled {
 		cursor: not-allowed;
 		opacity: $opacity-disabled;
@@ -29,6 +25,7 @@
 			margin-left: 0;
 		}
 		&-filter {
+			width: 100%;
 			&-placeholder-darker {
 				> input {
 					&::placeholder {

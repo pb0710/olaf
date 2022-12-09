@@ -21,7 +21,7 @@ if (document) {
 }
 
 interface ModalProps extends HTMLAttributes<HTMLElement> {
-	visible?: boolean
+	open?: boolean
 	maskClassName?: string
 	maskClosable?: boolean
 	unmountOnExit?: boolean
@@ -35,7 +35,7 @@ const Modal: FC<ModalProps> = props => {
 		maskClassName,
 		maskClosable = true,
 		unmountOnExit = false,
-		visible = false,
+		open = false,
 		onCancel,
 		...rest
 	} = props
@@ -55,7 +55,7 @@ const Modal: FC<ModalProps> = props => {
 
 	return createPortal(
 		<Motion.Fade
-			in={visible}
+			in={open}
 			mountOnEnter
 			unmountOnExit={unmountOnExit}
 			onEnter={setBodyOverflowHidden}

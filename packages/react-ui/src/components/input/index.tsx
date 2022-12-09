@@ -20,7 +20,6 @@ import Textarea from './Textarea'
 interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'maxLength' | 'onChange' | 'prefix'> {
 	value?: string | number
 	size?: 'small' | 'medium' | 'large'
-	block?: boolean
 	round?: boolean
 	bordered?: boolean
 	disabled?: boolean
@@ -41,7 +40,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 		prefix,
 		suffix,
 		size = 'medium',
-		block = false,
 		round = false,
 		disabled = false,
 		allowClear = false,
@@ -98,7 +96,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 		<label
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, {
 				[`${prefixCls}-focus`]: focus,
-				[`${prefixCls}-block`]: block,
 				[`${prefixCls}-round`]: round,
 				[`${prefixCls}-bordered`]: bordered,
 				[`${prefixCls}-disabled`]: disabled

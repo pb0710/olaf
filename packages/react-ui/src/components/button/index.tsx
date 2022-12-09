@@ -6,7 +6,6 @@ import { UI_PREFIX } from '../../constants'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: 'small' | 'medium' | 'large'
-	block?: boolean
 	primary?: boolean
 	round?: boolean
 	circle?: boolean
@@ -22,7 +21,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		className,
 		type = 'button',
 		size = 'medium',
-		block = false,
 		primary = false,
 		round = false,
 		circle = false,
@@ -64,7 +62,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		<button
 			className={cls(className, prefixCls, `${prefixCls}-${size}`, {
 				[`${prefixCls}-primary`]: primary,
-				[`${prefixCls}-block`]: block,
 				[`${prefixCls}-round`]: round,
 				[`${prefixCls}-circle`]: circle,
 				[`${prefixCls}-square`]: square,

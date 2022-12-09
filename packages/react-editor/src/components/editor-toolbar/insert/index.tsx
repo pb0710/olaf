@@ -12,12 +12,12 @@ import TablePicker from '../table-picker'
 import './index.scss'
 
 export default ({ editor }: { editor: Editor }) => {
-	const [visible, { setBool: setVisible, setFalse: hide, setReverse: toggle }] = useBoolean(false)
+	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	return (
 		<Dropdown
 			trigger="manual"
-			open={visible}
-			onVisibleChange={setVisible}
+			open={open}
+			onOpenChange={setOpen}
 			onClickOutside={() => {
 				hide()
 			}}

@@ -6,7 +6,7 @@
 		"target": "ESNext",
 		"module": "CommonJS",
 		"esModuleInterop": true,
-		"emitDeclarationOnly": true,
+		"declaration": false,
 		"paths": {
 			"@editor/*": [
 				"editor-views/*"

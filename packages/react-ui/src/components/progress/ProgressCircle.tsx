@@ -32,7 +32,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, propRef) => {
 		preMoleculeRef.current = molecule
 	}, [molecule])
 
-	const detailVisible = size === 'small' || is.null(format)
+	const detailOpen = size === 'small' || is.null(format)
 	const prefixCls = `${UI_PREFIX}-progress-circle`
 
 	return (
@@ -45,7 +45,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, propRef) => {
 			size={size}
 			{...rest}
 		>
-			{detailVisible || (
+			{detailOpen || (
 				<div className={`${prefixCls}-detail`}>
 					<CountUp
 						className={`${prefixCls}-detail-num`}

@@ -38,8 +38,6 @@ export default () => {
 				<Button size="large">Large</Button>
 			</Space>
 			<Divider />
-			<Button block>Block</Button>
-			<Divider />
 			<Space>
 				<Button loading>Loading</Button>
 				<Button primary loading>
@@ -53,9 +51,7 @@ export default () => {
 				</Button>
 			</Space>
 			<Divider />
-			<Button block loading>
-				Loading
-			</Button>
+			<Button loading>Loading</Button>
 			<Divider />
 			<Space>
 				<Button disabled>Disabled</Button>

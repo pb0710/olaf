@@ -3,8 +3,8 @@ import { Button, Divider, Drawer, Radio } from '@olaf/react-ui/src'
 
 export default () => {
 	const [placement, setPlacement] = useState<'left' | 'top' | 'right' | 'bottom'>('left')
-	const [visible, setVisible] = useState(false)
-	const [visible1, setVisible1] = useState(false)
+	const [open, setOpen] = useState(false)
+	const [open1, setOpen1] = useState(false)
 	return (
 		<div style={{ padding: 24 }}>
 			<h1>Drawer</h1>
@@ -21,13 +21,13 @@ export default () => {
 				<Radio label="bottom">Bottom</Radio>
 			</Radio.Group>
 			<Divider />
-			<Button onClick={() => setVisible(true)}>Show drawer</Button>
-			<Drawer visible={visible} placement={placement} onCancel={() => setVisible(false)}>
+			<Button onClick={() => setOpen(true)}>Show drawer</Button>
+			<Drawer open={open} placement={placement} onCancel={() => setOpen(false)}>
 				<h1>Title</h1>
 			</Drawer>
 			<Divider />
-			<Button onClick={() => setVisible1(true)}>Closable</Button>
-			<Drawer closable maskClosable={false} width={300} visible={visible1} onCancel={() => setVisible1(false)}>
+			<Button onClick={() => setOpen1(true)}>Closable</Button>
+			<Drawer closable maskClosable={false} width={300} open={open1} onCancel={() => setOpen1(false)}>
 				<h1>Title</h1>
 			</Drawer>
 		</div>

@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Button, Card, Divider, Modal } from '@olaf/react-ui/src'
 
 export default () => {
-	const [visible, setVisible] = useState(false)
-	const show = () => setVisible(true)
-	const hide = () => setVisible(false)
+	const [open, setOpen] = useState(false)
+	const show = () => setOpen(true)
+	const hide = () => setOpen(false)
 	return (
 		<div style={{ padding: 24 }}>
 			<h1>Modal</h1>
 			<Button onClick={show}>Show modal</Button>
-			<Modal visible={visible} title="Basic Modal" onCancel={hide}>
+			<Modal open={open} title="Basic Modal" onCancel={hide}>
 				<Card>Content</Card>
 			</Modal>
 			<Divider />

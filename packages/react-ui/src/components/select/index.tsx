@@ -20,7 +20,6 @@ import Input from '../input'
 import { TbCheck, TbChevronDown } from 'react-icons/tb'
 
 interface SelectProps extends Omit<HTMLAttributes<HTMLElement>, 'defaultValue' | 'onChange'> {
-	block?: boolean
 	multiple?: boolean
 	disabled?: boolean
 	filter?: boolean
@@ -35,7 +34,6 @@ interface SelectProps extends Omit<HTMLAttributes<HTMLElement>, 'defaultValue' |
 const Select: FC<SelectProps> = props => {
 	const {
 		className,
-		block = false,
 		multiple = false,
 		disabled = false,
 		filter = false,
@@ -174,7 +172,6 @@ const Select: FC<SelectProps> = props => {
 				[`${prefixCls}-selection-filter-placeholder-darker`]: !multiple && !dropdownVisible
 			})}
 			ref={inputRef}
-			block
 			bordered={false}
 			size="small"
 			placeholder={
@@ -239,7 +236,7 @@ const Select: FC<SelectProps> = props => {
 		<Dropdown
 			trigger="manual"
 			open={dropdownVisible}
-			onVisibleChange={setDropdownVisible}
+			onOpenChange={setDropdownVisible}
 			onClickOutside={() => {
 				hideDropdown()
 			}}
@@ -249,7 +246,6 @@ const Select: FC<SelectProps> = props => {
 				<div
 					ref={selectRef}
 					className={cls(className, prefixCls, {
-						[`${prefixCls}-block`]: block,
 						[`${prefixCls}-disabled`]: disabled
 					})}
 					onClick={handleCustomClick}

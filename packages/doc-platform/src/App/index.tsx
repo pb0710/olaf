@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { NavLink, useRoutes } from 'react-router-dom'
 import { cls } from '@olaf/utils/src'
-import './App.scss'
-import router, { navRoutes } from './routes'
+import './index.scss'
+import router, { navRoutes } from '@/router/routes'
 import { Loading, Space } from '@olaf/react-ui/src'
 
 export default () => {

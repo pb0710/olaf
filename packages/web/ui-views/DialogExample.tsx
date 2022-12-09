@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Button, Divider, Dialog } from '@olaf/react-ui/src'
 
 export default () => {
-	const [visible, setVisible] = useState(false)
-	const show = () => setVisible(true)
-	const hide = () => setVisible(false)
+	const [open, setOpen] = useState(false)
+	const show = () => setOpen(true)
+	const hide = () => setOpen(false)
 	return (
 		<div style={{ padding: 24 }}>
 			<h1>Dialog</h1>
 			<Button onClick={show}>Show dialog</Button>
-			<Dialog visible={visible} title="Basic Dialog" onCancel={hide}>
+			<Dialog open={open} title="Basic Dialog" onCancel={hide}>
 				Content
 			</Dialog>
 			<Divider />

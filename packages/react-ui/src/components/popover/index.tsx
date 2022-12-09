@@ -24,7 +24,7 @@ const Popover = forwardRef<HTMLElement, PopoverProps>((props, propRef) => {
 		unmountOnExit,
 		appendTo,
 		onClickOutside,
-		onVisibleChange,
+		onOpenChange,
 		...rest
 	} = props
 
@@ -63,7 +63,7 @@ const Popover = forwardRef<HTMLElement, PopoverProps>((props, propRef) => {
 			crossOffset={crossOffset}
 			appendTo={appendTo}
 			onClickOutside={onClickOutside}
-			onVisibleChange={onVisibleChange}
+			onOpenChange={onOpenChange}
 			motion="grow"
 			growTransformOrigin={growTransformOrigin}
 		>

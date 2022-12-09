@@ -2,7 +2,7 @@ import { Trigger, Divider, Space, Button } from '@olaf/react-ui/src'
 import React, { useState } from 'react'
 
 export default () => {
-	const [visible, setVisible] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const createContent = (text: string) => (
 		<div
@@ -28,8 +28,8 @@ export default () => {
 				<Trigger trigger="click" popup={createContent('tooltip')}>
 					<Button>click</Button>
 				</Trigger>
-				<Trigger trigger="manual" popup={createContent('tooltip')} open={visible} onVisibleChange={setVisible}>
-					<Button onClick={() => setVisible(p => !p)}>manual</Button>
+				<Trigger trigger="manual" popup={createContent('tooltip')} open={open} onOpenChange={setOpen}>
+					<Button onClick={() => setOpen(p => !p)}>manual</Button>
 				</Trigger>
 			</Space>
 			<Divider />

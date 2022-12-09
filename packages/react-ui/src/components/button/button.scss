@@ -39,10 +39,6 @@
 	&:active {
 		filter: brightness(0.9);
 	}
-	&-block {
-		display: flex;
-		width: 100%;
-	}
 	&-primary {
 		border: 1px solid $color-primary;
 		background: $color-primary;
