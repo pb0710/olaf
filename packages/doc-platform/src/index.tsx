@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import '@/styles/reset.scss'
+import './index.css'
+import 'virtual:uno.css'
 
 import store from '@/store'
 import App from '@/App'

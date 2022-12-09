@@ -2,13 +2,13 @@ import React, { Suspense } from 'react'
 import { NavLink, useRoutes } from 'react-router-dom'
 import { cls } from '@olaf/utils/src'
 import './index.scss'
-import router, { navRoutes } from '@/router/routes'
+import router, { navRoutes } from '../router/routes'
 import { Loading, Space } from '@olaf/react-ui/src'
 
-export default () => {
-	const content = useRoutes(router)
+const App = () => {
+	const contentEle = useRoutes(router)
 
-	const nav = (
+	const navEle = (
 		<Space direction="vertical" size="small">
 			{navRoutes.map(({ path, name }) => (
 				<NavLink
@@ -27,11 +27,13 @@ export default () => {
 	)
 
 	return (
-		<div className="app">
-			<div className="nav-bar">{nav}</div>
+		<div className="example">
+			<div className="nav-bar">{navEle}</div>
 			<div className="content">
-				<Suspense fallback={<Loading />}>{content}</Suspense>
+				<Suspense fallback={<Loading />}>{contentEle}</Suspense>
 			</div>
 		</div>
 	)
 }
+
+export default App
