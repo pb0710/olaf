@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "author": "Grey",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "not dead"
   ],
   "devDependencies": {
+    "@unocss/preset-rem-to-px": "^0.47.5",
     "unocss": "^0.47.5"
   }
 }

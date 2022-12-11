@@ -12,6 +12,8 @@
 	border-radius: $radius-m;
 	background: #fff;
 	user-select: none;
+	cursor: pointer;
+	
 	&-inner-ml {
 		margin-left: 8px;
 	}
@@ -43,6 +45,16 @@
 		border: 1px solid $color-primary;
 		background: $color-primary;
 		color: #fff;
+	}
+	&-text {
+		background: transparent;
+		border: none;
+		&:hover {
+			background: rgba($color: #000, $alpha: 0.06);
+		}
+		&:active {
+			background: rgba($color: #000, $alpha: 0.09);
+		}
 	}
 	&-round {
 		border-radius: $round;

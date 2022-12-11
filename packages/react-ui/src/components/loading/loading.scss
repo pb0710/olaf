@@ -28,6 +28,7 @@
 	}
 	&-is-wrapper {
 		position: relative;
+		width: max-content;
 		.g-loading-tip {
 			display: flex;
 			position: absolute;

@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import './index.css'
+import './index.scss'
 import 'virtual:uno.css'
 
 import store from '@/store'
-import App from '@/App'
+import App from '@/app'
 
 createRoot(document.getElementById('app') as HTMLElement).render(
 	<BrowserRouter>

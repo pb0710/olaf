@@ -3,7 +3,8 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { swcReactRefresh } from 'vite-plugin-swc-react-refresh'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno } from 'unocss'
+import { presetUno } from 'unocss'
+import presetRemToPx from '@unocss/preset-rem-to-px'
 import { resolve } from 'path'
 
 export default defineConfig({
@@ -13,13 +14,8 @@ export default defineConfig({
 		swcReactRefresh(),
 		visualizer(),
 		Unocss({
-			presets: [
-				presetAttributify({
-					/* preset options */
-				}),
-				presetUno()
-			],
-			rules: [['m-1', { margin: '0.25rem' }]]
+			presets: [presetUno(), presetRemToPx()],
+			rules: []
 		})
 	],
 	server: {},

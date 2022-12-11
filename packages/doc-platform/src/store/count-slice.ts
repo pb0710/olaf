@@ -5,13 +5,13 @@ export interface CounterState {
 	value: number
 }
 
-const initialState: CounterState = {
+const initial_state: CounterState = {
 	value: 0
 }
 
-export const counterSlice = createSlice({
+export const counter_slice = createSlice({
 	name: 'counter',
-	initialState,
+	initialState: initial_state,
 	reducers: {
 		increment: state => {
 			// Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -23,12 +23,12 @@ export const counterSlice = createSlice({
 		decrement: state => {
 			state.value -= 1
 		},
-		incrementByAmount: (state, action: PayloadAction<number>) => {
+		increment_by_amount: (state, action: PayloadAction<number>) => {
 			state.value += action.payload
 		}
 	}
 })
 
-export default counterSlice
+export default counter_slice
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, decrement, increment_by_amount: incrementByAmount } = counter_slice.actions

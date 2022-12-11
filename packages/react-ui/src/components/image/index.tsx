@@ -234,7 +234,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 				<Space size="small">
 					{toolbarList.map(item => (
 						<Tooltip key={item.id} spacing={12} placement="top" title={item.title}>
-							<Button circle onClick={item.handler}>
+							<Button circle text onClick={item.handler}>
 								{item.icon}
 							</Button>
 						</Tooltip>
@@ -258,31 +258,33 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 				}}
 			>
 				{detailLoading && <Loading className={`${prefixCls}-detail-loading-icon`} size="large" />}
-				<img
-					ref={imgDetailRef}
-					className={cls(`${prefixCls}-detail-pic`, {
-						[`${prefixCls}-detail-pic-loaded`]: !detailLoading
-					})}
-					src={_detailSrc}
-					draggable={false}
-					style={{
-						transform: `scale(${scale}) rotate(${rotate}deg)`,
-						...(offset
-							? {
-									position: 'fixed',
-									left: offset.x,
-									top: offset.y
-							  }
-							: {})
-					}}
-					onMouseDown={handleDragDetailStart}
-					onLoad={handleDetailLoaded}
-					onClick={() => {
-						if (detailLoading) {
-							hideDetail()
-						}
-					}}
-				/>
+				{detailOpen && (
+					<img
+						ref={imgDetailRef}
+						className={cls(`${prefixCls}-detail-pic`, {
+							[`${prefixCls}-detail-pic-loaded`]: !detailLoading
+						})}
+						src={_detailSrc}
+						draggable={false}
+						style={{
+							transform: `scale(${scale}) rotate(${rotate}deg)`,
+							...(offset
+								? {
+										position: 'fixed',
+										left: offset.x,
+										top: offset.y
+								  }
+								: {})
+						}}
+						onMouseDown={handleDragDetailStart}
+						onLoad={handleDetailLoaded}
+						onClick={() => {
+							if (detailLoading) {
+								hideDetail()
+							}
+						}}
+					/>
+				)}
 			</div>
 			{ratioVisible && <div className={`${prefixCls}-detail-ratio`}>{scalePercent}</div>}
 			{toolbarEle}

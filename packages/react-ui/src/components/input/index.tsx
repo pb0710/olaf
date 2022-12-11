@@ -26,6 +26,7 @@ interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'maxLength' 
 	prefix?: ReactNode
 	suffix?: ReactNode
 	allowClear?: boolean
+	autoFocus?: boolean
 	onChange?: ChangeEventHandler<HTMLInputElement> & ((value: string | number) => void)
 }
 
@@ -43,6 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 		round = false,
 		disabled = false,
 		allowClear = false,
+		autoFocus = false,
 		bordered = true,
 		...rest
 	} = props
@@ -87,6 +89,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 	useEffect(() => {
 		if (defaultValue) showClear()
 	}, [defaultValue, showClear])
+
+	useEffect(() => {
+		if (autoFocus) {
+			inputRef.current.focus()
+			setFocus()
+		}
+	}, [autoFocus, inputRef, setFocus])
 
 	const prefixCls = `${UI_PREFIX}-input`
 
