@@ -70,7 +70,12 @@ export default ({ editor }: { editor: Editor }) => {
 					crossOffset={-26}
 					content={
 						<div className="g-highlight-popup">
-							<Button onClick={() => editor.chain().focus().unsetHighlight().run()}>无填充色</Button>
+							<Button
+								style={{ width: '100%' }}
+								onClick={() => editor.chain().focus().unsetHighlight().run()}
+							>
+								无填充色
+							</Button>
 							<Divider />
 							<div className="g-colors-wrapper">
 								{options.map(opt => {

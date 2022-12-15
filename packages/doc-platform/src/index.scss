@@ -5,18 +5,17 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	
 	overflow: hidden;
-	font-size: 14px;
-	color: #000000d9;
+	font-size: var(--g-text-font-size-m);
+	color: var(--g-text-1);
 }
 
 :root {
-	--g-text-1: #000000d9;
+	--g-text-1: #1f2329;
 	--g-radius-s: 4px;
 	--g-radius-m: 8px;
     --g-radius-l: 12px;
 	--g-text-font-size-m: 14px;
 	/* 
 	--g-primary-color: #1890ff;
-	--g-text-font-size-m: 16px; 
 	*/
 }

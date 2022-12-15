@@ -10,7 +10,7 @@ export default function Browse() {
 	return (
 		<>
 			<Header heading="浏览">
-				<Input prefix={<TbSearch />} onFocus={showSearchModal} />
+				<Input prefix={<TbSearch />} placeholder="搜动态" onFocus={showSearchModal} />
 			</Header>
 			<Modal open={open} onCancel={hideSearchModal} unmountOnExit>
 				<Card className="p-0" bordered={false} shadow>

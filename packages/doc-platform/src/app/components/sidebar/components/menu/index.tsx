@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 const map = nav_routes
 	.filter(route => route.children?.length)
 	.reduce<Record<string, boolean>>((obj, cur) => {
-		obj[cur.path] = false
+		obj[cur.path] = true
 		return obj
 	}, {})
 

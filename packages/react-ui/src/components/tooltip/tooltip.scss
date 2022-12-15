@@ -8,13 +8,13 @@
 	box-shadow: $shadow-m;
 	font-size: $text-font-size-s;
 	&-light {
-		color: #333;
+		color: $text-1;
 		background: #fff;
 		border: 1px solid #ddd;
 		border-bottom-color: #ccc;
 	}
 	&-dark {
 		color: #fff;
-		background: #333;
+		background: $text-1;
 	}
 }

@@ -6,7 +6,7 @@
 	@include interactive;
 	display: flex;
     padding: 4px;
-	border-radius: 4px;
+	border-radius: $radius-m;
 
     .g-insert-icon {
         font-size: 18px;
@@ -14,7 +14,7 @@
 
     .g-insert-arrow {
         font-size: 12px;  
-        color: #666; 
+        color: $text-2; 
     }
 }
 

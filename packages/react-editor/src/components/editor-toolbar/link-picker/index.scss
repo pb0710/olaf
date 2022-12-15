@@ -5,7 +5,7 @@
     @extend .g-editor-icon;
     // @include interactive;
     // padding: 4px;
-    // border-radius: 4px;
+    // border-radius: $radius-m;
 }
 
 .g-link-popup {
@@ -21,7 +21,7 @@
 			justify-content: center;
 			width: 24px;
 			height: 24px;
-			border-radius: 4px;
+			border-radius: $radius-m;
 			cursor: pointer;
 			&:hover {
 				background: #eee;

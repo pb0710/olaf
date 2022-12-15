@@ -49,15 +49,12 @@ export default ({ editor }: { editor: Editor | null }) => {
 				)
 			}}
 		>
-			<Space className="g-bubble-menu">
+			<Space className="g-bubble-menu" size="small">
 				<Bold editor={editor} />
 				<Italic editor={editor} />
 				<Underline editor={editor} />
 				<Strike editor={editor} />
 				<InlineCode editor={editor} />
-				<HighlightPicker editor={editor} />
-				<TextColorPicker editor={editor} />
-				{/* <LinkPicker editor={editor} /> */}
 			</Space>
 		</BubbleMenu>
 	)

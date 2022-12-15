@@ -70,7 +70,9 @@ export default ({ editor }: { editor: Editor }) => {
 					crossOffset={-26}
 					content={
 						<div className="g-text-color-popup">
-							<Button onClick={handleReset}>恢复默认</Button>
+							<Button style={{ width: '100%' }} onClick={handleReset}>
+								恢复默认
+							</Button>
 							<Divider />
 							<div className="g-colors-wrapper">
 								{options.map(opt => {

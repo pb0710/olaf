@@ -1,7 +1,9 @@
+@use '../../styles/mixins.scss' as *;
+
 .g-bubble-menu {
-	padding: 6px 0;
+	padding: 6px 4px;
 	background: #fff;
-	border-radius: 8px;
+	border-radius: $radius-m;
 	border: 1px solid #ddd;
 	border-bottom-color: #ccc;
 	box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
