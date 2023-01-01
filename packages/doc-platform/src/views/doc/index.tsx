@@ -1,3 +1,4 @@
+import BackTop from '@/app/components/back-top'
 import Header from '@/app/components/header'
 import Editor from '@olaf/react-editor/src'
 import { Button } from '@olaf/react-ui/src'
@@ -12,13 +13,14 @@ export default function Doc() {
 	}
 	return (
 		<>
-			<Header heading="文档">
+			<Header heading="文档" bordered>
 				<Button primary onClick={handleSave}>
 					保存
 				</Button>
 			</Header>
-			<div className="flex justify-center border-t-#eee border-t-1">
-				<div className="border-b-#eee border-b-1 p-2">
+			<BackTop target={document.getElementById('app-content')!} />
+			<div className="flex justify-center">
+				<div className="border-b-#eee border-b-1 p-3">
 					<Editor.Toolbar editor={editor} />
 				</div>
 			</div>

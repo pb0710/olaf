@@ -10,7 +10,7 @@ export default function App() {
 	return (
 		<div className="flex">
 			<Sidebar />
-			<div className="flex-1 h-screen border-l-#eee border-l overflow-y-auto">
+			<div id="app-content" className="flex-1 h-screen border-l-#eee border-l overflow-y-auto">
 				<Suspense fallback={<Loading />}>{content}</Suspense>
 			</div>
 		</div>

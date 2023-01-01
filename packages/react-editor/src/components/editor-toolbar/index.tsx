@@ -1,4 +1,4 @@
-import { Space } from '@olaf/react-ui/src'
+import { Divider, Space } from '@olaf/react-ui/src'
 import { BubbleMenu, Editor } from '@tiptap/react'
 import React from 'react'
 import './index.scss'
@@ -102,7 +102,11 @@ export default ({ editor }: { editor: Editor | null }) => {
 				<Redo editor={editor} />
 				<Eraser editor={editor} />
 
+				<Divider className="toolbar-divider" direction="vertical" />
+
 				<Insert editor={editor} />
+
+				<Divider className="toolbar-divider" direction="vertical" />
 
 				<HeadingPicker editor={editor} />
 				<Bold editor={editor} />
@@ -113,6 +117,8 @@ export default ({ editor }: { editor: Editor | null }) => {
 				<HighlightPicker editor={editor} />
 				<TextColorPicker editor={editor} />
 				{/* <LinkPicker editor={editor} /> */}
+
+				<Divider className="toolbar-divider" direction="vertical" />
 
 				<BulletList editor={editor} />
 				<OrderList editor={editor} />
