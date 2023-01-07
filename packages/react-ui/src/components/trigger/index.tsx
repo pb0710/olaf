@@ -130,7 +130,7 @@ const Trigger = forwardRef<HTMLElement, TriggerProps>((props, propRef) => {
 	}
 
 	const mixProps: Record<string, any> = {
-		[`data-open`]: _open
+		[`data-open`]: _open ? 1 : 0
 	}
 	if (isHover) {
 		mixProps.onMouseEnter = onMouseEnter

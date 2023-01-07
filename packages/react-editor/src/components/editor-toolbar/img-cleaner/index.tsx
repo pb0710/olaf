@@ -5,7 +5,7 @@ import React from 'react'
 import { TbTrashX } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function ImgCleaner({ editor }: { editor: Editor }) {
 	return (
 		<Tooltip placement="bottom" title="删除图片">
 			<div

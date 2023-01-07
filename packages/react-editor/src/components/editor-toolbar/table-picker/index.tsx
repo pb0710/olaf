@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { TbTable } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function TablePicker({ editor }: { editor: Editor }) {
 	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [row, setRow] = useState(3)
 	const [col, setCol] = useState(3)

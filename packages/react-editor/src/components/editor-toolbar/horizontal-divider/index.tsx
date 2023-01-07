@@ -5,8 +5,8 @@ import React from 'react'
 import { TbBorderStyle2 } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
-	const disabled = !editor.can().undo()
+export default function HorizontalDivider({ editor }: { editor: Editor }) {
+	const disabled = !editor.can().setHorizontalRule()
 	return (
 		<Dropdown.Item
 			icon={

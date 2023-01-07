@@ -95,6 +95,7 @@
 		&-checked {
 			background: #fff;
 			box-shadow: 0 1px 4px rgba($color: #000000, $alpha: 0.1);
+			z-index: 1;
 		}
 		&:not(&-checked) {
 			&:not(.g-radio-tab-disabled) {

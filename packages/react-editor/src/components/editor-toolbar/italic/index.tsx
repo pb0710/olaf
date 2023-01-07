@@ -5,12 +5,13 @@ import React from 'react'
 import { TbItalic } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function Italic({ editor }: { editor: Editor }) {
 	return (
 		<Tooltip placement="bottom" title="斜体">
 			<div
 				className={cls('g-italic-icon', {
-					active: editor.isActive('italic')
+					active: editor.isActive('italic'),
+					disabled: !editor.can().toggleItalic()
 				})}
 				onClick={() => {
 					editor.chain().focus().toggleItalic().run()

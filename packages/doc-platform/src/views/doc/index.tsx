@@ -72,8 +72,8 @@ export default function Doc() {
 			</Header>
 			<BackTop target={document.getElementById('app-content')!} />
 			{saveDialog}
-			<div className="flex justify-center sticky top-16 z-1">
-				<div className="border-b-#ebebeb border-b-1 p-3 bg-#fff">
+			<div className="flex justify-center sticky top-16 z-10">
+				<div className="border-b-#ddd border-b-1 p-3 bg-#fff shadow-[0_12px_16px_-8px_rgba(0,0,0,0.02)]">
 					<Editor.Toolbar editor={editor} />
 				</div>
 			</div>

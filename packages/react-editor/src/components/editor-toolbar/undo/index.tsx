@@ -5,7 +5,7 @@ import React from 'react'
 import { TbArrowBackUp } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function Undo({ editor }: { editor: Editor }) {
 	const disabled = !editor.can().undo()
 	return (
 		<Tooltip placement="bottom" title="撤销">

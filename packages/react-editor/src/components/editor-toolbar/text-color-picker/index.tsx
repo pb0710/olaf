@@ -7,7 +7,7 @@ import { BiFont } from 'react-icons/bi'
 import { GoChevronDown } from 'react-icons/go'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function TextColorPicker({ editor }: { editor: Editor }) {
 	const DEFAULT_COLOR = '#333333'
 	const options = [
 		'#ffffff',
@@ -45,12 +45,15 @@ export default ({ editor }: { editor: Editor }) => {
 		editor.chain().focus().setColor(DEFAULT_COLOR).run()
 	}
 
+	const setColorDisabled = !editor.can().setColor(inkColor)
+
 	return (
 		<Tooltip placement="bottom" title="文字颜色">
 			<div className="g-text-color-picker">
 				<div
 					className={cls('g-text-color-setter', {
-						active: hasActive
+						active: hasActive,
+						disabled: setColorDisabled
 					})}
 					onClick={() => {
 						editor.chain().focus().setColor(inkColor).run()
@@ -93,9 +96,10 @@ export default ({ editor }: { editor: Editor }) => {
 				>
 					<div
 						className={cls('g-text-color-dropdown', {
-							active: open
+							active: open,
+							disabled: setColorDisabled
 						})}
-						onClick={toggle}
+						onClick={setColorDisabled ? undefined : toggle}
 					>
 						<GoChevronDown />
 					</div>

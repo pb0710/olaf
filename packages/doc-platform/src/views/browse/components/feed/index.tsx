@@ -4,13 +4,24 @@ import { Avatar, Button, Image } from '@olaf/react-ui/src'
 import React from 'react'
 import { TbThumbUp } from 'react-icons/tb'
 
-export default function Feed() {
+interface FeedProps {
+	feedTab: number
+}
+
+export default function Feed(props: FeedProps) {
+	const { feedTab } = props
 	const {
 		data: feed_list,
 		error,
 		loading
 	} = useFetch(getFeedList, {
-		initialData: []
+		initialData: [],
+		params: [
+			{
+				feedTab
+			}
+		],
+		refreshDeps: [feedTab]
 	})
 	return (
 		<div className="max-w-240 m-l-20">

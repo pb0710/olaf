@@ -1,24 +1,34 @@
 import BackTop from '@/app/components/back-top'
 import Header from '@/app/components/header'
 import { useBoolean } from '@olaf/react-hook/src'
-import { Card, Input, List, Modal } from '@olaf/react-ui/src'
-import React from 'react'
+import { Card, Input, List, Modal, Radio } from '@olaf/react-ui/src'
+import React, { useState } from 'react'
 import { TbSearch } from 'react-icons/tb'
 import Feed from './components/feed'
 
 export default function Browse() {
 	const [open, { setTrue: showSearchModal, setFalse: hideSearchModal }] = useBoolean(false)
-
+	const [feedTab, setFeedTab] = useState<string | number>(0)
 	const result = []
 
 	return (
 		<>
 			<Header heading="浏览" sticky bordered>
+				<Radio.Group
+					type="tab"
+					options={[
+						{ label: 0, child: '最新' },
+						{ label: 1, child: '关注' }
+					]}
+					value={feedTab}
+					onChange={setFeedTab}
+				></Radio.Group>
 				<Input prefix={<TbSearch />} placeholder="搜动态" outline={false} onFocus={showSearchModal} />
 			</Header>
 			<BackTop target={document.getElementById('app-content')!} />
+
 			<Modal open={open} onCancel={hideSearchModal} unmountOnExit alignCenter={false}>
-				<Card className="p-0 bg-#ebebeb! w-140! m-t-16%" bordered={false} shadow>
+				<Card className="p-0 bg-#ebebeb! w-140! m-t-40" bordered={false} shadow>
 					<Input
 						className="w-100%! text-4"
 						autoFocus
@@ -36,8 +46,9 @@ export default function Browse() {
 					) : null}
 				</Card>
 			</Modal>
+
 			<div className="p-8">
-				<Feed />
+				<Feed feedTab={Number(feedTab)} />
 			</div>
 		</>
 	)

@@ -7,7 +7,7 @@ import { GoChevronDown } from 'react-icons/go'
 import './index.scss'
 import { useBoolean } from '@olaf/react-hook/src'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function TextAlignPicker({ editor }: { editor: Editor }) {
 	interface Option {
 		value: string
 		label: string
@@ -49,6 +49,8 @@ export default ({ editor }: { editor: Editor }) => {
 	}
 	const [open, { setReverse: toggle, setFalse: hide, setBool: setOpen }] = useBoolean(false)
 
+	const textAlginDisabled = options.some(opt => !editor.can().setTextAlign(opt.value))
+
 	return (
 		<Popover
 			trigger="manual"
@@ -63,7 +65,8 @@ export default ({ editor }: { editor: Editor }) => {
 							<Tooltip key={opt.value} placement="bottom" title={opt.label}>
 								<div
 									className={cls('g-align-icon-wrapper', {
-										active: editor.isActive({ textAlign: opt.value })
+										active: editor.isActive({ textAlign: opt.value }),
+										disabled: !editor.can().setTextAlign(opt.value)
 									})}
 									onClick={() => handleSelect(opt)}
 								>
@@ -76,7 +79,12 @@ export default ({ editor }: { editor: Editor }) => {
 			}
 		>
 			<Tooltip placement="bottom" title="对齐方式">
-				<div className="g-text-align-picker" onClick={toggle}>
+				<div
+					className={cls('g-text-align-picker', {
+						disabled: textAlginDisabled
+					})}
+					onClick={textAlginDisabled ? undefined : toggle}
+				>
 					<div className="g-text-align-label">{selection.icon}</div>
 					<div className="g-text-align-dropdown">
 						<GoChevronDown />

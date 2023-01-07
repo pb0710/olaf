@@ -1,5 +1,5 @@
 import { useBoolean } from '@olaf/react-hook/src'
-import { Button, Motion } from '@olaf/react-ui/src'
+import { Button, Motion, Tooltip } from '@olaf/react-ui/src'
 import { throttle } from '@olaf/utils/src'
 import React, { useEffect } from 'react'
 import { TbArrowBarToUp } from 'react-icons/tb'
@@ -35,10 +35,12 @@ export default function BackTop(props: BackTop) {
 	}, [hide, show, target, threshold])
 
 	return (
-		<Motion.Zoom in={visible}>
-			<Button primary circle size="large" className="z-9 fixed right-12 bottom-8" onClick={handleToTop}>
-				<TbArrowBarToUp className="text-5" />
-			</Button>
-		</Motion.Zoom>
+		<Tooltip title="返回顶部">
+			<Motion.Zoom in={visible}>
+				<Button primary circle size="large" className="z-9 fixed right-12 bottom-8" onClick={handleToTop}>
+					<TbArrowBarToUp className="text-5" />
+				</Button>
+			</Motion.Zoom>
+		</Tooltip>
 	)
 }

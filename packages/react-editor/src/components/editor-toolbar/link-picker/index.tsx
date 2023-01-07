@@ -6,8 +6,7 @@ import React, { useState } from 'react'
 import { TbLink, TbX } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
-	const disabled = !editor.can().undo()
+export default function LinkPicker({ editor }: { editor: Editor }) {
 	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [href, setHref] = useState('')
 

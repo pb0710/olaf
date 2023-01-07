@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { HiOutlinePhotograph } from 'react-icons/hi'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function ImgPicker({ editor }: { editor: Editor }) {
 	const [picURL, setPicURL] = useState('http://pic.5tu.cn/uploads/allimg/2010/pic_5tu_big_202009292005352919.jpg')
 	return (
 		<Dropdown.Item

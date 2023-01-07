@@ -4,7 +4,6 @@ import { Editor } from '@tiptap/react'
 import React from 'react'
 import { GoChevronDown } from 'react-icons/go'
 import { TbCirclePlus } from 'react-icons/tb'
-// import { AiFillPlusCircle } from 'react-icons/ai'
 import CodeBlock from '../code-block'
 import HorizontalDivider from '../horizontal-divider'
 import ImgPicker from '../img-picker'
@@ -12,7 +11,7 @@ import LinkPicker from '../link-picker'
 import TablePicker from '../table-picker'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function Insert({ editor }: { editor: Editor }) {
 	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	return (
 		<Dropdown
@@ -37,7 +36,6 @@ export default ({ editor }: { editor: Editor }) => {
 					<div className="g-insert" onClick={toggle}>
 						<div className="g-insert-icon">
 							<TbCirclePlus />
-							{/* <AiFillPlusCircle /> */}
 						</div>
 						<div className="g-insert-arrow">
 							<GoChevronDown />

@@ -5,7 +5,7 @@ import React from 'react'
 import { TbArrowForwardUp } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function Redo({ editor }: { editor: Editor }) {
 	const disabled = !editor.can().redo()
 	return (
 		<Tooltip placement="bottom" title="重做">

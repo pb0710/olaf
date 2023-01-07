@@ -11,6 +11,7 @@
         "build:react-hook": "pnpm -C packages/react-hook run build",
         "build:utils": "pnpm -C packages/utils run build",
         "build": "turbo run build",
+        "test:utils": "pnpm -C packages/utils run test",
         "watch:react-editor": "pnpm -C packages/react-editor run watch",
         "watch:react-ui": "pnpm -C packages/react-ui run watch",
         "watch:react-hook": "pnpm -C packages/react-hook run watch",

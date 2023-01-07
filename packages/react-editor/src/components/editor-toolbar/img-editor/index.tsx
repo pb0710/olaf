@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import { TbEdit, TbX } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function ImgEditor({ editor }: { editor: Editor }) {
 	const [open, { setBool: setOpen, setFalse: hide, setReverse: toggle }] = useBoolean(false)
 	const [src, setSrc] = useState('')
 

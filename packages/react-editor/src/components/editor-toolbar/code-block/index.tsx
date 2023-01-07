@@ -5,13 +5,14 @@ import React from 'react'
 import { BiCodeCurly } from 'react-icons/bi'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function CodeBlock({ editor }: { editor: Editor }) {
 	return (
 		<Dropdown.Item
 			icon={
 				<div
 					className={cls('g-code-block-icon', {
-						active: editor.isActive('codeBlock')
+						active: editor.isActive('codeBlock'),
+						disabled: !editor.can().toggleCodeBlock()
 					})}
 				>
 					<BiCodeCurly />

@@ -9,7 +9,7 @@ interface Options<T extends Request> {
 	ready?: boolean
 	loadingDelay?: number
 	refreshDeps?: any[]
-	defaultParams?: Parameters<T>
+	params?: Parameters<T>
 	onSuccess?(res: PromiseFnResult<T>): void
 	onError?(err: Error | null): void
 }
@@ -60,8 +60,8 @@ export function useFetch<T extends Request, S extends Options<T>>(fetcher: T, op
 	useEffect(
 		() => {
 			if (!manual) {
-				const { defaultParams = [] } = optsRef.current
-				run(...defaultParams)
+				const { params = [] } = optsRef.current
+				run(...params)
 			}
 			return () => {
 				fetchCount.current += 1

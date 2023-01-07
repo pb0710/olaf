@@ -26,7 +26,7 @@ import ImgEditor from './img-editor'
 import Insert from './insert'
 import HorizontalDivider from './horizontal-divider'
 
-export default ({ editor }: { editor: Editor | null }) => {
+export default function EditorToolbar({ editor }: { editor: Editor | null }) {
 	if (!editor) return null
 
 	const tippyOptions = {
@@ -123,6 +123,9 @@ export default ({ editor }: { editor: Editor | null }) => {
 				<BulletList editor={editor} />
 				<OrderList editor={editor} />
 				<TextAlignPicker editor={editor} />
+
+				<Divider className="toolbar-divider" direction="vertical" />
+
 				<Blockquote editor={editor} />
 				{/* <CodeBlock editor={editor} />
 				<HorizontalDivider editor={editor} />

@@ -1,4 +1,4 @@
-import { EditorOptions, useEditor } from '@tiptap/react'
+import { EditorOptions, useEditor as useTiptapEditor } from '@tiptap/react'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -14,8 +14,8 @@ import Image from '@tiptap/extension-image'
 import Color from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
 
-export default (options?: Partial<EditorOptions>) => {
-	return useEditor({
+export default function useEditor(options?: Partial<EditorOptions>) {
+	return useTiptapEditor({
 		extensions: [
 			StarterKit.configure({
 				heading: { levels: [1, 2, 3, 4] }

@@ -5,13 +5,14 @@ import React from 'react'
 import { TbBold } from 'react-icons/tb'
 import './index.scss'
 
-export default (props: { editor: Editor }) => {
+export default function Bold(props: { editor: Editor }) {
 	const { editor } = props
 	return (
 		<Tooltip placement="bottom" title="粗体">
 			<div
 				className={cls('g-bold-icon', {
-					active: editor.isActive('bold')
+					active: editor.isActive('bold'),
+					disabled: !editor.can().toggleBold()
 				})}
 				onClick={() => {
 					editor.chain().focus().toggleBold().run()

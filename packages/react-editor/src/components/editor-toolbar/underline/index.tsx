@@ -5,12 +5,13 @@ import React from 'react'
 import { AiOutlineUnderline } from 'react-icons/ai'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function Underline({ editor }: { editor: Editor }) {
 	return (
 		<Tooltip placement="bottom" title="下划线">
 			<div
 				className={cls('g-underline-icon', {
-					active: editor.isActive('underline')
+					active: editor.isActive('underline'),
+					disabled: !editor.can().toggleUnderline()
 				})}
 				onClick={() => {
 					editor.chain().focus().toggleUnderline().run()

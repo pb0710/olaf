@@ -5,12 +5,13 @@ import React from 'react'
 import { TbList } from 'react-icons/tb'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function BulletList({ editor }: { editor: Editor }) {
 	return (
 		<Tooltip placement="bottom" title="无序列表">
 			<div
 				className={cls('g-bullet-list-icon', {
-					active: editor.isActive('bulletlist')
+					active: editor.isActive('bulletlist'),
+					disabled: !editor.can().toggleBulletList()
 				})}
 				onClick={() => {
 					editor.chain().focus().toggleBulletList().run()

@@ -7,32 +7,26 @@ import { GoChevronDown } from 'react-icons/go'
 import { RiMarkPenLine } from 'react-icons/ri'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function HighlightPicker({ editor }: { editor: Editor }) {
 	const options = [
-		'#faefde',
-		'#e42d44',
-		'#f2eae0',
-		'#7bad5f',
-		'#e5d7ad',
+		'#ffffff',
+		'#cccccc',
+		'#999999',
+		'#666666',
+		'#333333',
+		'#000000',
+		'#ffa8a8',
 		'#ffd800',
-		'#bccf90',
-		'#f6a09a',
-		'#ff7900',
-		'#edb04c',
-		'#8a3c48',
-		'#a0c198',
-		'#cfa33e',
-		'#d23538',
-		'#36527d',
-		'#8d587e',
-		'#a2ddb8',
 		'#faf594',
-		'#cebece',
-		'#eff2fa',
-		'#f7f2ed',
-		'#b197fc',
+		'#a2ddb8',
 		'#40a9ff',
-		'#ffa8a8'
+		'#b197fc',
+		'#d83931',
+		'#de7802',
+		'#dc9b04',
+		'#21a121',
+		'#245bdb',
+		'#6425d0'
 	]
 
 	const [inkColor, setInkColor] = useState('#faf594')
@@ -45,12 +39,15 @@ export default ({ editor }: { editor: Editor }) => {
 		editor.chain().focus().setHighlight({ color: opt }).run()
 	}
 
+	const highlightDisabled = !editor.can().toggleHighlight()
+
 	return (
 		<Tooltip placement="bottom" title="标记">
 			<div className="g-highlight-picker">
 				<div
 					className={cls('g-highlight-setter', {
-						active: hasActive
+						active: hasActive,
+						disabled: highlightDisabled
 					})}
 					onClick={() => {
 						editor.chain().focus().toggleHighlight({ color: inkColor }).run()
@@ -74,7 +71,7 @@ export default ({ editor }: { editor: Editor }) => {
 								style={{ width: '100%' }}
 								onClick={() => editor.chain().focus().unsetHighlight().run()}
 							>
-								无填充色
+								无背景色
 							</Button>
 							<Divider />
 							<div className="g-colors-wrapper">
@@ -96,9 +93,10 @@ export default ({ editor }: { editor: Editor }) => {
 				>
 					<div
 						className={cls('g-highlight-dropdown', {
-							active: open
+							active: open,
+							disabled: highlightDisabled
 						})}
-						onClick={toggle}
+						onClick={highlightDisabled ? undefined : toggle}
 					>
 						<GoChevronDown />
 					</div>

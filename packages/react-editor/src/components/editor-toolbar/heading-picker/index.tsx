@@ -5,7 +5,7 @@ import React, { createElement } from 'react'
 import { GoChevronDown } from 'react-icons/go'
 import './index.scss'
 
-export default ({ editor }: { editor: Editor }) => {
+export default function HeadingPicker({ editor }: { editor: Editor }) {
 	type HeadingLevel = 1 | 2 | 3 | 4
 	interface Option {
 		value: 0 | HeadingLevel
