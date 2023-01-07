@@ -16,6 +16,7 @@
     "@olaf/react-ui": "workspace:*",
     "@olaf/utils": "workspace:*",
     "@reduxjs/toolkit": "^1.9.1",
+    "dayjs": "^1.11.7",
     "react-redux": "^8.0.5"
   },
   "lint-staged": {

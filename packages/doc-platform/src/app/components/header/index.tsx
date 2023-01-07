@@ -15,7 +15,7 @@ export default function Header(props: HeaderProps) {
 			className={cls(
 				'flex items-center justify-between h-16 pl-8 pr-8 bg-#fff',
 				sticky && 'sticky top-0 z-10',
-				bordered && 'b-b b-#ddd'
+				bordered && 'b-b b-#ebebeb'
 			)}
 		>
 			<h1>{heading}</h1>

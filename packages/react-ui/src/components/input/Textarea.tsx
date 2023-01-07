@@ -17,6 +17,8 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	minRows?: number
 	maxRows?: number
 	disabled?: boolean
+	bordered?: boolean
+	outline?: boolean
 	value?: string | number
 	onChange?: ChangeEventHandler<HTMLTextAreaElement> & ((value?: string | number) => void)
 }
@@ -26,6 +28,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, propRef)
 		className,
 		autosize = false,
 		disabled = false,
+		bordered = true,
+		outline = true,
 		minRows = 1,
 		maxRows = Infinity,
 		defaultValue,
@@ -66,7 +70,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, propRef)
 		<label
 			className={cls(className, prefixCls, {
 				[`${prefixCls}-focus`]: focus,
-				[`${prefixCls}-disabled`]: disabled
+				[`${prefixCls}-disabled`]: disabled,
+				[`${prefixCls}-bordered`]: bordered,
+				[`${prefixCls}-outline`]: outline
 			})}
 		>
 			<TextareaComp

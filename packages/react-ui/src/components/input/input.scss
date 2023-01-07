@@ -48,8 +48,10 @@
 		&.g-input-focus,
 		&:active {
 			&.g-input-bordered {
-				box-shadow: inset 0 0 0 2px $color-primary;
-				border-color: $color-primary;
+				&.g-input-outline {
+					border-color: $color-primary;
+					box-shadow: inset 0 0 0 2px $color-primary;
+				}
 			}
 		}
 	}

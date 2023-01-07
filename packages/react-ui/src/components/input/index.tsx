@@ -22,6 +22,7 @@ interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'maxLength' 
 	size?: 'small' | 'medium' | 'large'
 	round?: boolean
 	bordered?: boolean
+	outline?: boolean
 	disabled?: boolean
 	prefix?: ReactNode
 	suffix?: ReactNode
@@ -46,6 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 		allowClear = false,
 		autoFocus = false,
 		bordered = true,
+		outline = true,
 		...rest
 	} = props
 
@@ -107,6 +109,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, propRef) => {
 				[`${prefixCls}-focus`]: focus,
 				[`${prefixCls}-round`]: round,
 				[`${prefixCls}-bordered`]: bordered,
+				[`${prefixCls}-outline`]: outline,
 				[`${prefixCls}-disabled`]: disabled
 			})}
 		>

@@ -25,6 +25,7 @@ interface ModalProps extends HTMLAttributes<HTMLElement> {
 	maskClassName?: string
 	maskClosable?: boolean
 	unmountOnExit?: boolean
+	alignCenter?: boolean
 	onCancel?: () => void
 }
 
@@ -35,6 +36,7 @@ const Modal: FC<ModalProps> = props => {
 		maskClassName,
 		maskClosable = true,
 		unmountOnExit = false,
+		alignCenter = true,
 		open = false,
 		onCancel,
 		...rest
@@ -64,7 +66,9 @@ const Modal: FC<ModalProps> = props => {
 			<div className={cls(className, prefixCls)} {...rest}>
 				<div className={cls(maskClassName, `${prefixCls}-mask`)}></div>
 				<div
-					className={`${prefixCls}-wrap`}
+					className={cls(`${prefixCls}-wrap`, {
+						[`${prefixCls}-align-center`]: alignCenter
+					})}
 					onClick={
 						maskClosable
 							? event => {

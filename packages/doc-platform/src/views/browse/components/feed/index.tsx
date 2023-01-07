@@ -1,117 +1,22 @@
+import { getFeedList } from '@/api'
+import { useFetch } from '@olaf/react-hook/src'
 import { Avatar, Button, Image } from '@olaf/react-ui/src'
 import React from 'react'
 import { TbThumbUp } from 'react-icons/tb'
 
 export default function Feed() {
-	const feed_list = [
-		{
-			id: 1,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		},
-		{
-			id: 2,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		},
-		{
-			id: 3,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		},
-		{
-			id: 4,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		},
-		{
-			id: 5,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		},
-		{
-			id: 6,
-			heading: '知识管理的 IPO 模型',
-			content: {
-				html: '<p>从前面知道，要想做到有效的知识管理，其中一个通用的方法就是 “IPO 模型”，其中 IPO 是 Input- Process- Output 的缩写，意即知识管理的“输入-处理-输出”过程。这个知识管理 IPO 模型是知识管理 3.0 的核心，也是语雀数字花园的根基。那么，IPO 模型到底是什</p>'
-			},
-			cover: 'https://th.wallhaven.cc/small/7p/7p3we9.jpg',
-			user: {
-				uid: 12312323,
-				nickname: '匿名',
-				avatar: ''
-			},
-			last_modify_at: '2022/12/11',
-			first_published_at: '2022/12/02',
-			private: false,
-			likes_count: 23
-		}
-	]
+	const {
+		data: feed_list,
+		error,
+		loading
+	} = useFetch(getFeedList, {
+		initialData: []
+	})
 	return (
 		<div className="max-w-240 m-l-20">
 			{feed_list.map(feed => {
 				return (
-					<div key={feed.id} className="border-b-#eee border-b mb-8">
+					<div key={feed.id} className="border-b-#ebebeb border-b mb-8">
 						<div className="flex items-center mb-4">
 							<Avatar size="small" round src={feed.user.avatar} />
 							<div className="flex items-center">
@@ -127,7 +32,7 @@ export default function Feed() {
 								<div className="" dangerouslySetInnerHTML={{ __html: feed.content.html }}></div>
 							</div>
 							<Image
-								className="w-40 h-27 border-l border-l-#eee b-rd-2 object-cover ml-12"
+								className="w-40 h-27 border-l border-l-#ebebeb b-rd-2 object-cover ml-12"
 								src={feed.cover}
 							/>
 						</div>

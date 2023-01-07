@@ -21,7 +21,7 @@ export default (options?: Partial<EditorOptions>) => {
 				heading: { levels: [1, 2, 3, 4] }
 			}),
 			Typography,
-			Placeholder.configure({ placeholder: 'Write something …' }),
+			Placeholder.configure({ placeholder: '写点什么...' }),
 			Highlight.configure({
 				multicolor: true
 			}),

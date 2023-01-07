@@ -4,7 +4,7 @@ import { useLatestRef } from './useLatestRef'
 
 type Request = (...args: any[]) => Promise<any>
 interface Options<T extends Request> {
-	initialData?: PromiseFnResult<T>
+	initialData: PromiseFnResult<T>
 	manual?: boolean
 	ready?: boolean
 	loadingDelay?: number

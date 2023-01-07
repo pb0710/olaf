@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react'
+import React, { ComponentProps, FC, ReactNode } from 'react'
 import { cls } from '@olaf/utils/src'
 import { UI_PREFIX } from '../../constants'
 import './dialog.scss'
@@ -11,6 +11,7 @@ import { TbX } from 'react-icons/tb'
 
 interface DialogProps extends ComponentProps<typeof Modal> {
 	hasCancel?: boolean
+	closeIcon?: ReactNode
 	title?: string
 	okText?: string
 	cancelText?: string
@@ -20,6 +21,7 @@ interface DialogProps extends ComponentProps<typeof Modal> {
 }
 
 const Dialog: FC<DialogProps> = props => {
+	const prefixCls = `${UI_PREFIX}-dialog`
 	const {
 		children,
 		className,
@@ -33,10 +35,9 @@ const Dialog: FC<DialogProps> = props => {
 		okLoading = false,
 		onCancel,
 		onOk,
+		closeIcon = <TbX className={`${prefixCls}-header-close-icon`} onClick={onCancel} />,
 		...rest
 	} = props
-
-	const prefixCls = `${UI_PREFIX}-dialog`
 
 	return (
 		<Modal open={open} maskClassName={maskClassName} maskClosable={maskClosable} onCancel={onCancel} {...rest}>
@@ -48,7 +49,7 @@ const Dialog: FC<DialogProps> = props => {
 					header={
 						<div className={`${prefixCls}-header`}>
 							<strong className={`${prefixCls}-header-title`}>{title}</strong>
-							<TbX className={`${prefixCls}-header-close-icon`} onClick={onCancel} />
+							{closeIcon}
 						</div>
 					}
 					footer={
