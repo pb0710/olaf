@@ -190,7 +190,11 @@ describe('test reference equality judgment', () => {
 
 describe('special situation', () => {
 	it('should NaN native not be equal', () => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		expect(NaN === NaN).toBe(false)
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		expect(NaN == NaN).toBe(false)
 	})
 
