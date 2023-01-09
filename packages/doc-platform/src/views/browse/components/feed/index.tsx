@@ -1,4 +1,4 @@
-import { getFeedList } from '@/api'
+import { get_feed_list } from '@/api'
 import { useFetch } from '@olaf/react-hook/src'
 import { Avatar, Button, Image } from '@olaf/react-ui/src'
 import React from 'react'
@@ -14,11 +14,11 @@ export default function Feed(props: FeedProps) {
 		data: feed_list,
 		error,
 		loading
-	} = useFetch(getFeedList, {
+	} = useFetch(get_feed_list, {
 		initialData: [],
 		params: [
 			{
-				feedTab
+				feed_tab: feedTab
 			}
 		],
 		refreshDeps: [feedTab]

@@ -31,4 +31,4 @@ export const counter_slice = createSlice({
 
 export default counter_slice
 // Action creators are generated for each case reducer function
-export const { increment, decrement, increment_by_amount: incrementByAmount } = counter_slice.actions
+export const { increment, decrement, increment_by_amount } = counter_slice.actions

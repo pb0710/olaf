@@ -1,10 +1,10 @@
 import { net } from '@/utils'
 import { delay } from '@olaf/utils/src'
 
-export const getFeedList = ({ feedTab }: { feedTab: number }) => {
-	console.log('feedTab: ', feedTab)
+export const get_feed_list = ({ feed_tab }: { feed_tab: number }) => {
+	console.log('feed_tab: ', feed_tab)
 	return delay(200).then(() =>
-		feedTab === 0
+		feed_tab === 0
 			? [
 					{
 						id: 1,

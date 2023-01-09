@@ -3,7 +3,7 @@
 	@include basic;
 	display: flex;
 	flex-direction: column;
-	width: 480px;
+	width: max-content;
 	height: max-content;
 	border-radius: $radius-l;
 	background: #fff;

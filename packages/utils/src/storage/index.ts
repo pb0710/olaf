@@ -6,16 +6,16 @@ class Storage {
 		this.store = window[`${type}Storage`]
 	}
 
-	public get<T>(key: string): T | string | null {
+	public get<T = string>(key: string): T | null {
 		const val = this.store.getItem(key)
 
 		if (is.null(val)) return null
 
-		let result: T | string
+		let result: T
 		try {
 			result = JSON.parse(val)
 		} catch (err) {
-			result = val
+			result = val as T
 		}
 		return result
 	}

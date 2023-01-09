@@ -28,14 +28,14 @@ export default function Menu({ expand }: MenuProps) {
 	}
 
 	return (
-		<Space className="flex-1 select-none" direction="vertical" size="small">
+		<Space className="flex-1 select-none" direction="vertical">
 			{nav_routes.map(({ path, state, children = [] }) => {
 				const has_sub_nav = children.length > 0
-				const toggleSubMenu = (e: MouseEvent) => {
+				const toggle_sub_menu = (e: MouseEvent) => {
 					e.stopPropagation()
 					set_open(path, !open_map[path])
 				}
-				const checvron_down_icon = (
+				const chevron_down_icon = (
 					<GoChevronDown className={cls('transition-all', open_map[path] ? 'rotate-180' : 'rotate-0')} />
 				)
 				const nav_content = (
@@ -48,16 +48,16 @@ export default function Menu({ expand }: MenuProps) {
 									<div
 										className="b-rd-1 w-6 h-6 flex items-center justify-center text-3
 										!group-active-bg-#00000018 group-hover-bg-#00000010"
-										onClick={toggleSubMenu}
+										onClick={toggle_sub_menu}
 									>
-										{checvron_down_icon}
+										{chevron_down_icon}
 									</div>
 								)}
 							</>
 						) : (
 							has_sub_nav && (
-								<div className="flex items-center text-3" onClick={toggleSubMenu}>
-									{checvron_down_icon}
+								<div className="flex items-center text-3" onClick={toggle_sub_menu}>
+									{chevron_down_icon}
 								</div>
 							)
 						)}
@@ -97,45 +97,48 @@ export default function Menu({ expand }: MenuProps) {
 							)}
 						</Tooltip>
 
-						<Motion.Collapse in={open_map[path]} className="w-100%">
-							<div
-								className={cls('pt-1 pb-1', {
-									'ml-8': expand
-								})}
-							>
-								{children.map(child => {
-									return (
-										<Tooltip
-											key={child.path}
-											title={child.state.nav_name}
-											placement="right"
-											disabled={expand}
-										>
-											<NavLink
-												to={`${path}/${child.path}`}
-												className={({ isActive }) =>
-													cls(
-														'group w-100% h-8 flex items-center pl-4 pr-1 b-rd-2 decoration-none color-inherit',
-														{
-															'active-bg-#00000018 hover-not-active-bg-#00000010':
-																!isActive,
-															'bg-#00000018': isActive
-														}
-													)
-												}
+						{has_sub_nav && (
+							<Motion.Collapse in={open_map[path]} className="w-100% m-t-0! m-b-0!" unmountOnExit>
+								<Space
+									className={cls('p-t-1.5 p-b-1.5', {
+										'ml-8': expand
+									})}
+									direction="vertical"
+								>
+									{children.map(child => {
+										return (
+											<Tooltip
+												key={child.path}
+												title={child.state.nav_name}
+												placement="right"
+												disabled={expand}
 											>
-												<div className="leading-0 text-4">{child.state.icon}</div>
-												{expand && (
-													<div className="flex-1 break-all ws-nowrap ml-2">
-														{child.state.nav_name}
-													</div>
-												)}
-											</NavLink>
-										</Tooltip>
-									)
-								})}
-							</div>
-						</Motion.Collapse>
+												<NavLink
+													to={`${path}/${child.path}`}
+													className={({ isActive }) =>
+														cls(
+															'group w-100% h-8 flex items-center pl-4 pr-1 b-rd-2 decoration-none color-inherit',
+															{
+																'active-bg-#00000018 hover-not-active-bg-#00000010':
+																	!isActive,
+																'bg-#00000018': isActive
+															}
+														)
+													}
+												>
+													<div className="leading-0 text-4">{child.state.icon}</div>
+													{expand && (
+														<div className="flex-1 break-all ws-nowrap ml-2">
+															{child.state.nav_name}
+														</div>
+													)}
+												</NavLink>
+											</Tooltip>
+										)
+									})}
+								</Space>
+							</Motion.Collapse>
+						)}
 					</Fragment>
 				)
 			})}

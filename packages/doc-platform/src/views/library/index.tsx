@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-export default function Libary() {
+export default function Library() {
 	return (
-		<div className="">
-			libary
+		<div className="library">
+			library
 			<Outlet />
 		</div>
 	)

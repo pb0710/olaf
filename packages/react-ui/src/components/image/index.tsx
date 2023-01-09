@@ -228,13 +228,15 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 			handler: hideDetail
 		}
 	]
+
+	const detailLoading = !_detailSrc || !detailLoaded
 	const toolbarEle = (
 		<Motion.Slide in={toolbarVisible} direction="up">
 			<div className={`${prefixCls}-detail-toolbar`}>
 				<Space size="small">
 					{toolbarList.map(item => (
 						<Tooltip key={item.id} spacing={12} placement="top" title={item.title}>
-							<Button circle text onClick={item.handler}>
+							<Button circle text disabled={detailLoading} onClick={item.handler}>
 								{item.icon}
 							</Button>
 						</Tooltip>
@@ -243,8 +245,6 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, propRef) => {
 			</div>
 		</Motion.Slide>
 	)
-
-	const detailLoading = !_detailSrc || !detailLoaded
 
 	const detailEle = detailDisabled || (
 		<Modal open={detailOpen} onCancel={hideDetail} onWheel={handleWheel} unmountOnExit>

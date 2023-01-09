@@ -28,13 +28,13 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, propRef) => {
 			})}
 			{...rest}
 		>
+			<div className={`${prefixCls}-content`}>{children}</div>
 			{spinning && (
-				<div className={`${prefixCls}-tip`}>
+				<div className={`${prefixCls}-layer`}>
 					{icon}
-					{description && <span className={`${prefixCls}-tip-description`}>{description}</span>}
+					{description && <span className={`${prefixCls}-description`}>{description}</span>}
 				</div>
 			)}
-			<div className={`${prefixCls}-content`}>{children}</div>
 		</div>
 	)
 })

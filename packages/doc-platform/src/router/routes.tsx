@@ -1,3 +1,4 @@
+import { delay } from '@olaf/utils/src'
 import React, { createElement, lazy } from 'react'
 import { TbHistory, TbStar, TbNotes, TbLayout, TbBook2 } from 'react-icons/tb'
 import { Navigate } from 'react-router-dom'
@@ -5,23 +6,31 @@ import { Navigate } from 'react-router-dom'
 export const nav_routes = [
 	{
 		path: 'browse',
-		element: createElement(lazy(() => import('@/views/browse'))),
+		element: createElement(lazy(() => delay(300000).then(() => import('@/views/browse')))),
 		state: {
 			nav_name: '浏览',
 			icon: <TbLayout />
 		}
 	},
 	{
-		path: 'libary',
+		path: 'library',
 		state: {
 			nav_name: '知识库',
 			icon: <TbBook2 />,
-			element: createElement(lazy(() => import('@/views/libary')))
+			element: createElement(lazy(() => import('@/views/library')))
 		},
 		children: [
 			{
 				path: 'doc',
-				element: createElement(lazy(() => import('@/views/doc'))),
+				element: createElement(lazy(() => import('@/views/doc-list'))),
+				state: {
+					nav_name: '文档',
+					icon: <TbNotes />
+				}
+			},
+			{
+				path: 'doc-editor',
+				element: createElement(lazy(() => import('@/views/doc-editor'))),
 				state: {
 					nav_name: '文档',
 					icon: <TbNotes />

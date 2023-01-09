@@ -15,13 +15,13 @@
 	&-large {
 		font-size: 48px;
 	}
-	&-tip {
+	&-layer {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		z-index: 10;
-		.g-loading-tip-description {
+		.g-loading-description {
 			font-size: $text-font-size-m;
 			margin-top: 8px;
 		}
@@ -29,7 +29,7 @@
 	&-is-wrapper {
 		position: relative;
 		width: max-content;
-		.g-loading-tip {
+		.g-loading-layer {
 			display: flex;
 			position: absolute;
 			left: 50%;
